@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  backend:
+    build:
+      dockerfile: dev.backend.Dockerfile
+    ports:
+      - "3000:7223" # https port
+      - "3001:5162" # http port
+    volumes:
+      - .:/app
