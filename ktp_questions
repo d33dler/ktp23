@@ -1,0 +1,142 @@
+***FACTS***
+- AreaSqm is <10m2 gives a 200 base (raw) valuation (assume room).
+- AreaSqm is 10m2 gives a 200 base (raw) valuation.
+- AreaSqm is 20m2 gives a 300 base (raw) valuation (assume room).
+- AreaSqm is 25m2 gives a 400 base (raw) valuation.
+- AreaSqm is 30m2 gives a 500 base (raw) valuation.
+- AreaSqm is >50m2 increses base from 1000 (raw) valuation by 10 per m2.
+- Property located in Amsterdam increases valuation by 20%.
+
+- Property of type room retains current valuation.
+- Property of type apartment increases valuation by 30%.
+- Property of type anti-squat decreases valuation by 15%.
+- Property of type studio increases valuation by 35%.
+- Property of type student-residence decreases valuation increases valuation by 30%.
+- Property of type house increases valuation by 30%.
+
+- Property is located <1 km from city center increases valuation by 10%.
+- Property is located <8 km from city center retains valuation.
+- Property is located >9 km from city center decreases valuation by 5%.
+
+- Property location: Amstelveen increases base valuation by 20%.
+- Property location: Diemen increases bsae valuation by 10%.
+- Property location: Haarlem increases base valuation by 12.5%.
+- Property location: Apeldoorn increases base valuation by 10%.
+- Property location: Zaandam increases base valuation by 15%.
+- Property location: Hengelo increases base valuation by 10%.
+- Property location: Leeuwarden increases base valuation by 5%.
+- Property location: Vlissingen increases base valuation by 10%.
+- Property location: Heerlen increases base valuation by 10%.
+- Property location: Hoofddorp increases base valuation by 10%.
+- Property location: Nijmegen increases base valuation by 7.5%.
+- Property location: Den Bosch increases base valuation by 7.5%.
+- Property location: Leiden increases base valuation by 5%.
+
+- Population effects <1mil retains valuation
+- Population effects >1mil increases valuation by 5%.
+
+- Property is furnished increases base valuation by 10%.
+- Property is not furnished retains base valuation.
+- 
+- Property has a private shower increases base valuation by 10%
+- Property has a shared shower retains valuation
+
+- Property has a private toilet increases base valuation by 5%
+- Property has a shared toilet retains valuation
+
+- Property has a private living room increases base valuation by 10%
+- Property has a shared living room retains valuation
+
+- Property has a living capacity of > 5 increases base valuation by 15%.
+- Property has a living capacity of 5 increases base valuation by 7.5%.
+- Property has a living capacity of 4 increases base valuation by 5%.
+- Property has a living capacity of 3 retains valuation.
+- Property has a living capacity of 2 increases base valuation by 10%
+- Property has a living capacity of 1 retains valuation.
+- Property has internet set-up retains base valuation.
+- Property has no internet set-up decreases base valuation by 5%.
+- Energy label missing decreases valuation by 5%
+- Energy label A decreases valuation by 5%.
+- Energy label B retains valuation.
+- Energy label C retains valuation.
+- Energy label D increases valuation by 5%.
+- Energy label E increases valuation by 8%.
+
+- Roomates count: 1 retains valuation.
+- Roomates count: 2 decreases valuation by 2.5%.
+- Roomates count: 3 decreases valuation by 5%.
+- Roomates count: 4 decreases valuation by 7.5%.
+- Roomates count: 5 decreases valuation by 10%.
+- Roomates count: 6 decreases valuation by 12.5%.
+- Roomates count: >8 decreases valuation by 15%.
+
+- Problematic neighbors present lowers base valuation by 10%
+- No problematic neighbors present lowers base valuation by 10%
+
+- Air quality: good retains valuation.
+- Air quality: average decreases valuation by 10%.
+- Air quality: bad decreases valuation by %15.
+
+- Nearby disturbances lowers volation by -15%
+- Apartment facing sunrise increases base valuation by +5%
+- Apartment facing sunset increases base valuation by -2.5%
+- Apartment facing partial sun increases $ by +2.5
+- Apartment fully shadowed decreases base valuation by -10%
+- House not having full sun coverage lowers base valuation by -5%
+- House over-shadowed completely lowers base valuation  by -15%
+- Apartment having balcony access increases base valuation +5%
+
+- Pets allowed/by mutual agreement increases valuation by 5%.
+- Pets not allowed retains valuation.
+
+- Landlord seeks tenants of all ages retains base valuation.
+- Landlord seeks tenants of ages: 16-25 decreases base valuation by 5%.
+- Landlord seeks tenants of ages: 16-60 decreases base valuation by 2.5%.
+- Landlord seeks tenants of ages: 18-60 decreases base valuation by 2.5%.
+- Landlord seeks tenants of ages: 25-99 retains base valuation.
+
+- Landlord seeks tenants with status: Looking for job decreases base valuation by 2.5%.
+- Landlord seeks tenants with status: Student, Working student, Looking for a job decreases base valuation by 7.5%.
+- Landlord seeks tenants with status: Working retains base valuation.
+- Landlord seeks tenants with status: Student decreases base valuation by 2.5%.
+
+- Landlord seeks gender: Not Important retains valuation.
+- Landlord seeks gender: Female decreases base valuation by 2.5%.
+- Landlord seeks gender: Male increases base valuation by 2.5%.
+
+- Landlord seeks tenants with status: Student, Lookign for job decreases valuation by 5%.
+
+- Smoking inside allowed decreases base valuation by 5%.
+- Smoking inside not allowed retain base valuation.
+
+***RULES***
+
+- AreaSqm < 50 ? 500 : 1000
+- Location= Amsterdam ? 100 : 10
+- Type= Room ? 0 : 100
+- AreaSqm < 25 ? -100 : 0
+- Type=Anti-squat? -80 :    
+- Problematic neighbors ? -10% : +0%
+- Air quality location ? -15% : +0%
+- Nearby disturbances ? -15% : +0%
+- Apartment facing sunrise ? +5%: +0%
+- Apartment facing sunset ? -2.5%: +0%
+- Apartment facing partial sun? +2.5 : +0%
+- Apartment facing no-sun? -10% : +0%
+- House full sun coverage? +0% : -5%
+- House no-sun coverage? -15% : 0%
+- Apartment balcony access? +5% : 0%
+
+
+RULE
+	- ID: INT
+	- TYPE: BOOL|ML|SL
+	- QUESTION: STR
+	- ANSWERS: [STR]
+	- WEIGHTS: [FLOAT]
+	- CONN_WEIGHTs [(FLOAT, INT)]
+	- NEXT: [(INT, INT)] | None
+	 		
+
+
+
