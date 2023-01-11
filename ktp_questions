@@ -109,6 +109,13 @@
 - Smoking inside allowed decreases base valuation by 5%.
 - Smoking inside not allowed retain base valuation.
 
+- Property located near public transportation increases valuation by 10%
+- Parking availability: private increases valuation by 15%
+- Parking availability: street increases valuation by 5%
+- Parking availability: none decreases valuation by 5%
+- Distance from schools <3km increases valuation by 5%.
+- Security system present increases valuation by 5%.
+- Management fee
 ***RULES***
 
 - AreaSqm < 50 ? 500 : 1000
