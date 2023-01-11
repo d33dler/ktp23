@@ -29,23 +29,6 @@ class RentalProperty:
 class RentalPropertyValuation:
     def __init__(self, rental_property: RentalProperty):
         self.rental_property = rental_property
-
-    def base_valuation(self):
-        if self.rental_property.area_sqm < 10:
-            return 200
-        elif self.rental_property.area_sqm == 10:
-            return 200
-        elif self.rental_property.area_sqm == 20:
-            return 300
-        elif self.rental_property.area_sqm == 25:
-            return 400
-        elif self.rental_property.area_sqm == 30:
-            return 500
-        elif self.rental_property.area_sqm > 50:
-            return 1000 + (self.rental_property.area_sqm - 50) * 10
-        else:
-            return 0
-
     def calculate_valuation(self, rental_property):
         base_valuation = 0
         if rental_property["area_sqm"] < 10:
@@ -239,6 +222,34 @@ class RentalPropertyValuation:
             valuation *= 1.05
         if rental_property["distance_from_zoo"] < 10:
             valuation *= 1.1
+        if rental_property["view"] == "ocean":
+            valuation *= 1.2
+        elif rental_property["view"] == "mountain":
+            valuation *= 1.15
+        elif rental_property["view"] == "city":
+            valuation *= 1.1
+        elif rental_property["view"] == "none":
+            valuation *= 0.95
+        if rental_property["security_features"] == "alarm":
+            valuation *= 1.1
+        elif rental_property["security_features"] == "surveillance":
+            valuation *= 1.05
+        elif rental_property["security_features"] == "guard":
+            valuation *= 1.1
+        elif rental_property["security_features"] == "none":
+            valuation *= 0.95
+        if rental_property["distance_from_school"] < 3:
+            valuation *= 1.05
+        if rental_property["distance_from_shopping_center"] < 2:
+            valuation *= 1.1
+        if rental_property["distance_from_gym"] < 3:
+            valuation *= 1.05
+        if rental_property["distance_from_library"] < 5:
+            valuation *= 1.05
+        if rental_property["distance_from_hospital"] < 10:
+            valuation *= 1.05
+        if rental_property["distance_from_pharmacy"] < 2:
+            valuation *= 1.05
         return valuation
 
 
