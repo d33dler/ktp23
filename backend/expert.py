@@ -84,7 +84,7 @@ class Internet:
 
 @dataclass(frozen=True)
 class Energy_label:
-    id = energy_label
+    id = "energy_label"
     A = "A"
     B = "B"
     C = "C"
@@ -487,6 +487,3 @@ class RentalPropertyValuation:
 #                           living_capacity=3, internet=True, energy_label="A", roommates=1, problematic_neighbors=False,
 #                           air_quality="good", nearby_disturbances=False, facing="sunrise", sun_coverage="partial",
 #                           balcony=True, pets_allowed=True, landlord_seeks="25-99")
-valuation_system = RentalPropertyValuation(property)
-final_valuation = valuation_system.calculate_valuation(dict())
-print(final_valuation)
