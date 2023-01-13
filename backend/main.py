@@ -11,7 +11,7 @@ class Form(BaseModel):
     apartment_facing:  str
     area_sqm:  int
     balcony_access:  str
-    built_in_appliances:  str
+    built_appliances:  str
     community_facilities:  str
     distance_from_airport:  int
     distance_from_bike_rental:  int
@@ -60,7 +60,7 @@ class Form(BaseModel):
     property_location:  str
     property_type:  str
     quality_of_construction:  str
-    renovation_date:  str
+    renovation_date:  int
     roommates:  int
     sauna:  str
     security:  str
@@ -68,7 +68,7 @@ class Form(BaseModel):
     shower:  str
     sound_proof:  str
     spa:  str
-    storage:  str
+    storage_room:  str
     toilet:  str
     view:  str
 
@@ -86,6 +86,7 @@ app.add_middleware(
 async def root(form : Form):
     # convert form to dict
     form = form.dict()
+    # form = await form.json()
     print(form)
     rpv = RentalPropertyValuation(form)
     val = rpv.calculate_valuation()

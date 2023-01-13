@@ -209,12 +209,6 @@ class Security:
     no = False
 
 
-@dataclass(frozen=True)
-class Management_fee:
-    id = 'management_fee'
-    yes = True
-    no = False
-
 
 @dataclass(frozen=True)
 class Quality_of_construction:

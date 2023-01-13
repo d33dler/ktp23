@@ -224,7 +224,7 @@ class RentalPropertyValuation:
             valuation *= 1.2
         if rental_property[A.community_facilities]:
             valuation *= 1.1
-        if rental_property[A.dist_touristic_area] < 3:
+        if rental_property[A.dist_touristic_area.id] < 3:
             valuation *= 1.05
         parking_space = A.parking_space.id
         if rental_property[parking_space] == A.parking_space.garage:
@@ -240,9 +240,9 @@ class RentalPropertyValuation:
             valuation *= 1.1
         if rental_property[A.dist_highway.id] < 5:
             valuation *= 0.95
-        if rental_property[A.dist_airport] < 15:
+        if rental_property[A.dist_airport.id] < 15:
             valuation *= 0.95
-        if rental_property[A.dist_train_station] < 3:
+        if rental_property[A.dist_train_station.id] < 3:
             valuation *= 1.1
         if rental_property[A.dist_bus_station.id] < 2:
             valuation *= 1.1
@@ -250,19 +250,19 @@ class RentalPropertyValuation:
             valuation *= 1.05
         if rental_property[A.dist_taxi_stand.id] < 1:
             valuation *= 1.01
-        if rental_property[A.dist_bike_rental] < 1:
+        if rental_property[A.dist_bike_rental.id] < 1:
             valuation *= 1.01
-        if rental_property[A.dist_car_rental] < 3:
+        if rental_property[A.dist_car_rental.id] < 3:
             valuation *= 1.05
         if rental_property[A.lawn]:
             valuation *= 1.05
         if rental_property[A.landscaping]:
             valuation *= 1.05
-        if rental_property[A.dist_park] < 2:
+        if rental_property[A.dist_park.id] < 2:
             valuation *= 1.1
-        if rental_property[A.dist_recreation_area] < 5:
+        if rental_property[A.dist_recreation_area.id] < 5:
             valuation *= 1.05
-        if rental_property[A.dist_zoo] < 10:
+        if rental_property[A.dist_zoo.id] < 10:
             valuation *= 1.1
         security_features = A.security_features.id
         if rental_property[security_features] == A.security_features.alarm:
@@ -273,9 +273,9 @@ class RentalPropertyValuation:
             valuation *= 1.1
         elif rental_property[security_features] == A.security_features.none:
             valuation *= 0.95
-        if rental_property[A.dist_schools] < 3:
+        if rental_property[A.dist_schools.id] < 3:
             valuation *= 1.05
-        if rental_property[A.dist_shop_center] < 2:
+        if rental_property[A.dist_shop_center.id] < 2:
             valuation *= 1.1
         if rental_property[A.dist_library.id] < 5:
             valuation *= 1.05
