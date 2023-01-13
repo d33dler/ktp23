@@ -177,6 +177,7 @@ class Area_sqm:
 
 @dataclass(frozen=True)
 class Population:
+    id = "population"
     m1 = 1E6  # <
     m2 = 1E6  # <
 

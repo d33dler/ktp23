@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from backend.form_fields import Furnished, Shower, Toilet, Att
+from form_fields import Furnished, Shower, Toilet, Att
 
 
 @dataclass
@@ -36,15 +36,15 @@ class RentalPropertyValuation:
     def calculate_valuation(self):
         A = Att()
         rental_property = self.rental_property
-        if rental_property[A.area_sqm] <= A.area_sqm.m10:
+        if rental_property[A.area_sqm.id] <= A.area_sqm.m10:
             base_valuation = 100
-        elif rental_property[A.area_sqm] <= A.area_sqm.m10:
+        elif rental_property[A.area_sqm.id] <= A.area_sqm.m10:
             base_valuation = 200
-        elif rental_property[A.area_sqm] <= A.area_sqm.m20:
+        elif rental_property[A.area_sqm.id] <= A.area_sqm.m20:
             base_valuation = 300
-        elif rental_property[A.area_sqm] <= A.area_sqm.m30:
+        elif rental_property[A.area_sqm.id] <= A.area_sqm.m30:
             base_valuation = 400
-        elif rental_property[A.area_sqm] <= A.area_sqm.m50:
+        elif rental_property[A.area_sqm.id] <= A.area_sqm.m50:
             base_valuation = 500
         else:
             base_valuation = 1000 + 10 * (rental_property["area_sqm"] - 50)
@@ -58,13 +58,13 @@ class RentalPropertyValuation:
         elif rental_property[property_location] == A.property_location.groningen:
             valuation *= 1.125
 
-        distance_to_city = A.distance_to_city
+        distance_to_city = A.distance_to_city.id
         if rental_property[distance_to_city] < 1:
             valuation *= 1.1
         elif rental_property[distance_to_city] > 9:
             valuation *= 0.95
 
-        if rental_property[A.population] > 1e6:
+        if rental_property[A.population.id] > 1e6:
             valuation *= 1.05
 
         property_type = A.property_type.id
@@ -81,14 +81,14 @@ class RentalPropertyValuation:
         elif rental_property[property_type] == A.property_type.house:
             valuation *= 1.3
 
-        furnished = Att.furnished
+        furnished = A.furnished.id
         if rental_property[furnished] == Furnished.yes:
             valuation *= 1.1
-        shower = Shower.id
+        shower = A.shower.id
         if rental_property[shower] == Shower.private:
             valuation *= 1.1
 
-        toilet = Toilet.id
+        toilet = A.toilet.id
         if rental_property[toilet] == A.toilet.private:
             valuation *= 1.05
         living = A.living_room.id
@@ -153,8 +153,8 @@ class RentalPropertyValuation:
             valuation *= 0.975
         elif rental_property[ll_t_ages] == A.landlord_tenant_ages.age_18_60:  # TOOO check frontend
             valuation *= 0.975
-        if rental_property[A.near_pub_transport.id]:
-            valuation *= 1.1
+        # if rental_property[A.near_pub_transport.id]:
+        #     valuation *= 1.1
 
         parking_avail = A.parking_avail.id
         if rental_property[parking_avail] == A.parking_avail.private:
@@ -169,7 +169,7 @@ class RentalPropertyValuation:
 
         if rental_property[A.dist_schools.id] < 3:
             valuation *= 1.05
-        if rental_property[A.dist_hospital] < 8:
+        if rental_property[A.dist_hospital.id] < 8:
             valuation *= 1.1
         if rental_property[A.security.id]:
             valuation *= 1.05
