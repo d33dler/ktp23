@@ -140,7 +140,7 @@ function MainForm() {
             distance_from_pharmacy,
         }
         try {
-            const response = await axios.post('http://127.0.0.1:8000', data);
+            const response = await axios.post('/api/', data);
             console.log(response);
         } catch (error) {
             console.log(error);
@@ -152,36 +152,6 @@ function MainForm() {
 
     const [step, setStep] = useState(0);
 
-    const [prevDisabled, setPrevDisabled] = useState(true);
-    const [nextDisabled, setNextDisabled] = useState(false);
-    const [showSubmit, setShowSubmit] = useState(true);
-
-    const nextStep = () => {
-        if (step === forms.length - 1) {
-            setNextDisabled(true);
-        } else {
-            if (step + 1 === forms.length - 1) {
-                setNextDisabled(true);
-                setShowSubmit(true);
-            }
-            setStep(step + 1);
-            setPrevDisabled(false);
-        }
-    }
-
-    const prevStep = () => {
-        // make sure the step is not less than 0
-        if (step === 0) {
-            setPrevDisabled(true);
-        } else {
-            if (step - 1 === 0) {
-                setPrevDisabled(true);
-            }
-            setStep((prev) => prev - 1);
-            setNextDisabled(false);
-
-        }
-    }
 
     /**
      * convert all the previous states into a form data object
