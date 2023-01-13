@@ -30,12 +30,12 @@ class RentalProperty:
 
 class RentalPropertyValuation:
 
-    def __init__(self, rental_property: RentalProperty):
+    def __init__(self, rental_property):
         self.rental_property = rental_property
 
-    def calculate_valuation(self, rental_property: dict):
+    def calculate_valuation(self):
         A = Att()
-
+        rental_property = self.rental_property
         if rental_property[A.area_sqm] <= A.area_sqm.m10:
             base_valuation = 100
         elif rental_property[A.area_sqm] <= A.area_sqm.m10:
@@ -163,8 +163,10 @@ class RentalPropertyValuation:
             valuation *= 1.05
         elif rental_property[parking_avail] == A.parking_avail.none:
             valuation *= 0.95
+
         if rental_property[A.garden_terrace.id]:
             valuation *= 1.1
+
         if rental_property[A.dist_schools.id] < 3:
             valuation *= 1.05
         if rental_property[A.dist_hospital] < 8:
