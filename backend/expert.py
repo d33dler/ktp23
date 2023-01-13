@@ -192,7 +192,11 @@ class RentalPropertyValuation:
         elif rental_property[q_of_constr] == A.quality_of_constr.low:
             valuation *= 0.9
 
-        if rental_property[A.renovation_date.id] < 2010:
+        if rental_property[A.renovation_date.id] < 2:
+            pass
+        elif rental_property[A.renovation_date.id] < 8:
+            valuation *= 0.90
+        else:
             valuation *= 0.95
         if rental_property[A.flood_risk.id]:
             valuation *= 0.9
@@ -275,7 +279,7 @@ class RentalPropertyValuation:
             valuation *= 1.1
         if rental_property[A.dist_library.id] < 5:
             valuation *= 1.05
-        if rental_property[A.dist_pharmacy.id] < 2:
+        if rental_property[A.dist_pharmacy.id] < 1:
             valuation *= 1.05
         return valuation
 

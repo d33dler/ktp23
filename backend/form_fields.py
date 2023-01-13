@@ -198,9 +198,7 @@ class Garden_or_terrace:
 @dataclass(frozen=True)
 class Distance_from_schools:
     id = 'distance_from_schools'
-    km1 = 1  # <
-    km2 = 2  # <
-    km3_more = 3  # >
+    km1 =8  # <
 
 
 @dataclass(frozen=True)
@@ -300,13 +298,6 @@ class Garden_or_terrace:
     no = False
 
 
-@dataclass(frozen=True)
-class Distance_from_schools:
-    id = "distance_from_schools"
-    km1 = 1  # <
-    km2 = 2  # <
-    km3_more = 3  # >
-
 
 @dataclass(frozen=True)
 class Security:
@@ -344,33 +335,25 @@ class Security_features:
 @dataclass(frozen=True)
 class Distance_from_school:
     id = "distance_from_school"
-    km1 = 1  # <
-    km2 = 2  # <
     km3_more = 3  # >
 
 
 @dataclass(frozen=True)
 class Distance_from_shopping_center:
     id = "distance_from_shopping_center"
-    km1 = 1  # <
-    km2 = 2  # <
-    km3_more = 3  # >
+    km1 = 2  # <
 
 
 @dataclass(frozen=True)
 class Distance_from_gym:
     id = "distance_from_gym"
-    km1 = 1  # <
-    km2 = 2  # <
-    km3_more = 3  # >
+    km1 = 5  # <
 
 
 @dataclass(frozen=True)
 class Distance_from_library:
     id = "distance_from_library"
-    km1 = 1  # <
     km5 = 5  # <
-    km10_more = 10  # >
 
 
 @dataclass(frozen=True)
@@ -385,104 +368,77 @@ class Distance_from_hospital:
 class Distance_from_pharmacy:
     id = "distance_from_pharmacy"
     km1 = 1  # <
-    km2 = 2  # <
-    km3_more = 3  # >
 
 
 @dataclass(frozen=True)
 class Distance_from_airport:
     id = "distance_from_airport"
-    km1 = 1  # <
-    km5 = 5  # <
-    km10_more = 10  # >
+    km1 = 15  # <
 
 
 @dataclass(frozen=True)
 class Distance_from_train_station:
     id = "distance_from_train_station"
-    km1 = 1  # <
-    km2 = 2  # <
-    km3_more = 3  # >
+    km1 = 3  # <
 
 
 @dataclass(frozen=True)
 class Distance_from_ferry:
     id = "distance_from_ferry"
-    km1 = 1  # <
-    km2 = 2  # <
-    km3_more = 3  # >
-
+    km1 = 10  # <
 
 @dataclass(frozen=True)
 class Distance_from_bike_rental:
     id = "distance_from_bike_rental"
     km1 = 1  # <
-    km2 = 2  # <
-    km3_more = 3  # >
 
 
 @dataclass(frozen=True)
 class Distance_from_car_rental:
     id = "distance_from_car_rental"
-    km1 = 1  # <
-    km2 = 2  # <
-    km3_more = 3  # >
+    km1 = 3  # <
 
 
 @dataclass(frozen=True)
-class Distance_from_public_transport:
-    id = "distance_from_public_transport"
+class Distance_from_public_transportation:
+    id = "distance_from_public_transportation"
     km1 = 1  # <
-    km2 = 2  # <
-    km3_more = 3  # >
 
 
 @dataclass(frozen=True)
 class Distance_from_highway:
     id = "distance_from_highway"
-    km1 = 1  # <
-    km2 = 2  # <
-    km3_more = 3  # >
+    km5 = 5  # <
 
 
 @dataclass(frozen=True)
 class Distance_from_park:
     id = "distance_from_park"
-    km1 = 1  # <
     km2 = 2  # <
-    km3_more = 3  # >
 
 
 @dataclass(frozen=True)
 class Distance_from_taxi_stand:
     id = "distance_from_taxi_stand"
     km1 = 1  # <
-    km2 = 2  # <
-    km3_more = 3  # >
 
 
 @dataclass(frozen=True)
 class Distance_from_recreation_area:
     id = "distance_from_recreation_area"
-    km1 = 1  # <
-    km2 = 2  # <
-    km3_more = 3  # >
+    km5 = 5  # <
 
 
 @dataclass(frozen=True)
 class Distance_from_library:
     id = "distance_from_library"
-    km1 = 1  # <
-    km2 = 2  # <
-    km3_more = 3  # >
+    km5 = 5  # <
 
 
 @dataclass(frozen=True)
 class Distance_from_touristic_area:
     id = "distance_from_touristic_area"
-    km1 = 1  # <
-    km2 = 2  # <
-    km3_more = 3  # >
+    km3 = 3  # >
 
 
 @dataclass(frozen=True)
@@ -495,33 +451,19 @@ class Earthquake_risk:
 @dataclass(frozen=True)
 class Distance_from_bus_station:
     id = "distance_from_bus_station"
-    km1 = 1  # <
     km2 = 2  # <
-    km3_more = 3  # >
-
-
-@dataclass(frozen=True)
-class Distance_from_bus_station:
-    id = "distance_from_bus_station"
-    km1 = 1  # <
-    km2 = 2  # <
-    km3_more = 3  # >
 
 
 @dataclass(frozen=True)
 class Distance_from_zoo:
     id = "distance_from_zoo"
-    km1 = 1  # <
-    km2 = 2  # <
-    km3_more = 3  # >
+    km1 = 10  # <
 
 
 @dataclass(frozen=True)
 class Distance_from_shops:
     id = "distance_from_shops"
-    km1 = 1  # <
     km2 = 2  # <
-    km3_more = 3  # >
 
 
 @dataclass(frozen=True)
@@ -562,7 +504,7 @@ class Att:
     dist_bike_rental = Distance_from_bike_rental()
     dist_car_rental = Distance_from_car_rental()
     dist_touristic_area = Distance_from_touristic_area()
-    dist_pub_transport = Distance_from_public_transport()
+    dist_pub_transport = Distance_from_public_transportation()
     dist_highway = Distance_from_highway()
     dist_bus_station = Distance_from_bus_station()
     dist_taxi_stand = Distance_from_taxi_stand()
