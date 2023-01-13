@@ -202,14 +202,6 @@ class Distance_from_schools:
 
 
 @dataclass(frozen=True)
-class Distance_from_hospitals:
-    id = 'distance_from_hospitals'
-    km1 = 1  # <
-    km2 = 2  # <
-    km3_more = 3  # >
-
-
-@dataclass(frozen=True)
 class Security:
     id = 'security'
     yes = True
@@ -359,10 +351,7 @@ class Distance_from_library:
 @dataclass(frozen=True)
 class Distance_from_hospital:
     id = "distance_from_hospital"
-    km1 = 1  # <
-    km10 = 10  # <
-    km15_more = 15  # >
-
+    km1 = 8  # <
 
 @dataclass(frozen=True)
 class Distance_from_pharmacy:
