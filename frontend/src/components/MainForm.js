@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Form, Button, Container, ButtonGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -73,7 +73,6 @@ function MainForm() {
     
     const [predicted_price, set_predicted_price] = useState(null);
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data = {
@@ -142,9 +141,12 @@ function MainForm() {
             distance_from_hospital,
             distance_from_pharmacy,
         }
+        let json = {'air_quality': 'good', 'apartment_facing': 'sunset', 'area_sqm': 50, 'balcony_access': 'yes', 'built_appliances': 'yes', 'community_facilities': 'yes', 'distance_from_airport': 15, 'distance_from_bike_rental': 1, 'distance_from_bus_station': 2, 'distance_from_car_rental': 3, 'distance_from_ferry': 10, 'distance_from_gym': 5, 'distance_from_highway': 5, 'distance_from_hospital': 8, 'distance_from_library': 5, 'distance_from_park': 2, 'distance_from_pharmacy': 1, 'distance_from_public_transportation': 1, 'distance_from_recreation_area': 5, 'distance_from_schools': 3, 'distance_from_shopping_center': 2, 'distance_from_shops': 2, 'distance_from_taxi_stand': 1, 'distance_from_touristic_area': 3, 'distance_from_train_station': 3, 'distance_from_zoo': 10, 'distance_to_city': 5, 'earthquake_risk': 'yes', 'elevator': 'yes', 'energy_label': 'B', 'flood_risk': 'yes', 'furnished': 'yes', 'garden': 'yes', 'garden_or_terrace': 'yes', 'internet': 'no', 'jacuzzi': 'yes', 'landlord_tenant_ages': '16-25', 'landscaping': 'yes', 'lawn': 'yes', 'living_capacity': 1, 'living_room': 'private', 'management_fee': 0.4, 'near_public_transportation': 'yes', 'nearby_disturbances': 'yes', 'parking_availability': 'private', 'parking_space': 'garage', 'pets_allowed': 'yes', 'pool': 'yes', 'population': 1000000.0, 'problematic_neighbors': 'yes', 'property_location': 'Groningen', 'property_type': 'room', 'quality_of_construction': 'high', 'renovation_date': 5, 'roommates': 4, 'sauna': 'yes', 'security': 'yes', 'security_features': 'surveillance', 'shower': 'private', 'sound_proof': 'yes', 'spa': 'yes', 'storage_room': 'yes', 'toilet': 'private', 'view': 'city'}
+        
         try {
-            const response = await axios.post('/api/', data);
-            set_predicted_price(response.data.message);
+            const response = await axios.post('/api/', json);
+            const predicted = response.data.message;
+            set_predicted_price(Math.round(predicted * 100) / 100);
         } catch (error) {
             console.log(error);
         }
@@ -159,15 +161,15 @@ function MainForm() {
     return (
         <Container>
                 {/* include all the states above */}
-                {
-                    predicted_price != null ?
-                    <>
-                    <h1>Your property is worth: {predicted_price} Euro per month</h1>
-                    <ButtonGroup style={{display: 'flex', justifyContent: 'center'}}>
-                    <Button className="mb-3 me-2" size='lg' variant="primary" onClick={set_predicted_price(null)}>Go Back</Button>
-                    </ButtonGroup>
-                    </>
-                    : 
+        {
+            predicted_price != null ?
+            <>
+            <h1>Your property is worth: € {predicted_price} per month</h1>
+            <ButtonGroup style={{display: 'flex', justifyContent: 'center'}}>
+                <Button className="mb-3 me-2" size='lg' variant="primary" onClick={(_) => set_predicted_price(null)}>Go Back</Button>
+            </ButtonGroup>
+            </>
+            : 
             <>  
             <Form onSubmit={handleSubmit}>
             <>
