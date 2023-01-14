@@ -71,6 +71,9 @@ function MainForm() {
     const [distance_from_hospital, set_distance_from_hospital] = useState('');
     const [distance_from_pharmacy, set_distance_from_pharmacy] = useState('');
     
+    const [predicted_price, set_predicted_price] = useState(null);
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data = {
@@ -141,16 +144,12 @@ function MainForm() {
         }
         try {
             const response = await axios.post('/api/', data);
-            console.log(response);
+            set_predicted_price(response.data.message);
         } catch (error) {
             console.log(error);
         }
 
     };
-
-
-
-    const [step, setStep] = useState(0);
 
 
     /**
@@ -159,8 +158,18 @@ function MainForm() {
      */
     return (
         <Container>
-            <Form onSubmit={handleSubmit}>
                 {/* include all the states above */}
+                {
+                    predicted_price != null ?
+                    <>
+                    <h1>Your property is worth: {predicted_price} Euro per month</h1>
+                    <ButtonGroup style={{display: 'flex', justifyContent: 'center'}}>
+                    <Button className="mb-3 me-2" size='lg' variant="primary" onClick={set_predicted_price(null)}>Go Back</Button>
+                    </ButtonGroup>
+                    </>
+                    : 
+            <>  
+            <Form onSubmit={handleSubmit}>
             <>
             <Form.Label as='h3'>Area Sqm</Form.Label>
             <Form.Control as="radio" value={area_sqm} placeholder="Enter the Area Sqm" onChange={(e) => set_area_sqm(e.target.value)}>
@@ -200,8 +209,8 @@ function MainForm() {
             <>
             <Form.Label as='h3'>Population</Form.Label>
             <Form.Control as="radio" value={population} placeholder="Enter the Population" onChange={(e) => set_population(e.target.value)}>
-            <Form.Check type="radio" label="1e6" value="1E6" name="group-3"/>
-            <Form.Check type="radio" label="1e6" value="1E6" name="group-3"/>
+            <Form.Check type="radio" label="< 1e6" value="1E6" name="group-3"/>
+            <Form.Check type="radio" label="> 1e6" value="1E6" name="group-3"/>
             </Form.Control>
             </>
             <br/>
@@ -799,7 +808,11 @@ function MainForm() {
                 <Button className="mb-3 me-2" size='lg' type="submit" variant="primary" >Submit</Button>
             </ButtonGroup>
             </Form>
+
+            </>
+            }
         </Container>
+
     )
 }
 
