@@ -172,7 +172,9 @@ class Area_sqm:
     m25 = 25
     m30 = 30
     m50 = 50  # >
-    m50_more = inf
+    m70 = 70  # >
+    m100 = 100  # <
+    m150 = 150  # >
 
 
 @dataclass(frozen=True)
@@ -199,7 +201,7 @@ class Garden_or_terrace:
 @dataclass(frozen=True)
 class Distance_from_schools:
     id = 'distance_from_schools'
-    km1 =8  # <
+    km1 = 8  # <
 
 
 @dataclass(frozen=True)
@@ -207,7 +209,6 @@ class Security:
     id = 'security'
     yes = True
     no = False
-
 
 
 @dataclass(frozen=True)
@@ -285,7 +286,6 @@ class Garden_or_terrace:
     no = False
 
 
-
 @dataclass(frozen=True)
 class Security:
     id = "security"
@@ -348,6 +348,7 @@ class Distance_from_hospital:
     id = "distance_from_hospital"
     km1 = 8  # <
 
+
 @dataclass(frozen=True)
 class Distance_from_pharmacy:
     id = "distance_from_pharmacy"
@@ -370,6 +371,7 @@ class Distance_from_train_station:
 class Distance_from_ferry:
     id = "distance_from_ferry"
     km1 = 10  # <
+
 
 @dataclass(frozen=True)
 class Distance_from_bike_rental:

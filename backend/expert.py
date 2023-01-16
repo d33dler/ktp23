@@ -36,18 +36,23 @@ class RentalPropertyValuation:
     def calculate_valuation(self):
         A = Att()
         rental_property = self.rental_property
-        if rental_property[A.area_sqm.id] <= A.area_sqm.m10:
+        sqm = rental_property[A.area_sqm.id]
+        if sqm <= A.area_sqm.m10:
             base_valuation = 100
-        elif rental_property[A.area_sqm.id] <= A.area_sqm.m10:
+        elif sqm <= A.area_sqm.m10:
             base_valuation = 200
-        elif rental_property[A.area_sqm.id] <= A.area_sqm.m20:
+        elif sqm <= A.area_sqm.m20:
             base_valuation = 300
-        elif rental_property[A.area_sqm.id] <= A.area_sqm.m30:
+        elif sqm <= A.area_sqm.m30:
             base_valuation = 400
-        elif rental_property[A.area_sqm.id] <= A.area_sqm.m50:
-            base_valuation = 500
+        elif sqm <= A.area_sqm.m50:
+            base_valuation = 750  # TODO add 70, 100, 150 to interface
+        elif sqm <= A.area_sqm.m70:
+            base_valuation = 1000
+        elif sqm <= A.area_sqm.m100:
+            base_valuation = 1300
         else:
-            base_valuation = 1000 + 10 * (rental_property["area_sqm"] - 50)
+            base_valuation = 2000
 
         valuation = base_valuation
         property_location = A.property_location.id
@@ -60,46 +65,59 @@ class RentalPropertyValuation:
 
         distance_to_city = A.distance_to_city.id
         if rental_property[distance_to_city] < 1:
-            valuation *= 1.1
+            valuation *= 1.25
         elif rental_property[distance_to_city] > 9:
             valuation *= 0.95
 
         if rental_property[A.population.id] > 1e6:
-            valuation *= 1.05
+            valuation *= 1.015
 
         property_type = A.property_type.id
         if rental_property[property_type] == A.property_type.room:
             pass
         elif rental_property[property_type] == A.property_type.apartment:
-            valuation *= 1.3
+            valuation *= 1.15
         elif rental_property[property_type] == A.property_type.anti_squat:
             valuation *= 0.85
         elif rental_property[property_type] == A.property_type.studio:
-            valuation *= 1.35
+            valuation *= 1.225
         elif rental_property[property_type] == A.property_type.student_residence:
-            valuation *= 1.3
+            valuation *= 1.2
         elif rental_property[property_type] == A.property_type.house:
             valuation *= 1.3
 
         furnished = A.furnished.id
         if rental_property[furnished] == Furnished.yes:
-            valuation *= 1.1
+            valuation *= 1.15
         shower = A.shower.id
         if rental_property[shower] == Shower.private:
-            valuation *= 1.1
+            valuation *= 1.175
 
         toilet = A.toilet.id
         if rental_property[toilet] == A.toilet.private:
-            valuation *= 1.05
+            valuation *= 1.175
         living = A.living_room.id
         if rental_property[living] == A.living_room.private:
-            valuation *= 1.1
+            valuation *= 1.15
 
         capacity = A.living_capacity.id
+        legal_occupy_sqm = 12  # minimum legal limit
+
+        if sqm // rental_property[capacity] <= legal_occupy_sqm:
+            valuation *= 0.9
+
         if rental_property[capacity] > 5:
-            valuation *= 1.15
+            if rental_property[property_type] == A.property_type.apartment:
+                valuation *= 1.3
+            elif rental_property[property_type] == A.property_type.studio:
+                valuation *= 1.35
+            elif rental_property[property_type] == A.property_type.room:
+                valuation *= 0.975
         elif rental_property[capacity] > 2:
             valuation *= 1.1
+        elif rental_property[capacity] == 1:
+            valuation *= 0.9
+
         internet = A.internet.id
         if not rental_property[internet]:
             valuation *= 0.95
@@ -107,11 +125,16 @@ class RentalPropertyValuation:
         energy_label = A.energy_label.id
         el = A.energy_label
         if rental_property[energy_label] in [el.A, el.B]:
-            valuation *= 0.95
+            valuation *= 0.9
         elif rental_property[energy_label] in [el.C, el.D]:
-            valuation *= 1.05
+            valuation *= 1.025
         elif rental_property[energy_label] == el.E:
-            valuation *= 1.08
+            valuation *= 1.075
+        elif rental_property[energy_label] == el.F:  # TODO add F & G labels
+            valuation *= 1.1
+        elif rental_property[energy_label] == el.G:
+            valuation *= 1.12
+
         roommates = A.roommates.id
         if rental_property[roommates] > 1:
             valuation *= 1 - (rental_property[roommates] * 0.025)
@@ -121,40 +144,43 @@ class RentalPropertyValuation:
             valuation *= 0.9
 
         air_quality = A.air_quality.id
-        if rental_property[air_quality] == A.air_quality.average:
-            valuation *= 0.9
+        if rental_property[air_quality] == A.air_quality.good:
+            valuation *= 1.05
         elif rental_property[air_quality] == A.air_quality.bad:
-            valuation *= 0.85
+            valuation *= 0.9
 
         nearby_disturb = A.nearby_disturbances.id
+
         if rental_property[nearby_disturb]:
             valuation *= 0.85
+
         facing = A.apartment_facing.id
-        if rental_property[facing] == A.apartment_facing.sunrise:
+        facing = rental_property[facing]
+
+        if facing == A.apartment_facing.sunrise:
             valuation *= 1.05
-        elif rental_property[facing] == A.apartment_facing.sunset:
-            valuation *= 0.975
-        elif rental_property[facing] == A.apartment_facing.partial_sun:
+        elif facing == A.apartment_facing.sunset:
+            valuation *= 0.925
+        elif facing == A.apartment_facing.partial_sun:
             valuation *= 1.025
-        elif rental_property[facing] == A.apartment_facing.shadowed:
-            valuation *= 0.9
-        elif rental_property[facing] == A.apartment_facing.fully_shadowed:
-            valuation *= 0.85
+        elif facing == A.apartment_facing.shadowed:
+            valuation *= 0.875
+        elif facing == A.apartment_facing.fully_shadowed:
+            valuation *= 0.8
 
         if rental_property[A.balcony.id]:
-            valuation *= 1.05
+            valuation *= 1.125
+
         if rental_property[A.pets.id]:
-            valuation *= 1.05
+            valuation *= 1.075
 
         ll_t_ages = A.landlord_tenant_ages.id
         if rental_property[ll_t_ages] == A.landlord_tenant_ages.age_16_25:
-            valuation *= 0.95
+            valuation *= 0.9
         elif rental_property[ll_t_ages] == A.landlord_tenant_ages.age_16_60:
+            valuation *= 0.925
+        elif rental_property[ll_t_ages] == A.landlord_tenant_ages.age_18_60:  # TODO check frontend
             valuation *= 0.975
-        elif rental_property[ll_t_ages] == A.landlord_tenant_ages.age_18_60:  # TOOO check frontend
-            valuation *= 0.975
-        # if rental_property[A.near_pub_transport.id]:
-        #     valuation *= 1.1
 
         parking_avail = A.parking_avail.id
         if rental_property[parking_avail] == A.parking_avail.private:
@@ -173,8 +199,9 @@ class RentalPropertyValuation:
             valuation *= 1.1
         if rental_property[A.security.id]:
             valuation *= 1.05
-        if rental_property[A.management_fee.id] < 0.5:
+        if rental_property[A.management_fee.id] < 0.5:  # fraction of the price - aka deposit
             valuation *= 1.1
+
         view = A.view.id
         if rental_property[view] == A.view.city:
             valuation *= 1.1
@@ -184,6 +211,7 @@ class RentalPropertyValuation:
             valuation *= 1.2
         elif rental_property[view] == A.view.nature:
             valuation *= 1.15
+
         q_of_constr = A.quality_of_constr.id
         if rental_property[q_of_constr] == A.quality_of_constr.high:
             valuation *= 1.2
@@ -207,25 +235,29 @@ class RentalPropertyValuation:
         if rental_property[A.dist_gym.id] < 5:
             valuation *= 1.05
         if rental_property[A.sound_proof]:
-            valuation *= 1.05
+            valuation *= 1.035
         if rental_property[A.storage_room]:
-            valuation *= 1.05
+            valuation *= 1.125
         if rental_property[A.built_appliances]:
-            valuation *= 1.1
-        if rental_property[A.elevator]:
-            valuation *= 1.05
-        if rental_property[A.pool]:
-            valuation *= 1.2
-        if rental_property[A.sauna]:
-            valuation *= 1.1
-        if rental_property[A.jacuzzi]:
             valuation *= 1.15
+        else:
+            valuation *= 0.925
+
+        if rental_property[A.elevator]:
+            valuation *= 1.075
+        if rental_property[A.pool]:
+            valuation *= 1.35
+        if rental_property[A.sauna]:
+            valuation *= 1.25
+        if rental_property[A.jacuzzi]:
+            valuation *= 1.2
         if rental_property[A.spa]:
             valuation *= 1.2
         if rental_property[A.community_facilities]:
             valuation *= 1.1
         if rental_property[A.dist_touristic_area.id] < 3:
             valuation *= 1.05
+
         parking_space = A.parking_space.id
         if rental_property[parking_space] == A.parking_space.garage:
             valuation *= 1.2
@@ -264,6 +296,7 @@ class RentalPropertyValuation:
             valuation *= 1.05
         if rental_property[A.dist_zoo.id] < 10:
             valuation *= 1.1
+
         security_features = A.security_features.id
         if rental_property[security_features] == A.security_features.alarm:
             valuation *= 1.1
@@ -273,6 +306,7 @@ class RentalPropertyValuation:
             valuation *= 1.1
         elif rental_property[security_features] == A.security_features.none:
             valuation *= 0.95
+
         if rental_property[A.dist_schools.id] < 3:
             valuation *= 1.05
         if rental_property[A.dist_shop_center.id] < 2:
@@ -282,9 +316,3 @@ class RentalPropertyValuation:
         if rental_property[A.dist_pharmacy.id] < 1:
             valuation *= 1.05
         return valuation
-
-# property = RentalProperty(area_sqm=20, property_type="studio", property_location="Amsterdam", distance_to_city=3,
-#                           population=800000, furnished=True, shower="private", toilet="private", living_room="private",
-#                           living_capacity=3, internet=True, energy_label="A", roommates=1, problematic_neighbors=False,
-#                           air_quality="good", nearby_disturbances=False, facing="sunrise", sun_coverage="partial",
-#                           balcony=True, pets_allowed=True, landlord_seeks="25-99")
