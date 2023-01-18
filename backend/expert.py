@@ -37,32 +37,35 @@ class RentalPropertyValuation:
         A = Att()
         rental_property = self.rental_property
         sqm = rental_property[A.area_sqm.id]
+        ppsqm = 16  # average price (euro) per square meter 2022
         if sqm <= A.area_sqm.m10:
-            base_valuation = 100
-        elif sqm <= A.area_sqm.m10:
-            base_valuation = 200
+            pass
         elif sqm <= A.area_sqm.m20:
-            base_valuation = 300
+            ppsqm += 0.5
         elif sqm <= A.area_sqm.m30:
-            base_valuation = 400
+            ppsqm += 1
         elif sqm <= A.area_sqm.m50:
-            base_valuation = 750  # TODO add 70, 100, 150 to interface
+            ppsqm += 1.5
         elif sqm <= A.area_sqm.m70:
-            base_valuation = 1000
+            ppsqm += 2
         elif sqm <= A.area_sqm.m100:
-            base_valuation = 1300
+            ppsqm += 1.75
         else:
-            base_valuation = 2000
+            ppsqm -= 1.5  # TODO add 70, 100, 150 to interface
 
-        valuation = 100  # BIAS
+        base_valuation: float
+        valuation: float = 100  # BIAS
 
         property_location = A.property_location.id
         if rental_property[property_location] == A.property_location.amsterdam:
-            valuation *= 1.2
+            base_valuation = sqm * (ppsqm * 1.35)
         elif rental_property[property_location] == A.property_location.rotterdam:
-            valuation *= 1.15
+            base_valuation = sqm * (ppsqm * 1.3)
         elif rental_property[property_location] == A.property_location.groningen:
-            valuation *= 1.125
+            # TODO add 2 more cities and 'other' option
+            base_valuation = sqm * (ppsqm * 1.25)
+        else:
+            base_valuation = sqm * ppsqm
 
         distance_to_city = A.distance_to_city.id
         if rental_property[distance_to_city] < 1:
