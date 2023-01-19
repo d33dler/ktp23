@@ -51,7 +51,7 @@ class RentalPropertyValuation:
         elif sqm <= A.area_sqm.m100:
             ppsqm += 1.75
         else:
-            ppsqm -= 1.5  # TODO add 70, 100, 150 to interface
+            ppsqm -= 1.5  # TODO add <70, <100, > 100 to interface
 
         base_valuation: float
         valuation: float = 100  # BIAS
@@ -62,10 +62,24 @@ class RentalPropertyValuation:
         elif rental_property[property_location] == A.property_location.rotterdam:
             base_valuation = sqm * (ppsqm * 1.3)
         elif rental_property[property_location] == A.property_location.groningen:
-            # TODO add 2 more cities and 'other' option
+            # TODO add 3 more cities (Utrecht, Enschede, Hague) and 'other' option, also specify - 10km proximity
             base_valuation = sqm * (ppsqm * 1.25)
         else:
             base_valuation = sqm * ppsqm
+
+        property_type = A.property_type.id
+        if rental_property[property_type] == A.property_type.room:
+            pass
+        elif rental_property[property_type] == A.property_type.apartment:
+            base_valuation *= 1.1
+        elif rental_property[property_type] == A.property_type.anti_squat:
+            base_valuation *= 0.85
+        elif rental_property[property_type] == A.property_type.studio:
+            base_valuation *= 1.25
+        elif rental_property[property_type] == A.property_type.student_residence:
+            base_valuation *= 1.25
+        elif rental_property[property_type] == A.property_type.house:
+            base_valuation *= 1.3
 
         distance_to_city = A.distance_to_city.id
         if rental_property[distance_to_city] < 1:
@@ -75,20 +89,6 @@ class RentalPropertyValuation:
 
         if rental_property[A.population.id] > 1e6:
             valuation *= 1.015
-
-        property_type = A.property_type.id
-        if rental_property[property_type] == A.property_type.room:
-            pass
-        elif rental_property[property_type] == A.property_type.apartment:
-            base_valuation *= 1.15
-        elif rental_property[property_type] == A.property_type.anti_squat:
-            base_valuation *= 0.85
-        elif rental_property[property_type] == A.property_type.studio:
-            base_valuation *= 1.225
-        elif rental_property[property_type] == A.property_type.student_residence:
-            base_valuation *= 1.2
-        elif rental_property[property_type] == A.property_type.house:
-            base_valuation *= 1.3
 
         furnished = A.furnished.id
         if rental_property[furnished] == Furnished.yes:
@@ -183,7 +183,7 @@ class RentalPropertyValuation:
             valuation *= 0.9
         elif rental_property[ll_t_ages] == A.landlord_tenant_ages.age_16_60:
             valuation *= 0.925
-        elif rental_property[ll_t_ages] == A.landlord_tenant_ages.age_18_60:  # TODO check frontend
+        elif rental_property[ll_t_ages] == A.landlord_tenant_ages.age_18_60:
             valuation *= 0.975
 
         parking_avail = A.parking_avail.id
@@ -201,28 +201,34 @@ class RentalPropertyValuation:
             valuation *= 1.05
         if rental_property[A.dist_hospital.id] < 8:
             valuation *= 1.1
-        if rental_property[A.security.id]:
+        if rental_property[A.security.id]:  # ?? check this
             valuation *= 1.05
-        if rental_property[A.management_fee.id] < 0.5:  # fraction of the price - aka deposit
+        if rental_property[
+            A.management_fee.id] < 0.5:  # fraction of the expected monthly rent (per year) - for house maintenance
             valuation *= 1.1
 
         view = A.view.id
         if rental_property[view] == A.view.city:
             valuation *= 1.1
         elif rental_property[view] == A.view.water:
-            valuation *= 1.25
-        elif rental_property[view] == A.view.park:
-            valuation *= 1.2
-        elif rental_property[view] == A.view.nature:
             valuation *= 1.15
+        elif rental_property[view] == A.view.park:
+            valuation *= 1.1
+        elif rental_property[view] == A.view.nature:
+            valuation *= 1.1
 
         q_of_constr = A.quality_of_constr.id
         if rental_property[q_of_constr] == A.quality_of_constr.high:
-            valuation *= 1.2
+            valuation *= 1.15
         elif rental_property[q_of_constr] == A.quality_of_constr.mid:
-            valuation *= 1.1
+            valuation *= 1.05
         elif rental_property[q_of_constr] == A.quality_of_constr.low:
             valuation *= 0.9
+
+        if rental_property[A.lawn]:
+            valuation += 0.05
+        if rental_property[A.landscaping]:
+            valuation += 0.05
 
         if rental_property[A.renovation_date.id] < 2:
             pass
@@ -241,7 +247,7 @@ class RentalPropertyValuation:
         if rental_property[A.sound_proof]:
             valuation *= 1.035
         if rental_property[A.storage_room]:
-            valuation *= 1.125
+            valuation *= 1.12
         if rental_property[A.built_appliances]:
             valuation *= 1.15
         else:
@@ -252,7 +258,7 @@ class RentalPropertyValuation:
         if rental_property[A.pool]:
             base_valuation *= 1.35
         if rental_property[A.sauna]:
-            base_valuation *= 1.25
+            base_valuation *= 1.2
         if rental_property[A.jacuzzi]:
             base_valuation *= 1.2
         if rental_property[A.spa]:
@@ -261,45 +267,6 @@ class RentalPropertyValuation:
             valuation *= 1.1
         if rental_property[A.dist_touristic_area.id] < 3:
             valuation *= 1.05
-
-        parking_space = A.parking_space.id
-        if rental_property[parking_space] == A.parking_space.garage:
-            valuation *= 1.2
-        elif rental_property[parking_space] == A.parking_space.carport:
-            valuation *= 1.1
-        elif rental_property[parking_space] == A.parking_space.driveway:
-            valuation *= 1.015
-        elif rental_property[parking_space] == A.parking_space.none:
-            valuation *= 0.95
-
-        if rental_property[A.dist_pub_transport.id] < 1:
-            valuation *= 1.1
-        if rental_property[A.dist_highway.id] < 5:
-            valuation *= 0.95
-        if rental_property[A.dist_airport.id] < 15:
-            valuation *= 0.95
-        if rental_property[A.dist_train_station.id] < 3:
-            valuation *= 1.1
-        if rental_property[A.dist_bus_station.id] < 2:
-            valuation *= 1.1
-        if rental_property[A.dist_ferry_terminal.id] < 10:
-            valuation *= 1.05
-        if rental_property[A.dist_taxi_stand.id] < 1:
-            valuation *= 1.01
-        if rental_property[A.dist_bike_rental.id] < 1:
-            valuation *= 1.01
-        if rental_property[A.dist_car_rental.id] < 3:
-            valuation *= 1.05
-        if rental_property[A.lawn]:
-            valuation *= 1.05
-        if rental_property[A.landscaping]:
-            valuation *= 1.05
-        if rental_property[A.dist_park.id] < 2:
-            valuation *= 1.1
-        if rental_property[A.dist_recreation_area.id] < 5:
-            valuation *= 1.05
-        if rental_property[A.dist_zoo.id] < 10:
-            valuation *= 1.1
 
         security_features = A.security_features.id
         if rental_property[security_features] == A.security_features.alarm:
@@ -311,13 +278,51 @@ class RentalPropertyValuation:
         elif rental_property[security_features] == A.security_features.none:
             valuation *= 0.95
 
-        if rental_property[A.dist_schools.id] < 3:
-            valuation *= 1.05
-        if rental_property[A.dist_shop_center.id] < 2:
+        parking_space = A.parking_space.id
+
+        if rental_property[parking_space] == A.parking_space.garage:
+            valuation *= 1.2
+        elif rental_property[parking_space] == A.parking_space.carport:
             valuation *= 1.1
+        elif rental_property[parking_space] == A.parking_space.driveway:
+            valuation *= 1.015
+        elif rental_property[parking_space] == A.parking_space.none:
+            valuation *= 0.95
+
+        misc_dist_valuation = 0
+        if rental_property[A.dist_pub_transport.id] < 1:
+            misc_dist_valuation += 0.01
+        if rental_property[A.dist_highway.id] < 5:
+            misc_dist_valuation += 0.02
+        if rental_property[A.dist_airport.id] < 15:
+            misc_dist_valuation += 0.02
+        if rental_property[A.dist_train_station.id] < 3:
+            misc_dist_valuation += 0.025
+        if rental_property[A.dist_bus_station.id] < 2:
+            misc_dist_valuation += 0.01
+        if rental_property[A.dist_ferry_terminal.id] < 10:
+            misc_dist_valuation += 0.01
+        if rental_property[A.dist_taxi_stand.id] < 1:
+            misc_dist_valuation += 0.01
+        if rental_property[A.dist_bike_rental.id] < 1:
+            misc_dist_valuation += 0.02
+        if rental_property[A.dist_car_rental.id] < 3:
+            misc_dist_valuation += 0.01
+        if rental_property[A.dist_park.id] < 2:
+            misc_dist_valuation += 0.05
+        if rental_property[A.dist_recreation_area.id] < 5:
+            misc_dist_valuation += 0.025
+        if rental_property[A.dist_zoo.id] < 10:
+            misc_dist_valuation += 0.01
+        if rental_property[A.dist_schools.id] < 3:
+            misc_dist_valuation += 0.05
+        if rental_property[A.dist_shop_center.id] < 2:
+            misc_dist_valuation += 0.01
         if rental_property[A.dist_library.id] < 5:
-            valuation *= 1.05
+            misc_dist_valuation += 0.01
         if rental_property[A.dist_pharmacy.id] < 1:
-            valuation *= 1.05
+            misc_dist_valuation += 0.02
+        valuation *= misc_dist_valuation
+
         valuation += base_valuation
         return valuation
