@@ -8,6 +8,9 @@ class Property_location:
     amsterdam = "Amsterdam"
     rotterdam = "Rotterdam"
     groningen = "Groningen"
+    utrecht = "Utrecht"
+    enschede = "Enschede"
+    hague = "The_Hague"
     other = "Irrelevant"
 
 
@@ -166,22 +169,25 @@ class Distance_to_city:
 @dataclass(frozen=True)
 class Area_sqm:
     id = "area_sqm"
-    l10 = 1  # <
+    l10 = 1  # <=
     m10 = 10
     m20 = 20
     m25 = 25
     m30 = 30
-    m50 = 50  # >
-    m70 = 70  # >
-    m100 = 100  # <
-    m150 = 150  # >
+    m50 = 50  # =>
+    m70 = 70  # =>
+    m100 = 100  # <=
+    m150 = 150  # => #TODO update with these, usage @see _base_valuation()
 
 
 @dataclass(frozen=True)
 class Population:
     id = "population"
-    m1 = 1E6  # <
-    m2 = 1E6  # <
+    m1 = 1E5  # <=
+    m2 = 2E5  # <= #TODO update interface with these values
+    m3 = 3E5  # <=
+    m4 = 4E5  # <=
+    m5 = 5E5  # >= 6e5
 
 
 @dataclass(frozen=True)
@@ -394,6 +400,7 @@ class Distance_from_public_transportation:
 @dataclass(frozen=True)
 class Distance_from_highway:
     id = "distance_from_highway"
+    km1 = 1  # < TODO add this value
     km5 = 5  # <
 
 
@@ -507,7 +514,7 @@ class Att:
     flood_risk = Flood_risk()
     earthquake_risk = Earthquake_risk()
     dist_shops = Distance_from_shops()
-    # booleans
+    # misc booleans
     sound_proof = "sound_proof"
     built_appliances = "built_appliances"
     storage_room = "storage_room"
