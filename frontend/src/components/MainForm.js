@@ -160,7 +160,7 @@ function MainForm({props}) {
             const predicted = response.data.message;
             set_predicted_price(Math.round(predicted * 100) / 100);
         } catch (error) {
-            console.log(error);
+            alert(error.message);
         }
 
     };
@@ -313,7 +313,7 @@ function MainForm({props}) {
             <Form.Check className='custom-radio' checked={ living_capacity == "3"} type="radio" label="3" value="3" name="group-9"/>
             <Form.Check className='custom-radio' checked={ living_capacity == "4"} type="radio" label="4" value="4" name="group-9"/>
             <Form.Check className='custom-radio' checked={ living_capacity == "5"} type="radio" label="5" value="5" name="group-9"/>
-            <Form.Check className='custom-radio' checked={ living_capacity == "6"} type="radio" label="> 5 km" value="6" name="group-9"/>
+            <Form.Check className='custom-radio' checked={ living_capacity == "6"} type="radio" label="> 5" value="6" name="group-9"/>
             </Form.Control>
             </Card>
             }
@@ -355,7 +355,7 @@ function MainForm({props}) {
             <Form.Check className='custom-radio' checked={ roommates == "3"} type="radio" label="3" value="3" name="group-12"/>
             <Form.Check className='custom-radio' checked={ roommates == "4"} type="radio" label="4" value="4" name="group-12"/>
             <Form.Check className='custom-radio' checked={ roommates == "5"} type="radio" label="5" value="5" name="group-12"/>
-            <Form.Check className='custom-radio' checked={ roommates == "6"} type="radio" label="> 5 km" value="6" name="group-12"/>
+            <Form.Check className='custom-radio' checked={ roommates == "6"} type="radio" label="> 5" value="6" name="group-12"/>
             </Form.Control>
             </Card>
             }
@@ -513,6 +513,7 @@ function MainForm({props}) {
             {step !== 28 ? null :  
             <Card>
             <Form.Label as='h3'>What is the management fee for the property?</Form.Label>
+            <Form.Text className="text-muted"> This is the fraction of the rent that the property manager takes as a fee per year. </Form.Text>
             <Form.Control as="radio" value={management_fee} placeholder="Enter the Management Fee" onChange={(e) => set_management_fee(e.target.value)}>
             <Form.Check className='custom-radio' checked={management_fee == "0.4"} type="radio" label="0.5" value="0.4" name="group-26"/>
             <Form.Check className='custom-radio' checked={management_fee == "1"} type="radio" label="1.0" value="1" name="group-26"/>
@@ -771,7 +772,7 @@ function MainForm({props}) {
             <Card>
             <Form.Label as='h3'>What is the distance from the nearest ferry?</Form.Label>
             <Form.Control as="radio" value={distance_from_ferry} placeholder="Enter the Distance From Ferry" onChange={(e) => set_distance_from_ferry(e.target.value)}>
-            <Form.Check className='custom-radio' checked={distance_from_ferry == "10"} type="radio" label="≤ 1 km0" value="10" name="group-49"/>
+            <Form.Check className='custom-radio' checked={distance_from_ferry == "10"} type="radio" label="≤ 1 km" value="10" name="group-49"/>
             <Form.Check className='custom-radio' checked={distance_from_ferry == "11"} type="radio" label="> 10 km" value="11" name="group-49"/>
             </Form.Control>
             </Card>
@@ -870,7 +871,7 @@ function MainForm({props}) {
             <Card>
             <Form.Label as='h3'>What is the distance from the nearest zoo?</Form.Label>
             <Form.Control as="radio" value={distance_from_zoo} placeholder="Enter the Distance From Zoo" onChange={(e) => set_distance_from_zoo(e.target.value)}>
-            <Form.Check className='custom-radio' checked={distance_from_zoo == "10"} type="radio" label="≤ 1 km0" value="10" name="group-58"/>
+            <Form.Check className='custom-radio' checked={distance_from_zoo == "10"} type="radio" label="≤ 1 km" value="10" name="group-58"/>
             <Form.Check className='custom-radio' checked={distance_from_zoo == "11"} type="radio" label="> 10 km" value="11" name="group-58"/>
             </Form.Control>
             </Card>

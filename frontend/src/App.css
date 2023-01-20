@@ -5,6 +5,13 @@ body {
     font-family:  'sans-serif';
 }
 
+.text-muted {
+    color: rgb(255, 255, 255);
+}
+
+.form-text {
+    color: rgb(255, 255, 255);
+}
 
 .btn {
     background-color: #555;
