@@ -68,8 +68,8 @@ class Energy_label:
     C = "C"
     D = "D"
     E = "E"
-    F = "E"
-    G = "E"
+    F = "F"
+    G = "G"
 
 
 @dataclass(frozen=True)

@@ -11,9 +11,9 @@ class Form(BaseModel):
     air_quality: str
     apartment_facing: str
     area_sqm: int
-    balcony_access: str
-    built_appliances: str
-    community_facilities: str
+    balcony_access: bool
+    built_appliances: bool
+    community_facilities: bool
     distance_from_airport: int
     distance_from_bike_rental: int
     distance_from_bus_station: int
@@ -36,40 +36,40 @@ class Form(BaseModel):
     distance_from_zoo: int
     distance_to_city: int
     earthquake_risk: str
-    elevator: str
+    elevator: bool
     energy_label: str
     flood_risk: str
-    furnished: str
-    garden: str
-    garden_or_terrace: str
-    internet: str
-    jacuzzi: str
+    furnished: bool
+    garden: bool
+    garden_or_terrace: bool
+    internet: bool
+    jacuzzi: bool
     landlord_tenant_ages: str
     landscaping: str
-    lawn: str
+    lawn: bool
     living_capacity: int
     living_room: str
     management_fee: float
     near_public_transportation: bool
-    nearby_disturbances: str
+    nearby_disturbances: bool
     parking_availability: str
     parking_space: str
     pets_allowed: str
-    pool: str
+    pool: bool
     population: float
-    problematic_neighbors: str
+    problematic_neighbors: bool
     property_location: str
     property_type: str
     quality_of_construction: str
     renovation_date: int
     roommates: int
-    sauna: str
-    security: str
+    sauna: bool
+    security: bool
     security_features: str
     shower: str
     sound_proof: str
-    spa: str
-    storage_room: str
+    spa: bool
+    storage_room: bool
     toilet: str
     view: str
 
