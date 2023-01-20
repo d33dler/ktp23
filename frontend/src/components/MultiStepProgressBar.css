@@ -1,0 +1,24 @@
+.step {
+    color: white;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    background-color: indigo;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .step.completed {
+    background-color: rgb(0, 0, 0);
+  }
+
+.RSPBprogressBar {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #eee;
+  
+}
