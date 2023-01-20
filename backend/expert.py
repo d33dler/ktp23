@@ -36,6 +36,7 @@ class RentalPropertyValuation:
     legal_occupy_sqm = 12  # (minimum) legal limit (m^2) occupancy space per person (NL)
     attributes = Att()
     sqm = 1
+
     def __init__(self, rental_property):
         self.rental_property = rental_property
 
