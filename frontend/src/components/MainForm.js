@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Form, Button, Container, ButtonGroup, Card } from 'react-bootstrap';
+import { Form, Button, Container, ButtonGroup, Card, InputGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
 
@@ -177,15 +177,19 @@ function MainForm({props}) {
             {step !== 2 ? null : 
             <Card>
             <Form.Label as='h3'>How many square meters is your property?</Form.Label>
-            <Form.Control as="radio" value={area_sqm} placeholder="Enter the Area Sqm" onChange={(e) => set_area_sqm(e.target.value)}>
-            <Form.Check className='custom-radio' checked={ area_sqm == "1"} type="radio" label="≤ 1" value="1" name="group-0"/>
-            <Form.Check className='custom-radio' checked={ area_sqm == "10"} type="radio" label="≤ 10" value="10" name="group-0"/>
-            <Form.Check className='custom-radio' checked={ area_sqm == "20"} type="radio" label="≤ 20" value="20" name="group-0"/>
-            <Form.Check className='custom-radio' checked={ area_sqm == "30"} type="radio" label="≤ 30" value="30" name="group-0"/>
-            <Form.Check className='custom-radio' checked={ area_sqm == "40"} type="radio" label="≤ 40" value="40" name="group-0"/>
-            <Form.Check className='custom-radio' checked={ area_sqm == "50"} type="radio" label="≤ 50" value="50" name="group-0"/>
-            <Form.Check className='custom-radio' checked={ area_sqm == "60"} type="radio" label="> 50" value="60" name="group-0"/>
-            </Form.Control>
+            <InputGroup className="mb-3">
+                <Form.Control
+                    placeholder="Total Area in Square Meters"
+                    aria-label="Total Area in Square Meters"
+                    aria-describedby="basic-addon2"
+                    value={area_sqm}
+                    onChange={(e) => set_area_sqm(e.target.value)}
+                />
+                <InputGroup.Text id="basic-addon2">
+                m<sup>2</sup>
+
+                </InputGroup.Text>
+            </InputGroup>
             </Card>
             }
             {/* <br/> */}
@@ -197,7 +201,10 @@ function MainForm({props}) {
             <Form.Check className='custom-radio' checked={ property_location == "Amsterdam"} type="radio" label="Amsterdam" value="Amsterdam" name="group-1"/>
             <Form.Check className='custom-radio' checked={ property_location == "Groningen"} type="radio" label="Groningen" value="Groningen" name="group-1"/>
             <Form.Check className='custom-radio' checked={ property_location == "Rotterdam"} type="radio" label="Rotterdam" value="Rotterdam" name="group-1"/>
-            <Form.Check className='custom-radio' checked={ property_location == "Other"} type="radio" label="Other" value="Other" name="group-1"/>
+            <Form.Check className='custom-radio' checked={ property_location == "Utrecht"} type="radio" label="Utrecht" value="Utrecht" name="group-1"/>
+            <Form.Check className='custom-radio' checked={ property_location == "Enschede"} type="radio" label="Enschede" value="Enschede" name="group-1"/>
+            <Form.Check className='custom-radio' checked={ property_location == "The Hague"} type="radio" label="The Hague" value="The_Hague" name="group-1"/>
+            <Form.Check className='custom-radio' checked={ property_location == "Other"} type="radio" label="Other" value="Irrelevant" name="group-1"/>
             </Form.Control>
             </Card>
             }
@@ -322,6 +329,8 @@ function MainForm({props}) {
             <Form.Check className='custom-radio' checked={ energy_label == "C"} type="radio" label="C" value="C" name="group-11"/>
             <Form.Check className='custom-radio' checked={ energy_label == "D"} type="radio" label="D" value="D" name="group-11"/>
             <Form.Check className='custom-radio' checked={ energy_label == "E"} type="radio" label="E" value="E" name="group-11"/>
+            <Form.Check className='custom-radio' checked={ energy_label == "F"} type="radio" label="F" value="F" name="group-11"/>
+            <Form.Check className='custom-radio' checked={ energy_label == "G"} type="radio" label="G" value="G" name="group-11"/>
             </Form.Control>
             </Card>
             }

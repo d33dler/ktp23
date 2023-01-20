@@ -58,7 +58,7 @@ class RentalPropertyValuation:
         elif sqm <= A.area_sqm.m100:
             ppsqm += 1.15
         else:
-            ppsqm -= 2.5  # TODO add <70, <100, > 100 to interface
+            ppsqm -= 2.5 
         self.ppsqm = ppsqm
 
         property_location = A.property_location.id
@@ -75,7 +75,6 @@ class RentalPropertyValuation:
             base_valuation = sqm * (ppsqm * 1.3)
         elif rental_property[property_location] == A.property_location.enschede:
             base_valuation = sqm * (ppsqm * 1.125)
-            # TODO add 3 more cities (Utrecht, Enschede, Hague) and 'other' option to frontend
         else:
             base_valuation = sqm * ppsqm
 
@@ -304,7 +303,7 @@ class RentalPropertyValuation:
             valuation += base_valuation * 0.175
         elif rental_property[energy_label] == el.F:
             valuation += base_valuation * 0.2
-        elif rental_property[energy_label] == el.G:  # TODO add F & G labels
+        elif rental_property[energy_label] == el.G:
             valuation += base_valuation * 0.225
 
         if rental_property[A.renovation_date.id] <= 2:
