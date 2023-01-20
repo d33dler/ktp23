@@ -48,27 +48,27 @@ class RentalPropertyValuation:
         if sqm <= A.area_sqm.m10:
             pass
         elif sqm <= A.area_sqm.m20:
-            ppsqm += 0.5
+            ppsqm += 0.25
         elif sqm <= A.area_sqm.m30:
-            ppsqm += 1
+            ppsqm += 0.5
         elif sqm <= A.area_sqm.m50:
-            ppsqm += 1.5
+            ppsqm += 0.75
         elif sqm <= A.area_sqm.m70:
-            ppsqm += 2
+            ppsqm += 1
         elif sqm <= A.area_sqm.m100:
-            ppsqm += 1.75
+            ppsqm += 1.15
         else:
-            ppsqm -= 1.5 
+            ppsqm -= 2.5 
         self.ppsqm = ppsqm
 
         property_location = A.property_location.id
 
         if rental_property[property_location] == A.property_location.amsterdam:
-            base_valuation = sqm * (ppsqm * 1.35)
+            base_valuation = sqm * (ppsqm * 1.4)
         elif rental_property[property_location] == A.property_location.rotterdam:
-            base_valuation = sqm * (ppsqm * 1.25)
+            base_valuation = sqm * (ppsqm * 1.2)
         elif rental_property[property_location] == A.property_location.groningen:
-            base_valuation = sqm * (ppsqm * 1.115)
+            base_valuation = sqm * (ppsqm * 1.3)
         elif rental_property[property_location] == A.property_location.utrecht:
             base_valuation = sqm * (ppsqm * 1.25)
         elif rental_property[property_location] == A.property_location.hague:
@@ -80,7 +80,7 @@ class RentalPropertyValuation:
 
         property_type = A.property_type.id
         if rental_property[property_type] == A.property_type.room:
-            _val_fraq = 0.2
+            _val_fraq = 0.25
         elif rental_property[property_type] == A.property_type.apartment:
             base_valuation *= 1.1
             _val_fraq = 0.3
@@ -218,11 +218,11 @@ class RentalPropertyValuation:
             stack_val -= 0.1
         shower = A.shower.id
         if rental_property[shower] == Shower.private:
-            stack_val += 0.2
+            stack_val += 0.3
 
         toilet = A.toilet.id
         if rental_property[toilet] == A.toilet.private:
-            stack_val += 0.1
+            stack_val += 0.2
         living = A.living_room.id
         if rental_property[living] == A.living_room.private:
             stack_val += 0.15
