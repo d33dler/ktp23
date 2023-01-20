@@ -128,6 +128,8 @@ class RentalPropertyValuation:
 
         self._val = base_valuation * _val_fraq
         self._base_val = base_valuation
+        print("BASE FEATURES:", self._val)
+        print("BASE VALUATION:", self._base_val)
 
     def _location_features(self):
         A = self.attributes
@@ -198,8 +200,11 @@ class RentalPropertyValuation:
             misc_dist_valuation += 0.01
 
         valuation *= misc_dist_valuation
+
         self._val = valuation
         self._base_val = base_valuation
+        print("LOCATION FEATURES:", self._val)
+        print("BASE VALUATION:", self._base_val)
 
     def _special_fetures(self):
         A = self.attributes
@@ -279,6 +284,8 @@ class RentalPropertyValuation:
 
         self._val = valuation + valuation * stack_val
         self._base_val = base_valuation
+        print("SPETIAL FEATURES:", self._val)
+        print("BASE VALUATION:", self._base_val)
 
     def _misc_features(self):
         A = self.attributes
@@ -290,14 +297,14 @@ class RentalPropertyValuation:
 
         stack_val = 0
         if rental_property[energy_label] in [el.A, el.B]:
-            valuation += base_valuation * 0.1
+            pass
         elif rental_property[energy_label] in [el.C, el.D]:
             valuation += base_valuation * 0.15
         elif rental_property[energy_label] == el.E:
             valuation += base_valuation * 0.175
         elif rental_property[energy_label] == el.F:
             valuation += base_valuation * 0.2
-        elif rental_property[energy_label] == el.G: # TODO add F & G labels
+        elif rental_property[energy_label] == el.G:  # TODO add F & G labels
             valuation += base_valuation * 0.225
 
         if rental_property[A.renovation_date.id] <= 2:
@@ -391,6 +398,8 @@ class RentalPropertyValuation:
             stack_val += 0.0015
         self._val = valuation + valuation * stack_val
         self._base_val = base_valuation
+        print("FINAL VALUATION:", self._val)
+        print("BASE_VALUATION:", self._base_val)
 
     def calculate_valuation(self):
         self._base_features()
