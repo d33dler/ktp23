@@ -35,6 +35,7 @@ class RentalPropertyValuation:
     ppsqm = 16  # average price (euro) per square meter 2022 (NL)
     legal_occupy_sqm = 12  # (minimum) legal limit (m^2) occupancy space per person (NL)
     attributes = Att()
+    sqm = 1
 
     def __init__(self, rental_property):
         self.rental_property = rental_property
@@ -43,12 +44,14 @@ class RentalPropertyValuation:
         A = self.attributes
         rental_property = self.rental_property
         sqm = rental_property[A.area_sqm.id]
+        self.sqm = sqm
         ppsqm = self.ppsqm
         _val_fraq = 1
+        base_valuation = 0
         if sqm <= A.area_sqm.m10:
-            pass
+            ppsqm += 0.5
         elif sqm <= A.area_sqm.m20:
-            ppsqm += 0.25
+            ppsqm += 0.2
         elif sqm <= A.area_sqm.m30:
             ppsqm += 0.5
         elif sqm <= A.area_sqm.m50:
@@ -58,7 +61,7 @@ class RentalPropertyValuation:
         elif sqm <= A.area_sqm.m100:
             ppsqm += 1.15
         else:
-            ppsqm -= 2.5 
+            ppsqm -= 2.5
         self.ppsqm = ppsqm
 
         property_location = A.property_location.id
@@ -124,9 +127,10 @@ class RentalPropertyValuation:
 
         if rental_property[A.storage_room]:
             base_valuation *= 1.15
-
         self._val = base_valuation * _val_fraq
         self._base_val = base_valuation
+        print("BASE FEATURES:", self._val)
+        print("BASE VALUATION:", self._base_val)
 
     def _location_features(self):
         A = self.attributes
@@ -147,7 +151,7 @@ class RentalPropertyValuation:
         else:
             valuation *= 1.015
 
-        if rental_property[distance_to_city] <= 1:
+        if rental_property[distance_to_city] <= 2:
             valuation *= 1.15
         elif rental_property[distance_to_city] > 9:
             valuation *= 0.95
@@ -197,8 +201,11 @@ class RentalPropertyValuation:
             misc_dist_valuation += 0.01
 
         valuation *= misc_dist_valuation
+
         self._val = valuation
         self._base_val = base_valuation
+        print("LOCATION FEATURES:", self._val)
+        print("BASE VALUATION:", self._base_val)
 
     def _special_fetures(self):
         A = self.attributes
@@ -217,17 +224,20 @@ class RentalPropertyValuation:
         else:
             stack_val -= 0.1
         shower = A.shower.id
-        if rental_property[shower] == Shower.private:
-            stack_val += 0.3
 
-        toilet = A.toilet.id
-        if rental_property[toilet] == A.toilet.private:
-            stack_val += 0.2
-        living = A.living_room.id
-        if rental_property[living] == A.living_room.private:
-            stack_val += 0.15
+        if rental_property[A.property_type.id] == A.property_type.room:
+            if rental_property[shower] == Shower.private:
+                valuation *= 1.3
+
+            toilet = A.toilet.id
+            if rental_property[toilet] == A.toilet.private:
+                valuation *= 1.2
+
+            living = A.living_room.id
+            if rental_property[living] == A.living_room.private:
+                valuation *= 1.15
+
         parking_avail = A.parking_avail.id
-
         if rental_property[parking_avail] == A.parking_avail.private:
             stack_val += 0.015
         elif rental_property[parking_avail] == A.parking_avail.street:
@@ -239,19 +249,40 @@ class RentalPropertyValuation:
             stack_val += 0.05
 
         if rental_property[A.lawn]:
-            stack_val += 0.05
+            if rental_property[A.property_type.id] != A.property_type.room:
+                stack_val += 0.05
+            else:
+                stack_val += 0.05
+
         if rental_property[A.landscaping]:
+            if rental_property[A.property_type.id] != A.property_type.room:
+                stack_val += 0.05
+            else:
+                stack_val += 0.05
             stack_val += 0.05
         if rental_property[A.elevator]:
             stack_val += 0.1
         if rental_property[A.pool]:
-            stack_val += 0.35
+            if rental_property[A.property_type.id] != A.property_type.room:
+                base_valuation *= 1.3
+            else:
+                stack_val += 0.3
         if rental_property[A.sauna]:
-            stack_val += 0.2
+            if rental_property[A.property_type.id] != A.property_type.room:
+                base_valuation *= 1.1
+            else:
+                base_valuation *= 1.01
         if rental_property[A.jacuzzi]:
-            stack_val += 0.2
+            if rental_property[A.property_type.id] != A.property_type.room:
+                base_valuation *= 1.1
+            else:
+                base_valuation *= 1.01
+
         if rental_property[A.spa]:
-            stack_val += 0.2
+            if rental_property[A.property_type.id] != A.property_type.room:
+                base_valuation *= 1.2
+            else:
+                base_valuation *= 1.05
         if rental_property[A.community_facilities]:
             stack_val += 0.01
 
@@ -278,6 +309,8 @@ class RentalPropertyValuation:
 
         self._val = valuation + valuation * stack_val
         self._base_val = base_valuation
+        print("SPETIAL FEATURES:", self._val)
+        print("BASE VALUATION:", self._base_val)
 
     def _misc_features(self):
         A = self.attributes
@@ -288,16 +321,17 @@ class RentalPropertyValuation:
         valuation = self._val
 
         stack_val = 0
+        sqm = self.sqm
         if rental_property[energy_label] in [el.A, el.B]:
-            valuation += base_valuation * 0.1
+            valuation += sqm * 5
         elif rental_property[energy_label] in [el.C, el.D]:
-            valuation += base_valuation * 0.15
+            valuation += sqm * 6
         elif rental_property[energy_label] == el.E:
-            valuation += base_valuation * 0.175
+            valuation += sqm * 8
         elif rental_property[energy_label] == el.F:
-            valuation += base_valuation * 0.2
+            valuation += sqm * 10
         elif rental_property[energy_label] == el.G:
-            valuation += base_valuation * 0.225
+            valuation += sqm * 11
 
         if rental_property[A.renovation_date.id] <= 2:
             pass
@@ -390,6 +424,8 @@ class RentalPropertyValuation:
             stack_val += 0.0015
         self._val = valuation + valuation * stack_val
         self._base_val = base_valuation
+        print("FINAL VALUATION:", self._val)
+        print("BASE_VALUATION:", self._base_val)
 
     def calculate_valuation(self):
         self._base_features()
