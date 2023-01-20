@@ -1,77 +1,79 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import { Form, Button, Container, ButtonGroup } from 'react-bootstrap';
+import { Form, Button, Container, ButtonGroup, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
 
-function MainForm() {
-    
-    const [area_sqm, set_area_sqm] = useState('');
-    const [property_location, set_property_location] = useState('');
-    const [distance_to_city, set_distance_to_city] = useState('');
-    const [population, set_population] = useState('');
-    const [property_type, set_property_type] = useState('');
-    const [furnished, set_furnished] = useState('');
-    const [shower, set_shower] = useState('');
-    const [toilet, set_toilet] = useState('');
-    const [living_room, set_living_room] = useState('');
-    const [living_capacity, set_living_capacity] = useState('');
-    const [internet, set_internet] = useState('');
-    const [energy_label, set_energy_label] = useState('');
-    const [roommates, set_roommates] = useState('');
-    const [problematic_neighbors, set_problematic_neighbors] = useState('');
-    const [air_quality, set_air_quality] = useState('');
-    const [nearby_disturbances, set_nearby_disturbances] = useState('');
-    const [apartment_facing, set_apartment_facing] = useState('');
-    const [balcony_access, set_balcony_access] = useState('');
-    const [pets_allowed, set_pets_allowed] = useState('');
-    const [landlord_tenant_ages, set_landlord_tenant_ages] = useState('');
-    const [near_public_transportation, set_near_public_transportation] = useState('');
-    const [parking_availability, set_parking_availability] = useState('');
-    const [garden_or_terrace, set_garden_or_terrace] = useState('');
-    const [distance_from_schools, set_distance_from_schools] = useState('');
-    const [security, set_security] = useState('');
-    const [management_fee, set_management_fee] = useState('');
-    const [quality_of_construction, set_quality_of_construction] = useState('');
-    const [renovation_date, set_renovation_date] = useState('');
-    const [flood_risk, set_flood_risk] = useState('');
-    const [earthquake_risk, set_earthquake_risk] = useState('');
-    const [distance_from_shops, set_distance_from_shops] = useState('');
-    const [distance_from_gym, set_distance_from_gym] = useState('');
-    const [sound_proof, set_sound_proof] = useState('');
-    const [storage_room, set_storage_room] = useState('');
-    const [built_appliances, set_built_appliances] = useState('');
-    const [elevator, set_elevator] = useState('');
-    const [pool, set_pool] = useState('');
-    const [sauna, set_sauna] = useState('');
-    const [jacuzzi, set_jacuzzi] = useState('');
-    const [spa, set_spa] = useState('');
-    const [community_facilities, set_community_facilities] = useState('');
-    const [distance_from_touristic_area, set_distance_from_touristic_area] = useState('');
-    const [parking_space, set_parking_space] = useState('');
-    const [distance_from_public_transportation, set_distance_from_public_transportation] = useState('');
-    const [distance_from_highway, set_distance_from_highway] = useState('');
-    const [distance_from_airport, set_distance_from_airport] = useState('');
-    const [distance_from_train_station, set_distance_from_train_station] = useState('');
-    const [distance_from_bus_station, set_distance_from_bus_station] = useState('');
-    const [distance_from_ferry, set_distance_from_ferry] = useState('');
-    const [distance_from_taxi_stand, set_distance_from_taxi_stand] = useState('');
-    const [distance_from_bike_rental, set_distance_from_bike_rental] = useState('');
-    const [distance_from_car_rental, set_distance_from_car_rental] = useState('');
-    const [lawn, set_lawn] = useState('');
-    const [landscaping, set_landscaping] = useState('');
-    const [garden, set_garden] = useState('');
-    const [distance_from_park, set_distance_from_park] = useState('');
-    const [distance_from_recreation_area, set_distance_from_recreation_area] = useState('');
-    const [distance_from_zoo, set_distance_from_zoo] = useState('');
-    const [view, set_view] = useState('');
-    const [security_features, set_security_features] = useState('');
-    const [distance_from_shopping_center, set_distance_from_shopping_center] = useState('');
-    const [distance_from_library, set_distance_from_library] = useState('');
-    const [distance_from_hospital, set_distance_from_hospital] = useState('');
-    const [distance_from_pharmacy, set_distance_from_pharmacy] = useState('');
-    
-    const [predicted_price, set_predicted_price] = useState(null);
+function MainForm({props}) {
+  
+  const {area_sqm, set_area_sqm} = props;
+  const {property_location, set_property_location} = props;
+  const {distance_to_city, set_distance_to_city} = props;
+  const {population, set_population} = props;
+  const {property_type, set_property_type} = props;
+  const {furnished, set_furnished} = props;
+  const {shower, set_shower} = props;
+  const {toilet, set_toilet} = props;
+  const {living_room, set_living_room} = props;
+  const {living_capacity, set_living_capacity} = props;
+  const {internet, set_internet} = props;
+  const {energy_label, set_energy_label} = props;
+  const {roommates, set_roommates} = props;
+  const {problematic_neighbors, set_problematic_neighbors} = props;
+  const {air_quality, set_air_quality} = props;
+  const {nearby_disturbances, set_nearby_disturbances} = props;
+  const {apartment_facing, set_apartment_facing} = props;
+  const {balcony_access, set_balcony_access} = props;
+  const {pets_allowed, set_pets_allowed} = props;
+  const {landlord_tenant_ages, set_landlord_tenant_ages} = props;
+  const {near_public_transportation, set_near_public_transportation} = props;
+  const {parking_availability, set_parking_availability} = props;
+  const {garden_or_terrace, set_garden_or_terrace} = props;
+  const {distance_from_schools, set_distance_from_schools} = props;
+  const {security, set_security} = props;
+  const {management_fee, set_management_fee} = props;
+  const {quality_of_construction, set_quality_of_construction} = props;
+  const {renovation_date, set_renovation_date} = props;
+  const {flood_risk, set_flood_risk} = props;
+  const {earthquake_risk, set_earthquake_risk} = props;
+  const {distance_from_shops, set_distance_from_shops} = props;
+  const {distance_from_gym, set_distance_from_gym} = props;
+  const {sound_proof, set_sound_proof} = props;
+  const {storage_room, set_storage_room} = props;
+  const {built_appliances, set_built_appliances} = props;
+  const {elevator, set_elevator} = props;
+  const {pool, set_pool} = props;
+  const {sauna, set_sauna} = props;
+  const {jacuzzi, set_jacuzzi} = props;
+  const {spa, set_spa} = props;
+  const {community_facilities, set_community_facilities} = props;
+  const {distance_from_touristic_area, set_distance_from_touristic_area} = props;
+  const {parking_space, set_parking_space} = props;
+  const {distance_from_public_transportation, set_distance_from_public_transportation} = props;
+  const {distance_from_highway, set_distance_from_highway} = props;
+  const {distance_from_airport, set_distance_from_airport} = props;
+  const {distance_from_train_station, set_distance_from_train_station} = props;
+  const {distance_from_bus_station, set_distance_from_bus_station} = props;
+  const {distance_from_ferry, set_distance_from_ferry} = props;
+  const {distance_from_taxi_stand, set_distance_from_taxi_stand} = props;
+  const {distance_from_bike_rental, set_distance_from_bike_rental} = props;
+  const {distance_from_car_rental, set_distance_from_car_rental} = props;
+  const {lawn, set_lawn} = props;
+  const {landscaping, set_landscaping} = props;
+  const {garden, set_garden} = props;
+  const {distance_from_park, set_distance_from_park} = props;
+  const {distance_from_recreation_area, set_distance_from_recreation_area} = props;
+  const {distance_from_zoo, set_distance_from_zoo} = props;
+  const {view, set_view} = props;
+  const {security_features, set_security_features} = props;
+  const {distance_from_shopping_center, set_distance_from_shopping_center} = props;
+  const {distance_from_library, set_distance_from_library} = props;
+  const {distance_from_hospital, set_distance_from_hospital} = props;
+  const {distance_from_pharmacy, set_distance_from_pharmacy} = props;
+
+  const {step, set_step} = props;
+
+  const [predicted_price, set_predicted_price] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -141,10 +143,10 @@ function MainForm() {
             distance_from_hospital,
             distance_from_pharmacy,
         }
-        let json = {'air_quality': 'good', 'apartment_facing': 'sunset', 'area_sqm': 50, 'balcony_access': 'yes', 'built_appliances': 'yes', 'community_facilities': 'yes', 'distance_from_airport': 15, 'distance_from_bike_rental': 1, 'distance_from_bus_station': 2, 'distance_from_car_rental': 3, 'distance_from_ferry': 10, 'distance_from_gym': 5, 'distance_from_highway': 5, 'distance_from_hospital': 8, 'distance_from_library': 5, 'distance_from_park': 2, 'distance_from_pharmacy': 1, 'distance_from_public_transportation': 1, 'distance_from_recreation_area': 5, 'distance_from_schools': 3, 'distance_from_shopping_center': 2, 'distance_from_shops': 2, 'distance_from_taxi_stand': 1, 'distance_from_touristic_area': 3, 'distance_from_train_station': 3, 'distance_from_zoo': 10, 'distance_to_city': 5, 'earthquake_risk': 'yes', 'elevator': 'yes', 'energy_label': 'B', 'flood_risk': 'yes', 'furnished': 'yes', 'garden': 'yes', 'garden_or_terrace': 'yes', 'internet': 'no', 'jacuzzi': 'yes', 'landlord_tenant_ages': '16-25', 'landscaping': 'yes', 'lawn': 'yes', 'living_capacity': 1, 'living_room': 'private', 'management_fee': 0.4, 'near_public_transportation': 'yes', 'nearby_disturbances': 'yes', 'parking_availability': 'private', 'parking_space': 'garage', 'pets_allowed': 'yes', 'pool': 'yes', 'population': 1000000.0, 'problematic_neighbors': 'yes', 'property_location': 'Groningen', 'property_type': 'room', 'quality_of_construction': 'high', 'renovation_date': 5, 'roommates': 4, 'sauna': 'yes', 'security': 'yes', 'security_features': 'surveillance', 'shower': 'private', 'sound_proof': 'yes', 'spa': 'yes', 'storage_room': 'yes', 'toilet': 'private', 'view': 'city'}
+        // let json = {'air_quality': 'good', 'apartment_facing': 'sunset', 'area_sqm': 50, 'balcony_access': 'yes', 'built_appliances': 'yes', 'community_facilities': 'yes', 'distance_from_airport': 15, 'distance_from_bike_rental': 1, 'distance_from_bus_station': 2, 'distance_from_car_rental': 3, 'distance_from_ferry': 10, 'distance_from_gym': 5, 'distance_from_highway': 5, 'distance_from_hospital': 8, 'distance_from_library': 5, 'distance_from_park': 2, 'distance_from_pharmacy': 1, 'distance_from_public_transportation': 1, 'distance_from_recreation_area': 5, 'distance_from_schools': 3, 'distance_from_shopping_center': 2, 'distance_from_shops': 2, 'distance_from_taxi_stand': 1, 'distance_from_touristic_area': 3, 'distance_from_train_station': 3, 'distance_from_zoo': 10, 'distance_to_city': 5, 'earthquake_risk': 'yes', 'elevator': 'yes', 'energy_label': 'B', 'flood_risk': 'yes', 'furnished': 'yes', 'garden': 'yes', 'garden_or_terrace': 'yes', 'internet': 'no', 'jacuzzi': 'yes', 'landlord_tenant_ages': '16-25', 'landscaping': 'yes', 'lawn': 'yes', 'living_capacity': 1, 'living_room': 'private', 'management_fee': 0.4, 'near_public_transportation': 'yes', 'nearby_disturbances': 'yes', 'parking_availability': 'private', 'parking_space': 'garage', 'pets_allowed': 'yes', 'pool': 'yes', 'population': 1000000.0, 'problematic_neighbors': 'yes', 'property_location': 'Groningen', 'property_type': 'room', 'quality_of_construction': 'high', 'renovation_date': 5, 'roommates': 4, 'sauna': 'yes', 'security': 'yes', 'security_features': 'surveillance', 'shower': 'private', 'sound_proof': 'yes', 'spa': 'yes', 'storage_room': 'yes', 'toilet': 'private', 'view': 'city'}
         
         try {
-            const response = await axios.post('/api/', json);
+            const response = await axios.post('/api/', data);
             const predicted = response.data.message;
             set_predicted_price(Math.round(predicted * 100) / 100);
         } catch (error) {
@@ -172,643 +174,780 @@ function MainForm() {
             : 
             <>  
             <Form onSubmit={handleSubmit}>
-            <>
-            <Form.Label as='h3'>Area Sqm</Form.Label>
+            {step !== 2 ? null : 
+            <Card>
+            <Form.Label as='h3'>How many square meters is your property?</Form.Label>
             <Form.Control as="radio" value={area_sqm} placeholder="Enter the Area Sqm" onChange={(e) => set_area_sqm(e.target.value)}>
-            <Form.Check type="radio" label="≤ 1" value="1" name="group-0"/>
-            <Form.Check type="radio" label="≤ 10" value="10" name="group-0"/>
-            <Form.Check type="radio" label="≤ 20" value="20" name="group-0"/>
-            <Form.Check type="radio" label="≤ 30" value="30" name="group-0"/>
-            <Form.Check type="radio" label="≤ 40" value="40" name="group-0"/>
-            <Form.Check type="radio" label="≤ 50" value="50" name="group-0"/>
-            <Form.Check type="radio" label="> 50" value="60" name="group-0"/>
+            <Form.Check className='custom-radio' checked={ area_sqm == "1"} type="radio" label="≤ 1" value="1" name="group-0"/>
+            <Form.Check className='custom-radio' checked={ area_sqm == "10"} type="radio" label="≤ 10" value="10" name="group-0"/>
+            <Form.Check className='custom-radio' checked={ area_sqm == "20"} type="radio" label="≤ 20" value="20" name="group-0"/>
+            <Form.Check className='custom-radio' checked={ area_sqm == "30"} type="radio" label="≤ 30" value="30" name="group-0"/>
+            <Form.Check className='custom-radio' checked={ area_sqm == "40"} type="radio" label="≤ 40" value="40" name="group-0"/>
+            <Form.Check className='custom-radio' checked={ area_sqm == "50"} type="radio" label="≤ 50" value="50" name="group-0"/>
+            <Form.Check className='custom-radio' checked={ area_sqm == "60"} type="radio" label="> 50" value="60" name="group-0"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Property Location</Form.Label>
+            {step !== 3 ? null : 
+            <Card>
+            <Form.Label as='h3'>Where is your property located?</Form.Label>
             <Form.Control as="radio" value={property_location} placeholder="Enter the Property Location" onChange={(e) => set_property_location(e.target.value)}>
-            <Form.Check type="radio" label="Amsterdam" value="Amsterdam" name="group-1"/>
-            <Form.Check type="radio" label="Groningen" value="Groningen" name="group-1"/>
-            <Form.Check type="radio" label="Rotterdam" value="Rotterdam" name="group-1"/>
-            <Form.Check type="radio" label="Other" value="Other" name="group-1"/>
+            <Form.Check className='custom-radio' checked={ property_location == "Amsterdam"} type="radio" label="Amsterdam" value="Amsterdam" name="group-1"/>
+            <Form.Check className='custom-radio' checked={ property_location == "Groningen"} type="radio" label="Groningen" value="Groningen" name="group-1"/>
+            <Form.Check className='custom-radio' checked={ property_location == "Rotterdam"} type="radio" label="Rotterdam" value="Rotterdam" name="group-1"/>
+            <Form.Check className='custom-radio' checked={ property_location == "Other"} type="radio" label="Other" value="Other" name="group-1"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Distance To City</Form.Label>
+            {step !== 4 ? null : 
+            <Card>
+            <Form.Label as='h3'>What is the distance from your property to the city?</Form.Label>
             <Form.Control as="radio" value={distance_to_city} placeholder="Enter the Distance To City" onChange={(e) => set_distance_to_city(e.target.value)}>
-            <Form.Check type="radio" label="≤ 2" value="2" name="group-2"/>
-            <Form.Check type="radio" label="≤ 5" value="5" name="group-2"/>
-            <Form.Check type="radio" label="≤ 6" value="6" name="group-2"/>
-            <Form.Check type="radio" label="> 6" value="7" name="group-2"/>
+            <Form.Check className='custom-radio' checked={ distance_to_city == "2"} type="radio" label="≤ 2" value="2" name="group-2"/>
+            <Form.Check className='custom-radio' checked={ distance_to_city == "5"} type="radio" label="≤ 5" value="5" name="group-2"/>
+            <Form.Check className='custom-radio' checked={ distance_to_city == "6"} type="radio" label="≤ 6" value="6" name="group-2"/>
+            <Form.Check className='custom-radio' checked={ distance_to_city == "7"} type="radio" label="> 6" value="7" name="group-2"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Population</Form.Label>
+            {step !== 5 ? null : 
+            <Card>
+            <Form.Label as='h3'>What is the population of the area where your property is located?</Form.Label>
             <Form.Control as="radio" value={population} placeholder="Enter the Population" onChange={(e) => set_population(e.target.value)}>
-            <Form.Check type="radio" label="< 1e6" value="1E6" name="group-3"/>
-            <Form.Check type="radio" label="> 1e6" value="1E6" name="group-3"/>
+            <Form.Check className='custom-radio' checked={ population == "1E6"} type="radio" label="< 1e6" value="1E6" name="group-3"/>
+            <Form.Check className='custom-radio' checked={ population == "1E7"} type="radio" label="> 1e6" value="1E7" name="group-3"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Property Type</Form.Label>
+            {step !== 6 ? null : 
+            <Card>
+            <Form.Label as='h3'>What type of property is it?</Form.Label>
             <Form.Control as="radio" value={property_type} placeholder="Enter the Property Type" onChange={(e) => set_property_type(e.target.value)}>
-            <Form.Check type="radio" label="Room" value="room" name="group-4"/>
-            <Form.Check type="radio" label="Apartment" value="apartment" name="group-4"/>
-            <Form.Check type="radio" label="Anti Squat" value="anti-squat" name="group-4"/>
-            <Form.Check type="radio" label="Studio" value="studio" name="group-4"/>
-            <Form.Check type="radio" label="Student Residence" value="student-residence" name="group-4"/>
-            <Form.Check type="radio" label="House" value="house" name="group-4"/>
-            <Form.Check type="radio" label="Other" value="other" name="group-4"/>
+            <Form.Check className='custom-radio' checked={ property_type == "room"} type="radio" label="Room" value="room" name="group-4"/>
+            <Form.Check className='custom-radio' checked={ property_type == "apartment"} type="radio" label="Apartment" value="apartment" name="group-4"/>
+            <Form.Check className='custom-radio' checked={ property_type == "squat"} type="radio" label="Anti Squat" value="anti-squat" name="group-4"/>
+            <Form.Check className='custom-radio' checked={ property_type == "studio"} type="radio" label="Studio" value="studio" name="group-4"/>
+            <Form.Check className='custom-radio' checked={ property_type == "residence"} type="radio" label="Student Residence" value="student-residence" name="group-4"/>
+            <Form.Check className='custom-radio' checked={ property_type == "house"} type="radio" label="House" value="house" name="group-4"/>
+            <Form.Check className='custom-radio' checked={ property_type == "other"} type="radio" label="Other" value="other" name="group-4"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Furnished</Form.Label>
+            {step !== 7 ? null : 
+            <Card>
+            <Form.Label as='h3'>Is the property furnished?</Form.Label>
             <Form.Control as="radio" value={furnished} placeholder="Enter the Furnished" onChange={(e) => set_furnished(e.target.value)}>
-            <Form.Check type="radio" label="Yes" value="yes" name="group-5"/>
-            <Form.Check type="radio" label="No" value="no" name="group-5"/>
+            <Form.Check className='custom-radio' checked={ furnished == "yes"} type="radio" label="Yes" value="yes" name="group-5"/>
+            <Form.Check className='custom-radio' checked={ furnished == "no"} type="radio" label="No" value="no" name="group-5"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Shower</Form.Label>
+            {step !== 8 ? null :
+            <Card>
+            <Form.Label as='h3'>Does the property have a shower?</Form.Label>
             <Form.Control as="radio" value={shower} placeholder="Enter the Shower" onChange={(e) => set_shower(e.target.value)}>
-            <Form.Check type="radio" label="Private" value="private" name="group-6"/>
-            <Form.Check type="radio" label="Shared" value="shared" name="group-6"/>
+            <Form.Check className='custom-radio' checked={shower == "private"} type="radio" label="Private" value="private" name="group-6"/>
+            <Form.Check className='custom-radio' checked={shower == "shared"} type="radio" label="Shared" value="shared" name="group-6"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Toilet</Form.Label>
+            {step !== 9 ? null : 
+            <Card>
+            <Form.Label as='h3'>Does the property have a toilet?</Form.Label>
             <Form.Control as="radio" value={toilet} placeholder="Enter the Toilet" onChange={(e) => set_toilet(e.target.value)}>
-            <Form.Check type="radio" label="Private" value="private" name="group-7"/>
-            <Form.Check type="radio" label="Shared" value="shared" name="group-7"/>
+            <Form.Check className='custom-radio' checked={ toilet == "private"} type="radio" label="Private" value="private" name="group-7"/>
+            <Form.Check className='custom-radio' checked={ toilet == "shared"} type="radio" label="Shared" value="shared" name="group-7"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Living Room</Form.Label>
+            {step !== 10 ? null : 
+            <Card>
+            <Form.Label as='h3'>Does the property have a living room?</Form.Label>
             <Form.Control as="radio" value={living_room} placeholder="Enter the Living Room" onChange={(e) => set_living_room(e.target.value)}>
-            <Form.Check type="radio" label="Private" value="private" name="group-8"/>
-            <Form.Check type="radio" label="Shared" value="shared" name="group-8"/>
+            <Form.Check className='custom-radio' checked={living_room == "private"} type="radio" label="Private" value="private" name="group-8"/>
+            <Form.Check className='custom-radio' checked={living_room == "shared"} type="radio" label="Shared" value="shared" name="group-8"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Living Capacity</Form.Label>
+            {step !== 11 ? null : 
+            <Card>
+            <Form.Label as='h3'>How many people can the property accommodate?</Form.Label>
             <Form.Control as="radio" value={living_capacity} placeholder="Enter the Living Capacity" onChange={(e) => set_living_capacity(e.target.value)}>
-            <Form.Check type="radio" label="1" value="1" name="group-9"/>
-            <Form.Check type="radio" label="2" value="2" name="group-9"/>
-            <Form.Check type="radio" label="3" value="3" name="group-9"/>
-            <Form.Check type="radio" label="4" value="4" name="group-9"/>
-            <Form.Check type="radio" label="5" value="5" name="group-9"/>
-            <Form.Check type="radio" label="> 5" value="6" name="group-9"/>
+            <Form.Check className='custom-radio' checked={ living_capacity == "1"} type="radio" label="1" value="1" name="group-9"/>
+            <Form.Check className='custom-radio' checked={ living_capacity == "2"} type="radio" label="2" value="2" name="group-9"/>
+            <Form.Check className='custom-radio' checked={ living_capacity == "3"} type="radio" label="3" value="3" name="group-9"/>
+            <Form.Check className='custom-radio' checked={ living_capacity == "4"} type="radio" label="4" value="4" name="group-9"/>
+            <Form.Check className='custom-radio' checked={ living_capacity == "5"} type="radio" label="5" value="5" name="group-9"/>
+            <Form.Check className='custom-radio' checked={ living_capacity == "6"} type="radio" label="> 5" value="6" name="group-9"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Internet</Form.Label>
+            {step !== 12 ? null :  
+            <Card>
+            <Form.Label as='h3'>Does the property have internet access?</Form.Label>
             <Form.Control as="radio" value={internet} placeholder="Enter the Internet" onChange={(e) => set_internet(e.target.value)}>
-            <Form.Check type="radio" label="Yes" value="yes" name="group-10"/>
-            <Form.Check type="radio" label="No" value="no" name="group-10"/>
+            <Form.Check className='custom-radio' checked={ internet == "yes"} type="radio" label="Yes" value="yes" name="group-10"/>
+            <Form.Check className='custom-radio' checked={ internet == "no"} type="radio" label="No" value="no" name="group-10"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Energy Label</Form.Label>
+            {step !== 13 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the energy label of the property?</Form.Label>
             <Form.Control as="radio" value={energy_label} placeholder="Enter the Energy Label" onChange={(e) => set_energy_label(e.target.value)}>
-            <Form.Check type="radio" label="A" value="A" name="group-11"/>
-            <Form.Check type="radio" label="B" value="B" name="group-11"/>
-            <Form.Check type="radio" label="C" value="C" name="group-11"/>
-            <Form.Check type="radio" label="D" value="D" name="group-11"/>
-            <Form.Check type="radio" label="E" value="E" name="group-11"/>
+            <Form.Check className='custom-radio' checked={ energy_label == "A"} type="radio" label="A" value="A" name="group-11"/>
+            <Form.Check className='custom-radio' checked={ energy_label == "B"} type="radio" label="B" value="B" name="group-11"/>
+            <Form.Check className='custom-radio' checked={ energy_label == "C"} type="radio" label="C" value="C" name="group-11"/>
+            <Form.Check className='custom-radio' checked={ energy_label == "D"} type="radio" label="D" value="D" name="group-11"/>
+            <Form.Check className='custom-radio' checked={ energy_label == "E"} type="radio" label="E" value="E" name="group-11"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Roommates</Form.Label>
+            {step !== 14 ? null :  
+            <Card>
+            <Form.Label as='h3'>Are there roommates in the property?</Form.Label>
             <Form.Control as="radio" value={roommates} placeholder="Enter the Roommates" onChange={(e) => set_roommates(e.target.value)}>
-            <Form.Check type="radio" label="1" value="1" name="group-12"/>
-            <Form.Check type="radio" label="2" value="2" name="group-12"/>
-            <Form.Check type="radio" label="3" value="3" name="group-12"/>
-            <Form.Check type="radio" label="4" value="4" name="group-12"/>
-            <Form.Check type="radio" label="5" value="5" name="group-12"/>
-            <Form.Check type="radio" label="> 5" value="6" name="group-12"/>
+            <Form.Check className='custom-radio' checked={ roommates == "1"} type="radio" label="1" value="1" name="group-12"/>
+            <Form.Check className='custom-radio' checked={ roommates == "2"} type="radio" label="2" value="2" name="group-12"/>
+            <Form.Check className='custom-radio' checked={ roommates == "3"} type="radio" label="3" value="3" name="group-12"/>
+            <Form.Check className='custom-radio' checked={ roommates == "4"} type="radio" label="4" value="4" name="group-12"/>
+            <Form.Check className='custom-radio' checked={ roommates == "5"} type="radio" label="5" value="5" name="group-12"/>
+            <Form.Check className='custom-radio' checked={ roommates == "6"} type="radio" label="> 5" value="6" name="group-12"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Problematic Neighbors</Form.Label>
+            {step !== 15 ? null :  
+            <Card>
+            <Form.Label as='h3'>Are there problematic neighbors in the area?</Form.Label>
             <Form.Control as="radio" value={problematic_neighbors} placeholder="Enter the Problematic Neighbors" onChange={(e) => set_problematic_neighbors(e.target.value)}>
-            <Form.Check type="radio" label="Yes" value="yes" name="group-13"/>
-            <Form.Check type="radio" label="No" value="no" name="group-13"/>
+            <Form.Check className='custom-radio' checked={ problematic_neighbors == "yes"} type="radio" label="Yes" value="yes" name="group-13"/>
+            <Form.Check className='custom-radio' checked={ problematic_neighbors == "no"} type="radio" label="No" value="no" name="group-13"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Air Quality</Form.Label>
+            {step !== 16 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the air quality like in the area?</Form.Label>
             <Form.Control as="radio" value={air_quality} placeholder="Enter the Air Quality" onChange={(e) => set_air_quality(e.target.value)}>
-            <Form.Check type="radio" label="Good" value="good" name="group-14"/>
-            <Form.Check type="radio" label="Average" value="average" name="group-14"/>
-            <Form.Check type="radio" label="Bad" value="bad" name="group-14"/>
+            <Form.Check className='custom-radio' checked={ air_quality == "good"} type="radio" label="Good" value="good" name="group-14"/>
+            <Form.Check className='custom-radio' checked={ air_quality == "average"} type="radio" label="Average" value="average" name="group-14"/>
+            <Form.Check className='custom-radio' checked={ air_quality == "bad"} type="radio" label="Bad" value="bad" name="group-14"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Nearby Disturbances</Form.Label>
+            {step !== 17 ? null :  
+            <Card>
+            <Form.Label as='h3'>Are there any nearby disturbances?</Form.Label>
             <Form.Control as="radio" value={nearby_disturbances} placeholder="Enter the Nearby Disturbances" onChange={(e) => set_nearby_disturbances(e.target.value)}>
-            <Form.Check type="radio" label="Yes" value="yes" name="group-15"/>
-            <Form.Check type="radio" label="No" value="no" name="group-15"/>
+            <Form.Check className='custom-radio' checked={ nearby_disturbances == "yes"} type="radio" label="Yes" value="yes" name="group-15"/>
+            <Form.Check className='custom-radio' checked={ nearby_disturbances == "no"} type="radio" label="No" value="no" name="group-15"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Apartment Facing</Form.Label>
+            {step !== 18 ? null :  
+            <Card>
+            <Form.Label as='h3'>What direction is the apartment facing?</Form.Label>
             <Form.Control as="radio" value={apartment_facing} placeholder="Enter the Apartment Facing" onChange={(e) => set_apartment_facing(e.target.value)}>
-            <Form.Check type="radio" label="Sunrise" value="sunrise" name="group-16"/>
-            <Form.Check type="radio" label="Sunset" value="sunset" name="group-16"/>
-            <Form.Check type="radio" label="Partial sun" value="partial_sun" name="group-16"/>
-            <Form.Check type="radio" label="Shadowed" value="shadowed" name="group-16"/>
-            <Form.Check type="radio" label="Fully shadowed" value="fully_shadowed" name="group-16"/>
+            <Form.Check className='custom-radio' checked={ apartment_facing == "sunrise"} type="radio" label="Sunrise" value="sunrise" name="group-16"/>
+            <Form.Check className='custom-radio' checked={ apartment_facing == "sunset"} type="radio" label="Sunset" value="sunset" name="group-16"/>
+            <Form.Check className='custom-radio' checked={ apartment_facing == "partial_sun"} type="radio" label="Partial sun" value="partial_sun" name="group-16"/>
+            <Form.Check className='custom-radio' checked={ apartment_facing == "shadowed"} type="radio" label="Shadowed" value="shadowed" name="group-16"/>
+            <Form.Check className='custom-radio' checked={ apartment_facing == "fully_shadowed"} type="radio" label="Fully shadowed" value="fully_shadowed" name="group-16"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Balcony Access</Form.Label>
+            {step !== 19 ? null :  
+            <Card>
+            <Form.Label as='h3'>Is there access to a balcony?</Form.Label>
             <Form.Control as="radio" value={balcony_access} placeholder="Enter the Balcony Access" onChange={(e) => set_balcony_access(e.target.value)}>
-            <Form.Check type="radio" label="Yes" value="yes" name="group-17"/>
-            <Form.Check type="radio" label="No" value="no" name="group-17"/>
+            <Form.Check className='custom-radio' checked={ balcony_access == "yes"} type="radio" label="Yes" value="yes" name="group-17"/>
+            <Form.Check className='custom-radio' checked={ balcony_access == "no"} type="radio" label="No" value="no" name="group-17"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Pets Allowed</Form.Label>
+            {step !== 20 ? null :  
+            <Card>
+            <Form.Label as='h3'>Are pets allowed in the property?</Form.Label>
             <Form.Control as="radio" value={pets_allowed} placeholder="Enter the Pets Allowed" onChange={(e) => set_pets_allowed(e.target.value)}>
-            <Form.Check type="radio" label="Yes" value="yes" name="group-18"/>
-            <Form.Check type="radio" label="No" value="no" name="group-18"/>
+            <Form.Check className='custom-radio' checked={ pets_allowed == "yes"} type="radio" label="Yes" value="yes" name="group-18"/>
+            <Form.Check className='custom-radio' checked={ pets_allowed == "no"} type="radio" label="No" value="no" name="group-18"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Landlord Tenant Ages</Form.Label>
+            {step !== 21 ? null :  
+            <Card>
+            <Form.Label as='h3'>What are the ages of the landlord and tenant?</Form.Label>
             <Form.Control as="radio" value={landlord_tenant_ages} placeholder="Enter the Landlord Tenant Ages" onChange={(e) => set_landlord_tenant_ages(e.target.value)}>
-            <Form.Check type="radio" label="16-25" value="16-25" name="group-19"/>
-            <Form.Check type="radio" label="16-60" value="16-60" name="group-19"/>
-            <Form.Check type="radio" label="18-60" value="18-60" name="group-19"/>
+            <Form.Check className='custom-radio' checked={ landlord_tenant_ages == "16-25"} type="radio" label="16-25" value="16-25" name="group-19"/>
+            <Form.Check className='custom-radio' checked={ landlord_tenant_ages == "16-60"} type="radio" label="16-60" value="16-60" name="group-19"/>
+            <Form.Check className='custom-radio' checked={ landlord_tenant_ages == "18-60"} type="radio" label="18-60" value="18-60" name="group-19"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Near Public Transportation</Form.Label>
+            {step !== 22 ? null :  
+            <Card>
+            <Form.Label as='h3'>Is the property near public transportation?</Form.Label>
             <Form.Control as="radio" value={near_public_transportation} placeholder="Enter the Near Public Transportation" onChange={(e) => set_near_public_transportation(e.target.value)}>
-            <Form.Check type="radio" label="Yes" value="yes" name="group-20"/>
-            <Form.Check type="radio" label="No" value="no" name="group-20"/>
+            <Form.Check className='custom-radio' checked={ near_public_transportation == "yes"} type="radio" label="Yes" value="yes" name="group-20"/>
+            <Form.Check className='custom-radio' checked={ near_public_transportation == "no"} type="radio" label="No" value="no" name="group-20"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Parking Availability</Form.Label>
+            {step !== 23 ? null :  
+            <Card>
+            <Form.Label as='h3'>Is there parking availability near the property?</Form.Label>
             <Form.Control as="radio" value={parking_availability} placeholder="Enter the Parking Availability" onChange={(e) => set_parking_availability(e.target.value)}>
-            <Form.Check type="radio" label="Private" value="private" name="group-21"/>
-            <Form.Check type="radio" label="Street" value="street" name="group-21"/>
-            <Form.Check type="radio" label="None" value="none" name="group-21"/>
+            <Form.Check className='custom-radio' checked={ parking_availability == "private"} type="radio" label="Private" value="private" name="group-21"/>
+            <Form.Check className='custom-radio' checked={ parking_availability == "street"} type="radio" label="Street" value="street" name="group-21"/>
+            <Form.Check className='custom-radio' checked={ parking_availability == "none"} type="radio" label="None" value="none" name="group-21"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Garden Or Terrace</Form.Label>
+            {step !== 24 ? null :  
+            <Card>
+            <Form.Label as='h3'>Does the property have a garden or terrace?</Form.Label>
             <Form.Control as="radio" value={garden_or_terrace} placeholder="Enter the Garden Or Terrace" onChange={(e) => set_garden_or_terrace(e.target.value)}>
-            <Form.Check type="radio" label="Yes" value="yes" name="group-22"/>
-            <Form.Check type="radio" label="No" value="no" name="group-22"/>
+            <Form.Check className='custom-radio' checked={ garden_or_terrace == "yes"} type="radio" label="Yes" value="yes" name="group-22"/>
+            <Form.Check className='custom-radio' checked={ garden_or_terrace == "no"} type="radio" label="No" value="no" name="group-22"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Distance From Schools</Form.Label>
+            {step !== 25 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the distance from schools in the area?</Form.Label>
             <Form.Control as="radio" value={distance_from_schools} placeholder="Enter the Distance From Schools" onChange={(e) => set_distance_from_schools(e.target.value)}>
-            <Form.Check type="radio" label="≤ 8" value="8" name="group-23"/>
-            <Form.Check type="radio" label="> 8" value="9" name="group-23"/>
+            <Form.Check className='custom-radio' checked={ distance_from_schools == "8"} type="radio" label="≤ 8" value="8" name="group-23"/>
+            <Form.Check className='custom-radio' checked={ distance_from_schools == "9"} type="radio" label="> 8" value="9" name="group-23"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Distance From Hospital</Form.Label>
+            {step !== 26 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the distance from the nearest hospital?</Form.Label>
             <Form.Control as="radio" value={distance_from_hospital} placeholder="Enter the Distance From Hospital" onChange={(e) => set_distance_from_hospital(e.target.value)}>
-            <Form.Check type="radio" label="≤ 8" value="8" name="group-24"/>
-            <Form.Check type="radio" label="> 8" value="9" name="group-24"/>
+            <Form.Check className='custom-radio' checked={distance_from_hospital == "8"} type="radio" label="≤ 8" value="8" name="group-24"/>
+            <Form.Check className='custom-radio' checked={distance_from_hospital == "9"} type="radio" label="> 8" value="9" name="group-24"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Security</Form.Label>
+            {step !== 27 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the level of security in the area?</Form.Label>
             <Form.Control as="radio" value={security} placeholder="Enter the Security" onChange={(e) => set_security(e.target.value)}>
-            <Form.Check type="radio" label="Yes" value="yes" name="group-25"/>
-            <Form.Check type="radio" label="No" value="no" name="group-25"/>
+            <Form.Check className='custom-radio' checked={ security == "yes"} type="radio" label="Yes" value="yes" name="group-25"/>
+            <Form.Check className='custom-radio' checked={ security == "no"} type="radio" label="No" value="no" name="group-25"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Management Fee</Form.Label>
+            {step !== 28 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the management fee for the property?</Form.Label>
             <Form.Control as="radio" value={management_fee} placeholder="Enter the Management Fee" onChange={(e) => set_management_fee(e.target.value)}>
-            <Form.Check type="radio" label="0.5" value="0.4" name="group-26"/>
-            <Form.Check type="radio" label="1.0" value="1" name="group-26"/>
+            <Form.Check className='custom-radio' checked={management_fee == "0.4"} type="radio" label="0.5" value="0.4" name="group-26"/>
+            <Form.Check className='custom-radio' checked={management_fee == "1"} type="radio" label="1.0" value="1" name="group-26"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Quality Of Construction</Form.Label>
+            {step !== 29 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the quality of construction of the property?</Form.Label>
             <Form.Control as="radio" value={quality_of_construction} placeholder="Enter the Quality Of Construction" onChange={(e) => set_quality_of_construction(e.target.value)}>
-            <Form.Check type="radio" label="High" value="high" name="group-27"/>
-            <Form.Check type="radio" label="Mid" value="mid" name="group-27"/>
-            <Form.Check type="radio" label="Low" value="low" name="group-27"/>
+            <Form.Check className='custom-radio' checked={ quality_of_construction == "high"} type="radio" label="High" value="high" name="group-27"/>
+            <Form.Check className='custom-radio' checked={ quality_of_construction == "mid"} type="radio" label="Mid" value="mid" name="group-27"/>
+            <Form.Check className='custom-radio' checked={ quality_of_construction == "low"} type="radio" label="Low" value="low" name="group-27"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Renovation Date</Form.Label>
+            {step !== 30 ? null :  
+            <Card>
+            <Form.Label as='h3'>When was the property last renovated?</Form.Label>
             <Form.Control as="radio" value={renovation_date} placeholder="Enter the Renovation Date" onChange={(e) => set_renovation_date(e.target.value)}>
-            <Form.Check type="radio" label="< 5 years" value="5" name="group-28"/>
-            <Form.Check type="radio" label="< 8 years" value="8" name="group-28"/>
-            <Form.Check type="radio" label="> 8 years" value="10" name="group-28"/>
+            <Form.Check className='custom-radio' checked={renovation_date  == "5"} type="radio" label="< 5 years" value="5" name="group-28"/>
+            <Form.Check className='custom-radio' checked={renovation_date  == "8"} type="radio" label="< 8 years" value="8" name="group-28"/>
+            <Form.Check className='custom-radio' checked={renovation_date  == "10"} type="radio" label="> 8 years" value="10" name="group-28"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Flood Risk</Form.Label>
+            {step !== 31 ? null :  
+            <Card>
+            <Form.Label as='h3'>Is the area prone to flooding?</Form.Label>
             <Form.Control as="radio" value={flood_risk} placeholder="Enter the Flood Risk" onChange={(e) => set_flood_risk(e.target.value)}>
-            <Form.Check type="radio" label="Yes" value="yes" name="group-29"/>
-            <Form.Check type="radio" label="No" value="no" name="group-29"/>
+            <Form.Check className='custom-radio' checked={ flood_risk == "yes"} type="radio" label="Yes" value="yes" name="group-29"/>
+            <Form.Check className='custom-radio' checked={ flood_risk == "no"} type="radio" label="No" value="no" name="group-29"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Earthquake Risk</Form.Label>
+            {step !== 32 ? null :  
+            <Card>
+            <Form.Label as='h3'>Is the area prone to earthquakes?</Form.Label>
             <Form.Control as="radio" value={earthquake_risk} placeholder="Enter the Earthquake Risk" onChange={(e) => set_earthquake_risk(e.target.value)}>
-            <Form.Check type="radio" label="Yes" value="yes" name="group-30"/>
-            <Form.Check type="radio" label="No" value="no" name="group-30"/>
+            <Form.Check className='custom-radio' checked={ earthquake_risk == "yes"} type="radio" label="Yes" value="yes" name="group-30"/>
+            <Form.Check className='custom-radio' checked={ earthquake_risk == "no"} type="radio" label="No" value="no" name="group-30"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Distance From Shops</Form.Label>
+            {step !== 33 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the distance from shops in the area?</Form.Label>
             <Form.Control as="radio" value={distance_from_shops} placeholder="Enter the Distance From Shops" onChange={(e) => set_distance_from_shops(e.target.value)}>
-            <Form.Check type="radio" label="≤ 2" value="2" name="group-31"/>
-            <Form.Check type="radio" label="> 2" value="3" name="group-31"/>
+            <Form.Check className='custom-radio' checked={distance_from_shops == "2"} type="radio" label="≤ 2" value="2" name="group-31"/>
+            <Form.Check className='custom-radio' checked={distance_from_shops == "3"} type="radio" label="> 2" value="3" name="group-31"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Distance From Gym</Form.Label>
+            {step !== 34 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the distance from the nearest gym?</Form.Label>
             <Form.Control as="radio" value={distance_from_gym} placeholder="Enter the Distance From Gym" onChange={(e) => set_distance_from_gym(e.target.value)}>
-            <Form.Check type="radio" label="≤ 5" value="5" name="group-32"/>
-            <Form.Check type="radio" label="> 5" value="6" name="group-32"/>
+            <Form.Check className='custom-radio' checked={ distance_from_gym == "5"} type="radio" label="≤ 5" value="5" name="group-32"/>
+            <Form.Check className='custom-radio' checked={ distance_from_gym == "6"} type="radio" label="> 5" value="6" name="group-32"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Sound Proof</Form.Label>
+            {step !== 35 ? null :  
+            <Card>
+            <Form.Label as='h3'>Is the property soundproof?</Form.Label>
             <Form.Control as="radio" value={sound_proof} placeholder="Enter the Sound Proof" onChange={(e) => set_sound_proof(e.target.value)}>
-            <Form.Check type="radio" label="Yes" value="yes" name="group-33"/>
-            <Form.Check type="radio" label="No" value="no" name="group-33"/>
+            <Form.Check className='custom-radio' checked={ sound_proof == "yes"} type="radio" label="Yes" value="yes" name="group-33"/>
+            <Form.Check className='custom-radio' checked={ sound_proof == "no"} type="radio" label="No" value="no" name="group-33"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Storage</Form.Label>
+            {step !== 36 ? null :  
+            <Card>
+            <Form.Label as='h3'>Does the property have storage space?</Form.Label>
             <Form.Control as="radio" value={storage_room} placeholder="Enter the Storage" onChange={(e) => set_storage_room(e.target.value)}>
-            <Form.Check type="radio" label="Yes" value="yes" name="group-34"/>
-            <Form.Check type="radio" label="No" value="no" name="group-34"/>
+            <Form.Check className='custom-radio' checked={ storage_room == "yes"} type="radio" label="Yes" value="yes" name="group-34"/>
+            <Form.Check className='custom-radio' checked={ storage_room == "no"} type="radio" label="No" value="no" name="group-34"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Built In Appliances</Form.Label>
+            {step !== 37 ? null :  
+            <Card>
+            <Form.Label as='h3'>Does the property have built-in appliances?</Form.Label>
             <Form.Control as="radio" value={built_appliances} placeholder="Enter the Built In Appliances" onChange={(e) => set_built_appliances(e.target.value)}>
-            <Form.Check type="radio" label="Yes" value="yes" name="group-35"/>
-            <Form.Check type="radio" label="No" value="no" name="group-35"/>
+            <Form.Check className='custom-radio' checked={ built_appliances == "yes"} type="radio" label="Yes" value="yes" name="group-35"/>
+            <Form.Check className='custom-radio' checked={ built_appliances == "no"} type="radio" label="No" value="no" name="group-35"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Elevator</Form.Label>
+            {step !== 38 ? null :  
+            <Card>
+            <Form.Label as='h3'>Does the property have an elevator?</Form.Label>
             <Form.Control as="radio" value={elevator} placeholder="Enter the Elevator" onChange={(e) => set_elevator(e.target.value)}>
-            <Form.Check type="radio" label="Yes" value="yes" name="group-36"/>
-            <Form.Check type="radio" label="No" value="no" name="group-36"/>
+            <Form.Check className='custom-radio' checked={ elevator == "yes"} type="radio" label="Yes" value="yes" name="group-36"/>
+            <Form.Check className='custom-radio' checked={ elevator == "no"} type="radio" label="No" value="no" name="group-36"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Pool</Form.Label>
+            {step !== 39 ? null :  
+            <Card>
+            <Form.Label as='h3'>Does the property have a pool?</Form.Label>
             <Form.Control as="radio" value={pool} placeholder="Enter the Pool" onChange={(e) => set_pool(e.target.value)}>
-            <Form.Check type="radio" label="Yes" value="yes" name="group-37"/>
-            <Form.Check type="radio" label="No" value="no" name="group-37"/>
+            <Form.Check className='custom-radio' checked={ pool == "yes"} type="radio" label="Yes" value="yes" name="group-37"/>
+            <Form.Check className='custom-radio' checked={ pool == "no"} type="radio" label="No" value="no" name="group-37"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Sauna</Form.Label>
+            {step !== 40 ? null :  
+            <Card>
+            <Form.Label as='h3'>Does the property have a sauna?</Form.Label>
             <Form.Control as="radio" value={sauna} placeholder="Enter the Sauna" onChange={(e) => set_sauna(e.target.value)}>
-            <Form.Check type="radio" label="Yes" value="yes" name="group-38"/>
-            <Form.Check type="radio" label="No" value="no" name="group-38"/>
+            <Form.Check className='custom-radio' checked={ sauna == "yes"} type="radio" label="Yes" value="yes" name="group-38"/>
+            <Form.Check className='custom-radio' checked={ sauna == "no"} type="radio" label="No" value="no" name="group-38"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Jacuzzi</Form.Label>
+            {step !== 41 ? null :  
+            <Card>
+            <Form.Label as='h3'>Does the property have a Jacuzzi?</Form.Label>
             <Form.Control as="radio" value={jacuzzi} placeholder="Enter the Jacuzzi" onChange={(e) => set_jacuzzi(e.target.value)}>
-            <Form.Check type="radio" label="Yes" value="yes" name="group-39"/>
-            <Form.Check type="radio" label="No" value="no" name="group-39"/>
+            <Form.Check className='custom-radio' checked={ jacuzzi == "yes"} type="radio" label="Yes" value="yes" name="group-39"/>
+            <Form.Check className='custom-radio' checked={ jacuzzi == "no"} type="radio" label="No" value="no" name="group-39"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Spa</Form.Label>
+            {step !== 42 ? null :  
+            <Card>
+            <Form.Label as='h3'>Does the property have a spa?</Form.Label>
             <Form.Control as="radio" value={spa} placeholder="Enter the Spa" onChange={(e) => set_spa(e.target.value)}>
-            <Form.Check type="radio" label="Yes" value="yes" name="group-40"/>
-            <Form.Check type="radio" label="No" value="no" name="group-40"/>
+            <Form.Check className='custom-radio' checked={ spa == "yes"} type="radio" label="Yes" value="yes" name="group-40"/>
+            <Form.Check className='custom-radio' checked={ spa == "no"} type="radio" label="No" value="no" name="group-40"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Community Facilities</Form.Label>
+            {step !== 43 ? null :  
+            <Card>
+            <Form.Label as='h3'>Are there community facilities nearby?</Form.Label>
             <Form.Control as="radio" value={community_facilities} placeholder="Enter the Community Facilities" onChange={(e) => set_community_facilities(e.target.value)}>
-            <Form.Check type="radio" label="Yes" value="yes" name="group-41"/>
-            <Form.Check type="radio" label="No" value="no" name="group-41"/>
+            <Form.Check className='custom-radio' checked={ community_facilities == "yes"} type="radio" label="Yes" value="yes" name="group-41"/>
+            <Form.Check className='custom-radio' checked={ community_facilities == "no"} type="radio" label="No" value="no" name="group-41"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Distance From Touristic Area</Form.Label>
+            {step !== 44 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the distance from the nearest touristic area?</Form.Label>
             <Form.Control as="radio" value={distance_from_touristic_area} placeholder="Enter the Distance From Touristic Area" onChange={(e) => set_distance_from_touristic_area(e.target.value)}>
-            <Form.Check type="radio" label="≤ 3" value="3" name="group-42"/>
-            <Form.Check type="radio" label="> 3" value="4" name="group-42"/>
+            <Form.Check className='custom-radio' checked={distance_from_touristic_area == "3"} type="radio" label="≤ 3" value="3" name="group-42"/>
+            <Form.Check className='custom-radio' checked={distance_from_touristic_area == "4"} type="radio" label="> 3" value="4" name="group-42"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Parking Space</Form.Label>
+            {step !== 45 ? null :  
+            <Card>
+            <Form.Label as='h3'>Is there parking space available?</Form.Label>
             <Form.Control as="radio" value={parking_space} placeholder="Enter the Parking Space" onChange={(e) => set_parking_space(e.target.value)}>
-            <Form.Check type="radio" label="Garage" value="garage" name="group-43"/>
-            <Form.Check type="radio" label="Driveway" value="driveway" name="group-43"/>
-            <Form.Check type="radio" label="Carport" value="carport" name="group-43"/>
-            <Form.Check type="radio" label="None" value="none" name="group-43"/>
+            <Form.Check className='custom-radio' checked={ parking_space == "garage"} type="radio" label="Garage" value="garage" name="group-43"/>
+            <Form.Check className='custom-radio' checked={ parking_space == "driveway"} type="radio" label="Driveway" value="driveway" name="group-43"/>
+            <Form.Check className='custom-radio' checked={ parking_space == "carport"} type="radio" label="Carport" value="carport" name="group-43"/>
+            <Form.Check className='custom-radio' checked={ parking_space == "none"} type="radio" label="None" value="none" name="group-43"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Distance From Public Transportation</Form.Label>
+            {step !== 46 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the distance from public transportation?</Form.Label>
             <Form.Control as="radio" value={distance_from_public_transportation} placeholder="Enter the Distance From Public Transportation" onChange={(e) => set_distance_from_public_transportation(e.target.value)}>
-            <Form.Check type="radio" label="≤ 1" value="1" name="group-44"/>
-            <Form.Check type="radio" label="> 1" value="2" name="group-44"/>
+            <Form.Check className='custom-radio' checked={ distance_from_public_transportation == "1"} type="radio" label="≤ 1" value="1" name="group-44"/>
+            <Form.Check className='custom-radio' checked={ distance_from_public_transportation == "2"} type="radio" label="> 1" value="2" name="group-44"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Distance From Highway</Form.Label>
+            {step !== 47 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the distance from the nearest highway?</Form.Label>
             <Form.Control as="radio" value={distance_from_highway} placeholder="Enter the Distance From Highway" onChange={(e) => set_distance_from_highway(e.target.value)}>
-            <Form.Check type="radio" label="≤ 5" value="5" name="group-45"/>
-            <Form.Check type="radio" label="> 5" value="6" name="group-45"/>
+            <Form.Check className='custom-radio' checked={ distance_from_highway == "5"} type="radio" label="≤ 5" value="5" name="group-45"/>
+            <Form.Check className='custom-radio' checked={ distance_from_highway == "6"} type="radio" label="> 5" value="6" name="group-45"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Distance From Airport</Form.Label>
+            {step !== 48 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the distance from the nearest airport?</Form.Label>
             <Form.Control as="radio" value={distance_from_airport} placeholder="Enter the Distance From Airport" onChange={(e) => set_distance_from_airport(e.target.value)}>
-            <Form.Check type="radio" label="≤ 15" value="15" name="group-46"/>
-            <Form.Check type="radio" label="> 15" value="16" name="group-46"/>
+            <Form.Check className='custom-radio' checked={ distance_from_airport == "15"} type="radio" label="≤ 15" value="15" name="group-46"/>
+            <Form.Check className='custom-radio' checked={ distance_from_airport == "16"} type="radio" label="> 15" value="16" name="group-46"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Distance From Train Station</Form.Label>
+            {step !== 49 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the distance from the nearest train station?</Form.Label>
             <Form.Control as="radio" value={distance_from_train_station} placeholder="Enter the Distance From Train Station" onChange={(e) => set_distance_from_train_station(e.target.value)}>
-            <Form.Check type="radio" label="≤ 3" value="3" name="group-47"/>
-            <Form.Check type="radio" label="> 3" value="4" name="group-47"/>
+            <Form.Check className='custom-radio' checked={distance_from_train_station == "3"} type="radio" label="≤ 3" value="3" name="group-47"/>
+            <Form.Check className='custom-radio' checked={distance_from_train_station == "4"} type="radio" label="> 3" value="4" name="group-47"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Distance From Bus Station</Form.Label>
+            {step !== 50 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the distance from the nearest bus station?</Form.Label>
             <Form.Control as="radio" value={distance_from_bus_station} placeholder="Enter the Distance From Bus Station" onChange={(e) => set_distance_from_bus_station(e.target.value)}>
-            <Form.Check type="radio" label="≤ 2" value="2" name="group-48"/>
-            <Form.Check type="radio" label="> 2" value="3" name="group-48"/>
+            <Form.Check className='custom-radio' checked={distance_from_bus_station == "2"} type="radio" label="≤ 2" value="2" name="group-48"/>
+            <Form.Check className='custom-radio' checked={distance_from_bus_station == "3"} type="radio" label="> 2" value="3" name="group-48"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Distance From Ferry</Form.Label>
+            {step !== 51 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the distance from the nearest ferry?</Form.Label>
             <Form.Control as="radio" value={distance_from_ferry} placeholder="Enter the Distance From Ferry" onChange={(e) => set_distance_from_ferry(e.target.value)}>
-            <Form.Check type="radio" label="≤ 10" value="10" name="group-49"/>
-            <Form.Check type="radio" label="> 10" value="11" name="group-49"/>
+            <Form.Check className='custom-radio' checked={distance_from_ferry == "10"} type="radio" label="≤ 10" value="10" name="group-49"/>
+            <Form.Check className='custom-radio' checked={distance_from_ferry == "11"} type="radio" label="> 10" value="11" name="group-49"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Distance From Taxi Stand</Form.Label>
+            {step !== 52 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the distance from the nearest taxi stand?</Form.Label>
             <Form.Control as="radio" value={distance_from_taxi_stand} placeholder="Enter the Distance From Taxi Stand" onChange={(e) => set_distance_from_taxi_stand(e.target.value)}>
-            <Form.Check type="radio" label="≤ 1" value="1" name="group-50"/>
-            <Form.Check type="radio" label="> 1" value="2" name="group-50"/>
+            <Form.Check className='custom-radio' checked={ distance_from_taxi_stand == "1"} type="radio" label="≤ 1" value="1" name="group-50"/>
+            <Form.Check className='custom-radio' checked={ distance_from_taxi_stand == "2"} type="radio" label="> 1" value="2" name="group-50"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Distance From Bike Rental</Form.Label>
+            {step !== 53 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the distance from the nearest bike rental?</Form.Label>
             <Form.Control as="radio" value={distance_from_bike_rental} placeholder="Enter the Distance From Bike Rental" onChange={(e) => set_distance_from_bike_rental(e.target.value)}>
-            <Form.Check type="radio" label="≤ 1" value="1" name="group-51"/>
-            <Form.Check type="radio" label="> 1" value="2" name="group-51"/>
+            <Form.Check className='custom-radio' checked={ distance_from_bike_rental == "1"} type="radio" label="≤ 1" value="1" name="group-51"/>
+            <Form.Check className='custom-radio' checked={ distance_from_bike_rental == "2"} type="radio" label="> 1" value="2" name="group-51"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Distance From Car Rental</Form.Label>
+            {step !== 54 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the distance from the nearest car rental?</Form.Label>
             <Form.Control as="radio" value={distance_from_car_rental} placeholder="Enter the Distance From Car Rental" onChange={(e) => set_distance_from_car_rental(e.target.value)}>
-            <Form.Check type="radio" label="≤ 3" value="3" name="group-52"/>
-            <Form.Check type="radio" label="> 3" value="4" name="group-52"/>
+            <Form.Check className='custom-radio' checked={ distance_from_car_rental == "3"} type="radio" label="≤ 3" value="3" name="group-52"/>
+            <Form.Check className='custom-radio' checked={ distance_from_car_rental == "4"} type="radio" label="> 3" value="4" name="group-52"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Lawn</Form.Label>
+            {step !== 55 ? null :  
+            <Card>
+            <Form.Label as='h3'>Does the property have a lawn?</Form.Label>
             <Form.Control as="radio" value={lawn} placeholder="Enter the Lawn" onChange={(e) => set_lawn(e.target.value)}>
-            <Form.Check type="radio" label="Yes" value="yes" name="group-53"/>
-            <Form.Check type="radio" label="No" value="no" name="group-53"/>
+            <Form.Check className='custom-radio' checked={ lawn == "yes"} type="radio" label="Yes" value="yes" name="group-53"/>
+            <Form.Check className='custom-radio' checked={ lawn == "no"} type="radio" label="No" value="no" name="group-53"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Landscaping</Form.Label>
+            {step !== 56 ? null :  
+            <Card>
+            <Form.Label as='h3'>Does the property have landscaping?</Form.Label>
             <Form.Control as="radio" value={landscaping} placeholder="Enter the Landscaping" onChange={(e) => set_landscaping(e.target.value)}>
-            <Form.Check type="radio" label="Yes" value="yes" name="group-54"/>
-            <Form.Check type="radio" label="No" value="no" name="group-54"/>
+            <Form.Check className='custom-radio' checked={ landscaping == "yes"} type="radio" label="Yes" value="yes" name="group-54"/>
+            <Form.Check className='custom-radio' checked={ landscaping == "no"} type="radio" label="No" value="no" name="group-54"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Garden</Form.Label>
+            {step !== 57 ? null :  
+            <Card>
+            <Form.Label as='h3'>Does the property have a garden?</Form.Label>
             <Form.Control as="radio" value={garden} placeholder="Enter the Garden" onChange={(e) => set_garden(e.target.value)}>
-            <Form.Check type="radio" label="Yes" value="yes" name="group-55"/>
-            <Form.Check type="radio" label="No" value="no" name="group-55"/>
+            <Form.Check className='custom-radio' checked={ garden == "yes"} type="radio" label="Yes" value="yes" name="group-55"/>
+            <Form.Check className='custom-radio' checked={ garden == "no"} type="radio" label="No" value="no" name="group-55"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Distance From Park</Form.Label>
+            {step !== 58 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the distance from the nearest park?</Form.Label>
             <Form.Control as="radio" value={distance_from_park} placeholder="Enter the Distance From Park" onChange={(e) => set_distance_from_park(e.target.value)}>
-            <Form.Check type="radio" label="≤ 2" value="2" name="group-56"/>
-            <Form.Check type="radio" label="> 2" value="3" name="group-56"/>
+            <Form.Check className='custom-radio' checked={distance_from_park == "2"} type="radio" label="≤ 2" value="2" name="group-56"/>
+            <Form.Check className='custom-radio' checked={distance_from_park == "3"} type="radio" label="> 2" value="3" name="group-56"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Distance From Recreation Area</Form.Label>
+            {step !== 59 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the distance from the nearest recreation area?</Form.Label>
             <Form.Control as="radio" value={distance_from_recreation_area} placeholder="Enter the Distance From Recreation Area" onChange={(e) => set_distance_from_recreation_area(e.target.value)}>
-            <Form.Check type="radio" label="≤ 5" value="5" name="group-57"/>
-            <Form.Check type="radio" label="> 5" value="6" name="group-57"/>
+            <Form.Check className='custom-radio' checked={ distance_from_recreation_area == "5"} type="radio" label="≤ 5" value="5" name="group-57"/>
+            <Form.Check className='custom-radio' checked={ distance_from_recreation_area == "6"} type="radio" label="> 5" value="6" name="group-57"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Distance From Zoo</Form.Label>
+            {step !== 60 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the distance from the nearest zoo?</Form.Label>
             <Form.Control as="radio" value={distance_from_zoo} placeholder="Enter the Distance From Zoo" onChange={(e) => set_distance_from_zoo(e.target.value)}>
-            <Form.Check type="radio" label="≤ 10" value="10" name="group-58"/>
-            <Form.Check type="radio" label="> 10" value="11" name="group-58"/>
+            <Form.Check className='custom-radio' checked={distance_from_zoo == "10"} type="radio" label="≤ 10" value="10" name="group-58"/>
+            <Form.Check className='custom-radio' checked={distance_from_zoo == "11"} type="radio" label="> 10" value="11" name="group-58"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>View</Form.Label>
+            {step !== 61 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the view like from the property?</Form.Label>
             <Form.Control as="radio" value={view} placeholder="Enter the View" onChange={(e) => set_view(e.target.value)}>
-            <Form.Check type="radio" label="City" value="city" name="group-59"/>
-            <Form.Check type="radio" label="Water" value="water" name="group-59"/>
-            <Form.Check type="radio" label="Park" value="park" name="group-59"/>
-            <Form.Check type="radio" label="Nature" value="nature" name="group-59"/>
-            <Form.Check type="radio" label="Other" value="other" name="group-59"/>
+            <Form.Check className='custom-radio' checked={ view == "city"} type="radio" label="City" value="city" name="group-59"/>
+            <Form.Check className='custom-radio' checked={ view == "water"} type="radio" label="Water" value="water" name="group-59"/>
+            <Form.Check className='custom-radio' checked={ view == "park"} type="radio" label="Park" value="park" name="group-59"/>
+            <Form.Check className='custom-radio' checked={ view == "nature"} type="radio" label="Nature" value="nature" name="group-59"/>
+            <Form.Check className='custom-radio' checked={ view == "other"} type="radio" label="Other" value="other" name="group-59"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Security Features</Form.Label>
+            {step !== 62 ? null :  
+            <Card>
+            <Form.Label as='h3'>What security features does the property have?</Form.Label>
             <Form.Control as="radio" value={security_features} placeholder="Enter the Security Features" onChange={(e) => set_security_features(e.target.value)}>
-            <Form.Check type="radio" label="Alarm" value="alarm" name="group-60"/>
-            <Form.Check type="radio" label="Surveillance" value="surveillance" name="group-60"/>
-            <Form.Check type="radio" label="Guard" value="guard" name="group-60"/>
-            <Form.Check type="radio" label="None" value="none" name="group-60"/>
+            <Form.Check className='custom-radio' checked={security_features == "alarm"} type="radio" label="Alarm" value="alarm" name="group-60"/>
+            <Form.Check className='custom-radio' checked={security_features == "surveillance"} type="radio" label="Surveillance" value="surveillance" name="group-60"/>
+            <Form.Check className='custom-radio' checked={security_features == "guard"} type="radio" label="Guard" value="guard" name="group-60"/>
+            <Form.Check className='custom-radio' checked={security_features == "none"} type="radio" label="None" value="none" name="group-60"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Distance From Schools</Form.Label>
+            {step !== 63 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the distance from schools in the area?</Form.Label>
             <Form.Control as="radio" value={distance_from_schools} placeholder="Enter the Distance From Schools" onChange={(e) => set_distance_from_schools(e.target.value)}>
-            <Form.Check type="radio" label="≤ 3" value="3" name="group-61"/>
-            <Form.Check type="radio" label="> 3" value="4" name="group-61"/>
+            <Form.Check className='custom-radio' checked={ distance_from_schools == "3"} type="radio" label="≤ 3" value="3" name="group-61"/>
+            <Form.Check className='custom-radio' checked={ distance_from_schools == "4"} type="radio" label="> 3" value="4" name="group-61"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Distance From Shopping Center</Form.Label>
+            {step !== 64 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the distance from the nearest shopping center?</Form.Label>
             <Form.Control as="radio" value={distance_from_shopping_center} placeholder="Enter the Distance From Shopping Center" onChange={(e) => set_distance_from_shopping_center(e.target.value)}>
-            <Form.Check type="radio" label="≤ 2" value="2" name="group-62"/>
-            <Form.Check type="radio" label="> 2" value="3" name="group-62"/>
+            <Form.Check className='custom-radio' checked={ distance_from_shopping_center == "2"} type="radio" label="≤ 2" value="2" name="group-62"/>
+            <Form.Check className='custom-radio' checked={ distance_from_shopping_center == "3"} type="radio" label="> 2" value="3" name="group-62"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Distance From Library</Form.Label>
+            {step !== 65 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the distance from the nearest library?</Form.Label>
             <Form.Control as="radio" value={distance_from_library} placeholder="Enter the Distance From Library" onChange={(e) => set_distance_from_library(e.target.value)}>
-            <Form.Check type="radio" label="≤ 5" value="5" name="group-63"/>
-            <Form.Check type="radio" label="> 5" value="6" name="group-63"/>
+            <Form.Check className='custom-radio' checked={ distance_from_library == "5"} type="radio" label="≤ 5" value="5" name="group-63"/>
+            <Form.Check className='custom-radio' checked={ distance_from_library == "6"} type="radio" label="> 5" value="6" name="group-63"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Distance From Hospital</Form.Label>
+            {step !== 66 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the distance from the nearest hospital?</Form.Label>
             <Form.Control as="radio" value={distance_from_hospital} placeholder="Enter the Distance From Hospital" onChange={(e) => set_distance_from_hospital(e.target.value)}>
-            <Form.Check type="radio" label="≤ 8" value="8" name="group-64"/>
-            <Form.Check type="radio" label="> 8" value="9" name="group-64"/>
+            <Form.Check className='custom-radio' checked={distance_from_hospital == "8"} type="radio" label="≤ 8" value="8" name="group-64"/>
+            <Form.Check className='custom-radio' checked={distance_from_hospital == "9"} type="radio" label="> 8" value="9" name="group-64"/>
             </Form.Control>
-            </>
-            <br/>
+            </Card>
+            }
+            {/* <br/> */}
 
-            <>
-            <Form.Label as='h3'>Distance From Pharmacy</Form.Label>
+            {step !== 67 ? null :  
+            <Card>
+            <Form.Label as='h3'>What is the distance from the nearest pharmacy?</Form.Label>
             <Form.Control as="radio" value={distance_from_pharmacy} placeholder="Enter the Distance From Pharmacy" onChange={(e) => set_distance_from_pharmacy(e.target.value)}>
-            <Form.Check type="radio" label="≤ 1" value="1" name="group-65"/>
-            <Form.Check type="radio" label="> 1" value="2" name="group-65"/>
+            <Form.Check className='custom-radio' checked={  distance_from_pharmacy == "1"} type="radio" label="≤ 1" value="1" name="group-65"/>
+            <Form.Check className='custom-radio' checked={  distance_from_pharmacy == "2"} type="radio" label="> 1" value="2" name="group-65"/>
             </Form.Control>
-            </>
-            <br/>
-            <br/>
-            <ButtonGroup style={{display: 'flex', justifyContent: 'center'}}>
-                <Button className="mb-3 me-2" size='lg' type="submit" variant="primary" >Submit</Button>
-            </ButtonGroup>
+            </Card>
+            }
+            {/* <br/> */}
+            {/* <br/> */}
+            {
+                step === 67 ?
+                <ButtonGroup style={{display: 'flex', justifyContent: 'center'}}>
+                    <Button className="mb-3 me-2" size='lg' type="submit" variant="primary" >Submit</Button>
+                </ButtonGroup>
+                :
+                null
+            }
             </Form>
 
             </>
