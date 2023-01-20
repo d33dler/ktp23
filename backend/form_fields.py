@@ -150,6 +150,7 @@ class Living_capacity:
 @dataclass(frozen=True)
 class Roommates:
     id = "roommates"
+    p0 = 0 # TODO add roomates 0
     p1 = 1
     p2 = 2
     p3 = 3
