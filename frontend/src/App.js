@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Button, ButtonGroup, Container} from "react-bootstrap";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import {RiPriceTagLine} from 'react-icons/ri';
 
 
 function App() {
@@ -100,7 +101,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1 style={{display: 'flex', justifyContent: 'center'}}>Rental Price Predictor</h1>
+      <h1 style={{display: 'flex', justifyContent: 'center'}}> <RiPriceTagLine/> Rental Price Predictor </h1>
       <Container>
       <Row>
       <Col>

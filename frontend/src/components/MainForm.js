@@ -2,7 +2,17 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Form, Button, Container, ButtonGroup, Card, InputGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
-
+import {ImLocation2} from 'react-icons/im';
+import {GiModernCity} from 'react-icons/gi';
+import {IoPeopleSharp} from 'react-icons/io5';
+import {FaCouch} from 'react-icons/fa';
+import {GiShower} from 'react-icons/gi';
+import {FaToilet} from 'react-icons/fa';
+import {FaWifi} from 'react-icons/fa';
+import {SlEnergy} from 'react-icons/sl';
+import {MdEmojiPeople} from 'react-icons/md';
+import {BsFillEmojiAngryFill} from 'react-icons/bs';
+import {WiCloudyWindy} from 'react-icons/wi';
 
 function MainForm({props}) {
   
@@ -196,7 +206,7 @@ function MainForm({props}) {
 
             {step !== 3 ? null : 
             <Card>
-            <Form.Label as='h3'>Where is your property located?</Form.Label>
+            <Form.Label as='h3'>Where is your property located? <ImLocation2/> </Form.Label>
             <Form.Control as="radio" value={property_location} placeholder="Enter the Property Location" onChange={(e) => set_property_location(e.target.value)}>
             <Form.Check className='custom-radio' checked={ property_location == "Amsterdam"} type="radio" label="Amsterdam" value="Amsterdam" name="group-1"/>
             <Form.Check className='custom-radio' checked={ property_location == "Groningen"} type="radio" label="Groningen" value="Groningen" name="group-1"/>
@@ -212,7 +222,7 @@ function MainForm({props}) {
 
             {step !== 4 ? null : 
             <Card>
-            <Form.Label as='h3'>What is the distance from your property to the city?</Form.Label>
+            <Form.Label as='h3'>What is the distance from your property to the city? <GiModernCity/> </Form.Label>
             <Form.Control as="radio" value={distance_to_city} placeholder="Enter the Distance To City" onChange={(e) => set_distance_to_city(e.target.value)}>
             <Form.Check className='custom-radio' checked={ distance_to_city == "2"} type="radio" label="≤ 2" value="2" name="group-2"/>
             <Form.Check className='custom-radio' checked={ distance_to_city == "5"} type="radio" label="≤ 5" value="5" name="group-2"/>
@@ -225,7 +235,7 @@ function MainForm({props}) {
 
             {step !== 5 ? null : 
             <Card>
-            <Form.Label as='h3'>What is the population of the area where your property is located?</Form.Label>
+            <Form.Label as='h3'>What is the population of the area where your property is located? <IoPeopleSharp /> </Form.Label>
             <Form.Control as="radio" value={population} placeholder="Enter the Population" onChange={(e) => set_population(e.target.value)}>
             <Form.Check className='custom-radio' checked={ population == "1E6"} type="radio" label="< 1e6" value="1E6" name="group-3"/>
             <Form.Check className='custom-radio' checked={ population == "1E7"} type="radio" label="> 1e6" value="1E7" name="group-3"/>
@@ -252,7 +262,7 @@ function MainForm({props}) {
 
             {step !== 7 ? null : 
             <Card>
-            <Form.Label as='h3'>Is the property furnished?</Form.Label>
+            <Form.Label as='h3'>Is the property furnished? <FaCouch/> </Form.Label>
             <Form.Control as="radio" value={furnished} placeholder="Enter the Furnished" onChange={(e) => set_furnished(e.target.value)}>
             <Form.Check className='custom-radio' checked={ furnished == "yes"} type="radio" label="Yes" value="yes" name="group-5"/>
             <Form.Check className='custom-radio' checked={ furnished == "no"} type="radio" label="No" value="no" name="group-5"/>
@@ -263,7 +273,7 @@ function MainForm({props}) {
 
             {step !== 8 ? null :
             <Card>
-            <Form.Label as='h3'>Does the property have a shower?</Form.Label>
+            <Form.Label as='h3'>Does the property have a shower? <GiShower/> </Form.Label>
             <Form.Control as="radio" value={shower} placeholder="Enter the Shower" onChange={(e) => set_shower(e.target.value)}>
             <Form.Check className='custom-radio' checked={shower == "private"} type="radio" label="Private" value="private" name="group-6"/>
             <Form.Check className='custom-radio' checked={shower == "shared"} type="radio" label="Shared" value="shared" name="group-6"/>
@@ -274,7 +284,7 @@ function MainForm({props}) {
 
             {step !== 9 ? null : 
             <Card>
-            <Form.Label as='h3'>Does the property have a toilet?</Form.Label>
+            <Form.Label as='h3'>Does the property have a toilet? <FaToilet/></Form.Label>
             <Form.Control as="radio" value={toilet} placeholder="Enter the Toilet" onChange={(e) => set_toilet(e.target.value)}>
             <Form.Check className='custom-radio' checked={ toilet == "private"} type="radio" label="Private" value="private" name="group-7"/>
             <Form.Check className='custom-radio' checked={ toilet == "shared"} type="radio" label="Shared" value="shared" name="group-7"/>
@@ -311,7 +321,7 @@ function MainForm({props}) {
 
             {step !== 12 ? null :  
             <Card>
-            <Form.Label as='h3'>Does the property have internet access?</Form.Label>
+            <Form.Label as='h3'>Does the property have internet access? <FaWifi/> </Form.Label>
             <Form.Control as="radio" value={internet} placeholder="Enter the Internet" onChange={(e) => set_internet(e.target.value)}>
             <Form.Check className='custom-radio' checked={ internet == "yes"} type="radio" label="Yes" value="yes" name="group-10"/>
             <Form.Check className='custom-radio' checked={ internet == "no"} type="radio" label="No" value="no" name="group-10"/>
@@ -322,7 +332,7 @@ function MainForm({props}) {
 
             {step !== 13 ? null :  
             <Card>
-            <Form.Label as='h3'>What is the energy label of the property?</Form.Label>
+            <Form.Label as='h3'>What is the energy label of the property? <SlEnergy/> </Form.Label>
             <Form.Control as="radio" value={energy_label} placeholder="Enter the Energy Label" onChange={(e) => set_energy_label(e.target.value)}>
             <Form.Check className='custom-radio' checked={ energy_label == "A"} type="radio" label="A" value="A" name="group-11"/>
             <Form.Check className='custom-radio' checked={ energy_label == "B"} type="radio" label="B" value="B" name="group-11"/>
@@ -338,7 +348,7 @@ function MainForm({props}) {
 
             {step !== 14 ? null :  
             <Card>
-            <Form.Label as='h3'>Are there roommates in the property?</Form.Label>
+            <Form.Label as='h3'>Are there roommates in the property? <MdEmojiPeople/> </Form.Label>
             <Form.Control as="radio" value={roommates} placeholder="Enter the Roommates" onChange={(e) => set_roommates(e.target.value)}>
             <Form.Check className='custom-radio' checked={ roommates == "1"} type="radio" label="1" value="1" name="group-12"/>
             <Form.Check className='custom-radio' checked={ roommates == "2"} type="radio" label="2" value="2" name="group-12"/>
@@ -353,7 +363,7 @@ function MainForm({props}) {
 
             {step !== 15 ? null :  
             <Card>
-            <Form.Label as='h3'>Are there problematic neighbors in the area?</Form.Label>
+            <Form.Label as='h3'>Are there problematic neighbors in the area?<BsFillEmojiAngryFill/></Form.Label>
             <Form.Control as="radio" value={problematic_neighbors} placeholder="Enter the Problematic Neighbors" onChange={(e) => set_problematic_neighbors(e.target.value)}>
             <Form.Check className='custom-radio' checked={ problematic_neighbors == "yes"} type="radio" label="Yes" value="yes" name="group-13"/>
             <Form.Check className='custom-radio' checked={ problematic_neighbors == "no"} type="radio" label="No" value="no" name="group-13"/>
@@ -364,7 +374,7 @@ function MainForm({props}) {
 
             {step !== 16 ? null :  
             <Card>
-            <Form.Label as='h3'>What is the air quality like in the area?</Form.Label>
+            <Form.Label as='h3'>What is the air quality like in the area? <WiCloudyWindy/> </Form.Label>
             <Form.Control as="radio" value={air_quality} placeholder="Enter the Air Quality" onChange={(e) => set_air_quality(e.target.value)}>
             <Form.Check className='custom-radio' checked={ air_quality == "good"} type="radio" label="Good" value="good" name="group-14"/>
             <Form.Check className='custom-radio' checked={ air_quality == "average"} type="radio" label="Average" value="average" name="group-14"/>
