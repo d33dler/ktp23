@@ -32,6 +32,7 @@ class RentalPropertyValuation:
     _base_val: float = 0  # BASE VALUATION
     _val: float = 0  # ADDITIVE VALUATION
     rental_property: dict
+    _default_ppsqm = 16
     ppsqm = 16  # average price (euro) per square meter 2022 (NL)
     legal_occupy_sqm = 12  # (minimum) legal limit (m^2) occupancy space per person (NL)
     attributes = Att()
@@ -51,15 +52,15 @@ class RentalPropertyValuation:
         if sqm <= A.area_sqm.m10:
             ppsqm += 0.5
         elif sqm <= A.area_sqm.m20:
-            ppsqm += 0.2
+            ppsqm -= 0.2
         elif sqm <= A.area_sqm.m30:
-            ppsqm += 0.5
+            ppsqm -= 0.5
         elif sqm <= A.area_sqm.m50:
-            ppsqm += 0.75
+            ppsqm -= 0.75
         elif sqm <= A.area_sqm.m70:
-            ppsqm += 1
+            ppsqm -= 1
         elif sqm <= A.area_sqm.m100:
-            ppsqm += 1.15
+            ppsqm -= 1.5
         else:
             ppsqm -= 2.5
         self.ppsqm = ppsqm
@@ -71,7 +72,7 @@ class RentalPropertyValuation:
         elif rental_property[property_location] == A.property_location.rotterdam:
             base_valuation = sqm * (ppsqm * 1.2)
         elif rental_property[property_location] == A.property_location.groningen:
-            base_valuation = sqm * (ppsqm * 1.3)
+            base_valuation = sqm * (ppsqm * 1)
         elif rental_property[property_location] == A.property_location.utrecht:
             base_valuation = sqm * (ppsqm * 1.25)
         elif rental_property[property_location] == A.property_location.hague:
@@ -83,22 +84,23 @@ class RentalPropertyValuation:
 
         property_type = A.property_type.id
         if rental_property[property_type] == A.property_type.room:
+            base_valuation *= 0.95
             _val_fraq = 0.25
         elif rental_property[property_type] == A.property_type.apartment:
             base_valuation *= 1.1
-            _val_fraq = 0.3
+            _val_fraq = 0.2
         elif rental_property[property_type] == A.property_type.anti_squat:
             base_valuation *= 0.85
             _val_fraq = 0.2
         elif rental_property[property_type] == A.property_type.studio:
             base_valuation *= 1.25
-            _val_fraq = 0.2
+            _val_fraq = 0.25
         elif rental_property[property_type] == A.property_type.student_residence:
             base_valuation *= 1.25
-            _val_fraq = 0.3
+            _val_fraq = 0.2
         elif rental_property[property_type] == A.property_type.house:
-            base_valuation *= 1.3
-            _val_fraq = 0.4
+            base_valuation *= 1.2
+            _val_fraq = 0.25
 
         capacity = A.living_capacity.id
         if sqm // rental_property[capacity] <= self.legal_occupy_sqm:
@@ -123,10 +125,10 @@ class RentalPropertyValuation:
             base_valuation *= 0.9
 
         if rental_property[A.garden_terrace.id]:
-            base_valuation *= 1.1
+            base_valuation *= 1.05
 
         if rental_property[A.storage_room]:
-            base_valuation *= 1.15
+            base_valuation *= 1.05
         self._val = base_valuation * _val_fraq
         self._base_val = base_valuation
         print("BASE FEATURES:", self._val)
@@ -162,11 +164,11 @@ class RentalPropertyValuation:
         if rental_property[A.dist_hospital.id] <= 8:
             misc_dist_valuation += 0.05
         if rental_property[A.dist_shops.id] <= 2:
-            misc_dist_valuation += 0.05
+            misc_dist_valuation += 0.005
         if rental_property[A.dist_gym.id] <= 5:
             misc_dist_valuation += 0.01
         if rental_property[A.dist_pub_transport.id] <= 1:
-            misc_dist_valuation += 0.02
+            misc_dist_valuation += 0.05
         if rental_property[A.dist_highway.id] <= A.dist_highway.km1:
             misc_dist_valuation += 0.01
         else:
@@ -176,27 +178,27 @@ class RentalPropertyValuation:
         if rental_property[A.dist_train_station.id] <= 3:
             misc_dist_valuation += 0.02
         if rental_property[A.dist_bus_station.id] <= 2:
-            misc_dist_valuation += 0.01
+            misc_dist_valuation += 0.005
         if rental_property[A.dist_ferry_terminal.id] <= 10:
-            misc_dist_valuation += 0.01
+            misc_dist_valuation += 0.005
         if rental_property[A.dist_taxi_stand.id] <= 1:
-            misc_dist_valuation += 0.01
+            misc_dist_valuation += 0.005
         if rental_property[A.dist_bike_rental.id] <= 1:
-            misc_dist_valuation += 0.01
+            misc_dist_valuation += 0.005
         if rental_property[A.dist_car_rental.id] <= 3:
-            misc_dist_valuation += 0.01
+            misc_dist_valuation += 0.005
         if rental_property[A.dist_park.id] <= 2:
-            misc_dist_valuation += 0.025
+            misc_dist_valuation += 0.005
         if rental_property[A.dist_recreation_area.id] <= 5:
-            misc_dist_valuation += 0.025
+            misc_dist_valuation += 0.005
         if rental_property[A.dist_zoo.id] <= 10:
-            misc_dist_valuation += 0.01
+            misc_dist_valuation += 0.005
         if rental_property[A.dist_schools.id] <= 3:
             misc_dist_valuation += 0.001
         if rental_property[A.dist_shop_center.id] <= 2:
-            misc_dist_valuation += 0.01
+            misc_dist_valuation += 0.001
         if rental_property[A.dist_library.id] <= 5:
-            misc_dist_valuation += 0.01
+            misc_dist_valuation += 0.005
         if rental_property[A.dist_pharmacy.id] <= 1:
             misc_dist_valuation += 0.01
 
@@ -322,16 +324,22 @@ class RentalPropertyValuation:
 
         stack_val = 0
         sqm = self.sqm
+        utilities = 0
+        modifier = 5
+        if rental_property[A.roommates.id] > 0:
+            modifier /= rental_property[A.roommates.id]
+
         if rental_property[energy_label] in [el.A, el.B]:
-            valuation += sqm * 5
+            utilities += sqm * (modifier - 0.25)
         elif rental_property[energy_label] in [el.C, el.D]:
-            valuation += sqm * 6
+            utilities += sqm * (modifier + 0.15)
         elif rental_property[energy_label] == el.E:
-            valuation += sqm * 8
+            utilities += sqm * (modifier + 0.25)
         elif rental_property[energy_label] == el.F:
-            valuation += sqm * 10
+            utilities += sqm * (modifier + 2)
         elif rental_property[energy_label] == el.G:
-            valuation += sqm * 11
+            utilities += sqm * (modifier + 3)
+
 
         if rental_property[A.renovation_date.id] <= 2:
             pass
@@ -360,7 +368,7 @@ class RentalPropertyValuation:
 
         air_quality = A.air_quality.id
         if rental_property[air_quality] == A.air_quality.good:
-            stack_val += 0.05
+            stack_val += 0.025
         elif rental_property[air_quality] == A.air_quality.average:
             stack_val -= 0.01
         else:
@@ -403,11 +411,11 @@ class RentalPropertyValuation:
         if rental_property[view] == A.view.city:
             stack_val += 0.1
         elif rental_property[view] == A.view.water:
-            stack_val += 0.15
+            stack_val += 0.1
         elif rental_property[view] == A.view.park:
-            stack_val += 0.1
+            stack_val += 0.05
         elif rental_property[view] == A.view.nature:
-            stack_val += 0.1
+            stack_val += 0.05
 
         if rental_property[
             A.management_fee.id] <= 0.5:  # fraction of the expected monthly rent (per year) - for house maintenance
@@ -433,4 +441,7 @@ class RentalPropertyValuation:
         self._special_fetures()
         self._misc_features()
         res = self._base_val + self._val
+        self._base_val = 0
+        self._val = 0
+        self.ppsqm = self._default_ppsqm
         return res
