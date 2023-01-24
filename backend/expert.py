@@ -50,15 +50,15 @@ class RentalPropertyValuation:
         _val_fraq = 1
         base_valuation = 0
         if sqm <= A.area_sqm.m10:
-            ppsqm += 0.5
+            ppsqm += 1.5
         elif sqm <= A.area_sqm.m20:
             ppsqm -= 0.2
         elif sqm <= A.area_sqm.m30:
             ppsqm -= 0.5
         elif sqm <= A.area_sqm.m50:
-            ppsqm -= 0.75
-        elif sqm <= A.area_sqm.m70:
             ppsqm -= 1
+        elif sqm <= A.area_sqm.m70:
+            ppsqm -= 1.2
         elif sqm <= A.area_sqm.m100:
             ppsqm -= 1.5
         else:
@@ -72,7 +72,7 @@ class RentalPropertyValuation:
         elif rental_property[property_location] == A.property_location.rotterdam:
             base_valuation = sqm * (ppsqm * 1.2)
         elif rental_property[property_location] == A.property_location.groningen:
-            base_valuation = sqm * (ppsqm * 1)
+            base_valuation = sqm * (ppsqm * 1.15)
         elif rental_property[property_location] == A.property_location.utrecht:
             base_valuation = sqm * (ppsqm * 1.25)
         elif rental_property[property_location] == A.property_location.hague:
@@ -332,14 +332,15 @@ class RentalPropertyValuation:
         if rental_property[energy_label] in [el.A, el.B]:
             utilities += sqm * (modifier - 0.25)
         elif rental_property[energy_label] in [el.C, el.D]:
-            utilities += sqm * (modifier + 0.15)
-        elif rental_property[energy_label] == el.E:
-            utilities += sqm * (modifier + 0.25)
-        elif rental_property[energy_label] == el.F:
             utilities += sqm * (modifier + 2)
-        elif rental_property[energy_label] == el.G:
+        elif rental_property[energy_label] == el.E:
+            utilities += sqm * (modifier + 2)
+        elif rental_property[energy_label] == el.F:
             utilities += sqm * (modifier + 3)
+        elif rental_property[energy_label] == el.G:
+            utilities += sqm * (modifier + 4)
 
+        valuation += utilities
 
         if rental_property[A.renovation_date.id] <= 2:
             pass
