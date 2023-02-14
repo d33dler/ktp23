@@ -141,3 +141,4 @@ def show_gather_kitchen():
             
 def show_gather_bathroom():
     # TODO
+    pass
