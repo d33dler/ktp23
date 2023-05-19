@@ -1,0 +1,49 @@
+[{
+  "ID": 0,
+  "Q": "What is the type of your property?",
+  "OPTIONS": [["Apartment", 1],["House", -1]],
+  "REG": null
+},
+{
+  "ID": 1,
+  "Q": "Which housing fund does your property belong to?",
+  "OPTIONS": [["Primary", 2],["Secondary", 4]],
+  "REG": null
+},
+{
+  "ID": 2,
+  "Q": "In which zone is your property situated?",
+  "OPTIONS": [["Cultural", 3],["Periphery", 3]],
+  "REG": null
+},
+{
+  "ID": 3,
+  "Q": "Comfort level and security?",
+  "OPTIONS": [["High", -1],["Low", -1]],
+  "REG": null
+},
+{
+  "ID": 4,
+  "Q": "Region type?",
+  "OPTIONS": [["Developed", -1],["Underdeveloped", -1]],
+  "REG": null
+},
+{
+  "ID": 5,
+  "Q": "Surface area & number of bathrooms?",
+  "OPTIONS": [["Above 50m2 & 2 bathrooms", -1],["Under 50m2 & 1 bathroom", -1]],
+  "REG": null
+},
+{
+  "ID": 7,
+  "Q": "Reparation quality & technologization?",
+  "OPTIONS": [["High", -1],["Low", -1]],
+  "REG": null
+},
+{
+  "ID": 8,
+  "Q": "Furniture quality & comfort?",
+  "OPTIONS": [["High", -1],["Low", -1]],
+  "REG": null
+}
+]
