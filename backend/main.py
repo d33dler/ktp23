@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from model import RentalPropertyValuation
+from model import PropertyEvaluationModel
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.requests import Request
 from pydantic import BaseModel
@@ -41,13 +41,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
+pem = PropertyEvaluationModel()
 @app.post("/")
 async def root(form: Form):
     # convert form to dict
     form = form.dict()
     # form = await form.json()
     print(form)
-    rpv = RentalPropertyValuation(form)
+    rpv = pem.forward(form)
     val = rpv.calculate_valuation()
     return {"message": str(val)}

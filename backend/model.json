@@ -1,49 +1,65 @@
-[{
+{"nodes" : [{
   "ID": 0,
+  "FID": [],
   "Q": "What is the type of your property?",
-  "OPTIONS": [["Apartment", 1],["House", -1]],
+  "OPTIONS": [["Apartment", 1],["House", 8]],
   "REG": null
 },
 {
   "ID": 1,
+  "FID": ["housing_fund"],
   "Q": "Which housing fund does your property belong to?",
   "OPTIONS": [["Primary", 2],["Secondary", 4]],
   "REG": null
 },
 {
   "ID": 2,
+  "FID": ["zone"],
   "Q": "In which zone is your property situated?",
   "OPTIONS": [["Cultural", 3],["Periphery", 3]],
   "REG": null
 },
 {
   "ID": 3,
+  "FID": ["comfort_security"],
   "Q": "Comfort level and security?",
-  "OPTIONS": [["High", -1],["Low", -1]],
+  "OPTIONS": [["High", 5],["Low", 5]],
   "REG": null
 },
 {
   "ID": 4,
+  "FID": ["region+street"],
   "Q": "Region type?",
-  "OPTIONS": [["Developed", -1],["Underdeveloped", -1]],
+  "OPTIONS": [["Developed", 5],["Underdeveloped", 5]],
   "REG": null
 },
 {
   "ID": 5,
+  "FID": ["area_m2", "bathroom"],
   "Q": "Surface area & number of bathrooms?",
-  "OPTIONS": [["Above 50m2 & 2 bathrooms", -1],["Under 50m2 & 1 bathroom", -1]],
+  "OPTIONS": [["Above 50m2 & 2 bathrooms", 6],["Under 50m2 & 1 bathroom", 6]],
+  "REG": null
+},
+{
+  "ID": 6,
+  "FID": [],
+  "Q": "Reparation quality & technologization?",
+  "OPTIONS": [["High", 7],["Low", 7]],
   "REG": null
 },
 {
   "ID": 7,
-  "Q": "Reparation quality & technologization?",
+  "FID": [],
+  "Q": "Furniture quality & comfort?",
   "OPTIONS": [["High", -1],["Low", -1]],
-  "REG": null
+  "REG": true
 },
 {
   "ID": 8,
-  "Q": "Furniture quality & comfort?",
-  "OPTIONS": [["High", -1],["Low", -1]],
+  "FID": [],
+  "Q": " -- HOUSE QUESTION 1 -- ",
+  "OPTIONS": [["...", -1],["...", -1]],
   "REG": null
 }
 ]
+}
