@@ -1,79 +1,76 @@
-{"nodes" : [{
-  "ID": 0,
-  "FID": [],
-  "Q": "What is the type of your property?",
-  "OPTIONS": [["Apartment", 1],["House", 11]],
-  "REG": null
-},
-{
-  "ID": 1,
-  "FID": ["housing_fund"],
-  "Q": "Which housing fund does your property belong to?",
-  "OPTIONS": [["Primary", 2],["Secondary", 4]],
-  "REG": null
-},
-{
-  "ID": 2,
-  "FID": ["region"],
-  "Q": "Which housing fund does your property belong to?",
-  "OPTIONS": [["Chisianu", 3],["Botanica", 3],["Riscani", 3],["Ciocana", 3], ["Posta_Veche", 3], ["Telecentru", 3]],
-  "REG": null
-},
-{
-  "ID": 3,
-  "FID": ["zone_type"],
-  "Q": "In which zone is your property situated?",
-  "OPTIONS": [["Cultural", 4],["Periphery", 5]],
-  "REG": null
-},
-{
-  "ID": 4,
-  "FID": [],
-  "Q": "Comfort level and security?",
-  "OPTIONS": [["High", 5],["Low", 5]],
-  "REG": null
-},
-{
-  "ID": 5,
-  "FID": ["area_m2", "bathroom"],
-  "Q": "Surface area & number of bathrooms?",
-  "OPTIONS": [["Above 50m2 & 2 bathrooms", 6],["Under 50m2 & 1 bathroom", 6]],
-  "REG": null
-},
-{
-  "ID": 6,
-  "FID": ["condition"],
-  "Q": "Reparation quality & technologization?",
-  "OPTIONS": [["High", 7],["Low", 7]],
-  "REG": null
-},
-{
-  "ID": 7,
-  "FID": [],
-  "Q": "Furniture quality & comfort?",
-  "OPTIONS": [["High", 8],["Low", 8]],
-  "REG": true
-},
-{
-  "ID": 8,
-  "FID": [],
-  "Q": "Renting entity?",
-  "OPTIONS": [["Private", 9],["Agency", 9]],
-  "REG": true
-},
-{
-  "ID": 9,
-  "FID": [],
-  "Q": "Rental period term?",
-  "OPTIONS": [["Short", -1],["Long", -1]],
-  "REG": true
-},
-{
-  "ID": 11,
-  "FID": [],
-  "Q": " -- HOUSE QUESTION X",
-  "OPTIONS": [["...", -1],["...", -1]],
-  "REG": null
-}
-]
+{"nodes" : [
+  {
+    "ID": 0,
+    "FID": ["housing_fund"],
+    "Q": "Which housing fund does your property belong to?",
+    "OPTIONS": [["Primary", 1],["Secondary", 1]]
+  },
+  {
+    "ID": 1,
+    "FID": ["region"],
+    "Q": "Which region does your property belong to??",
+    "OPTIONS": [["Center", 2], ["Buiucani", 2],["Botanica", 2],["Riscani", 2],["Ciocana", 2], ["Posta_Veche", 2]]
+  },
+  {
+    "ID": 2,
+    "FID": ["zone_type"],
+    "Q": "Zone type?",
+    "OPTIONS": [["Central", 3],["Periphery", 4]]
+  },
+  {
+    "ID": 3,
+    "FID": [],
+    "Q": "Comfort level and security?",
+    "OPTIONS": [["High", 4],["Low", 4]]
+  },
+  {
+    "ID": 4,
+    "FID": ["area_m2", "bathroom"],
+    "Q": "Surface area & number of bathrooms?",
+    "OPTIONS": [["2+ rooms & 2 bathrooms", 5],["1 room & 1 bathroom", 5]]
+  },
+  {
+    "ID": 5,
+    "FID": ["condition"],
+    "Q": "Reparation quality & technologization?",
+    "OPTIONS": [["High", 6],["Low", 6]]
+  },
+  {
+    "ID": 6,
+    "FID": [],
+    "Q": "Furniture quality & comfort?",
+    "OPTIONS": [["High", 7],["Low", 7]]},
+  {
+    "ID": 7,
+    "FID": [],
+    "Q": "Renting entity?",
+    "OPTIONS": [["Agency", 8],["Private", 8]]
+  },
+  {
+    "ID": 8,
+    "FID": [],
+    "Q": "Rental period term?",
+    "OPTIONS": [["Short", 9],["Long", 9]]
+  },
+  {
+    "ID": 9,
+    "FID": [],
+    "Q": "",
+    "OPTIONS": []
+  }
+],
+  "value_distribution": {
+    "_node_" : {
+      "id": "0",
+      "children": [{
+        "_node_": null,
+        "_distributions_": [[20,5],[18,5],[18,5],[18,5],[10,4],[7,4]]
+      },
+        {
+          "_node_": null,
+          "_distributions_": [[15,4],[10,4],[12,4],[12,4],[8,4],[7,3]]
+        }
+      ]
+    }
+  }
 }
