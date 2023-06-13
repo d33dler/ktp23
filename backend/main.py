@@ -41,7 +41,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-pem = PropertyEvaluationModel()
+pem = PropertyEvaluationModel("../resources/999MD_apartments_processed.csv", "model.json")
+
+
 @app.post("/")
 async def root(form: Form):
     # convert form to dict
