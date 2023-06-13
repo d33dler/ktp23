@@ -95,10 +95,6 @@ class PropertyEvaluationModel:
 
         recursive_tree_gen(None, "0", 0)
         leaf_nodes_len = len([n for n in nodes.values() if len(n.children) == 0])
-        #
-        # distributed_valuation = np.concatenate(
-        #     [np.linspace(3, 15, leaf_nodes_len // 2)[::-1], np.linspace(3, 15, leaf_nodes_len // 2)[::-1]])
-        # print(distributed_valuation)
         leaves_ls = collect_leaves(nodes["0"], [])
 
 
