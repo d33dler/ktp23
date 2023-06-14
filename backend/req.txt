@@ -18,3 +18,5 @@ anytree
 pandas
 numpy
 scikit-learn
+xgboost
+hyperopt

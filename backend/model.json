@@ -4,7 +4,8 @@
     "FID": [
       {
         "f": "housing_fund",
-        "o":  ["primary", "secondary"]
+        "o":  ["primary", "secondary"],
+        "dtype": "category"
       }],
     "Q": "Which housing fund does your property belong to?",
     "OPTIONS": [["Primary", 1],["Secondary", 1]]
@@ -14,7 +15,8 @@
     "FID": [
       {
         "f": "region",
-        "o":  ["center", "buiucani", "botanica", "riscani", "ciocana", "posta_veche"]
+        "o":  ["center", "buiucani", "botanica", "riscani", "ciocana", "posta_veche"],
+        "dtype": "category"
       }],
     "Q": "Which region does your property belong to?",
     "OPTIONS": [["Center", 2], ["Buiucani", 2],["Botanica", 2],["Riscani", 2],["Ciocana", 2], ["Posta_Veche", 2]]
@@ -24,7 +26,8 @@
     "FID":[
       {
         "f": "zone_type",
-        "o":  ["cultural", "periphery"]
+        "o":  ["cultural", "periphery"],
+        "dtype": "category"
       }],
     "Q": "Region's zone type?",
     "OPTIONS": [["Central", 3],["Periphery", 4]]
@@ -37,7 +40,7 @@
   },
   {
     "ID": 4,
-    "FID": [{"f": "area_m2", "o":  [2, 1]}, {"f": "bathroom", "o":  [2, 1]}],
+    "FID": [{"f": "num_rooms", "o":  [2, 1], "dtype": "int"}, {"f": "bathroom", "o":  [2, 1], "dtype": "category"}],
     "Q": "Surface area & number of bathrooms?",
     "OPTIONS": [["2+ rooms & 2 bathrooms", 5],["1 room & 1 bathroom", 5]]
   },
@@ -46,7 +49,8 @@
     "FID": [
       {
         "f": "condition",
-        "o":  ["high", "low"]
+        "o":  ["high", "low"],
+        "dtype": "category"
       }],
     "Q": "Reparation quality & technologization?",
     "OPTIONS": [["Modern high-quality", 6],["Individual setup (Low)", 6]]
@@ -61,7 +65,8 @@
     "FID": [
       {
         "f": "author",
-        "o":  ["agency", "private"]
+        "o":  ["agency", "private"],
+        "dtype": "category"
       }],
     "Q": "Renting entity?",
     "OPTIONS": [["Agency", 8],["Private", 8]]

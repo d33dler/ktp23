@@ -13,6 +13,9 @@ import pandas as pd
 from anytree.exporter import JsonExporter
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
+import xgboost as xgb
+from hyperopt import STATUS_OK, Trials, fmin, hp, tpe
+from hyperopt.pyll import scope
 
 
 class PEMNode(NodeMixin):  # NodeMixin makes this class become a tree node
@@ -66,31 +69,90 @@ class PropertyEvaluationModel:
         self._build_tree(self.nodes_data)
 
     def _fit_auxiliary_regressor(self, dataset):
-        features = ['y']
+        # load stored model if exists
+        if os.path.exists("auxiliary_regressor.json"):
+            self.logger.info("Loading auxiliary regressor from file...")
+            self.auxiliary_reg = xgb.Booster()
+            self.auxiliary_reg.load_model("auxiliary_regressor.json")
+            return
+        features = {'y': float}
         for node in self.nodes_data["nodes"]:
-            features.extend([ft['f'] for ft in node["FID"]])
+            features.update({ft['f']: ft['dtype'] for ft in node["FID"]})
 
         self.logger.info(f"Auxiliary regressor features: {features} ")
-        dataset = dataset[features]
-        dataset = dataset.dropna()
+        dataset["y"] = dataset["y"] / dataset["area_m2"]
+
+        dataset = dataset[features.keys()]
         # set all columns to categorical
-        for col in [_ for _ in dataset.columns if _ != "y"]:
-            dataset[col] = dataset[col].astype('category')
+        for col, dtype in features.items():
+            dataset[col] = dataset[col].astype(dtype)
         # set y to float
         dataset["y"] = dataset["y"].astype(float)
-        # get dummies
-        dataset = pd.get_dummies(dataset)
         # separate X and y
         X = dataset.drop(columns=["y"])
         y = dataset["y"]
         # split train and test using sklearn
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.3, random_state=42)
+        # xgboost random forest parameters
+        params = {
+            'tree_method': 'gpu_hist',
+            'objective': 'reg:squarederror',
+            'nthread': 4,
+            'seed': 27,
+            'max_cat_to_onehot': 6,
+            'eta': 0.7,
+            'max_depth': 6,
+            'min_child_weight': 12,
+            'subsample': 1,
+            'colsample_bytree': 0.6,
+            'gamma': 19,
+            'lambda': 0.6,
+            'num_parallel_tree': 167,
 
-        model = RandomForestRegressor(n_estimators=100, random_state=42)
-        model.fit(X_train, y_train)
-        self.logger.info(f"Auxiliary regressor score: { model.score(X_test, y_test)}" )
-        self.logger.info(f"Mean absolute error: { np.mean(np.abs(model.predict(X_test) - y_test))} ")
 
+        }
+        # search_space = {
+        #     'eta': hp.quniform('eta', 0.2, 1, 0.1),
+        #     'num_parallel_tree':  scope.int(hp.quniform('num_parallel_tree', 64, 256, 1)),
+        #     'max_depth': scope.int(hp.quniform('max_depth', 6, 12, 1)),
+        #     'min_child_weight': hp.quniform('min_child_weight', 0.1, 15, 1),
+        #     'subsample': hp.quniform('subsample', 0.6, 1, 0.1),
+        #     'colsample_bynode': hp.quniform('colsample_bytree', 0.6, 0.9, 0.1),
+        #     'gamma': hp.quniform('gamma', 0, 20, 1),
+        #     'lambda': hp.quniform('lambda', 0, 1, 0.1),
+        # }
+        # search_space.update(params)
+        # def train_model(params):
+        #     # create dmatrix
+        #     dm = xgb.DMatrix(X_train, label=y_train, enable_categorical=True)
+        #     # train model
+        #     m = xgb.train(params, dm, num_boost_round=128, verbose_eval=False)
+        #     # create test dmatrix
+        #     dm_test = xgb.DMatrix(X_test, label=y_test, enable_categorical=True)
+        #     # return loss
+        #     return {
+        #         'loss': np.mean(np.abs(m.predict(dm_test) - y_test)),
+        #         'status': STATUS_OK,
+        #         'model': m,
+        #     }
+        #
+        # best_params = fmin(
+        #     fn=train_model,
+        #     space=search_space,
+        #     algo=tpe.suggest,
+        #     loss_threshold=0,
+        #     max_evals=200,
+        #     rstate=np.random.default_rng(33),
+        # )
+        # self.logger.info(f"Best parameters: {best_params} ")
+        # params.update(best_params)
+
+        dmatrix = xgb.DMatrix(X_train, label=y_train, enable_categorical=True)
+        model = xgb.train(params, dmatrix, num_boost_round=90, evals=[(dmatrix, "train")])
+        model.save_model("auxiliary_regressor.json")
+        # create test dmatrix
+        dmatrix_test = xgb.DMatrix(X_test, label=y_test, enable_categorical=True)
+        self.logger.info(f"Mean absolute error: {np.mean(np.abs(model.predict(dmatrix_test) - y_test))} ")
         self.auxiliary_reg = model
 
     def _build_tree(self, data):
@@ -100,6 +162,7 @@ class PropertyEvaluationModel:
             node_set[node_data["ID"]] = node_data
 
         node_count = dict()
+
         def recursive_tree_gen(parent, _node: str, child_ix: int, prev_choice=None):
             """
 
@@ -130,7 +193,6 @@ class PropertyEvaluationModel:
                 node_id = node_set[_node]['ID'] + '_' + str(node_count[_node])
                 new_node = PEMNode(node_id, n.question, deepcopy(n.options_raw), n.fid, parent)
                 node_count[_node] += 1
-
 
             new_node.prev_choice = prev_choice
             new_node.prev_choice_ix = child_ix
@@ -193,7 +255,6 @@ class PropertyEvaluationModel:
         """
 
         def traverse(node, choices, reg_ft):
-            print(node.name)
             if len(node.children) == 0:
                 return node.value, reg_ft
             if len(choices) > 0:
@@ -201,26 +262,26 @@ class PropertyEvaluationModel:
                 for child in node.children:
                     if child.prev_choice_ix == choice_ix:  # If the child's value matches the answer
                         # add potential FID to the regression features
-                        if child.fid:
-                            for ft in child.fid:
-                                reg_ft[ft['f']] = ft['o'][choice_ix]
-                            reg_ft += child.fid
+                        if node.fid:
+                            for ft in node.fid:
+                                reg_ft[ft['f']] = pd.Series([ft['o'][choice_ix]], dtype=ft['dtype'])
+                                print(ft['f'])
                         return traverse(child, choices, reg_ft)
 
         # traverse the tree and collect the regression features
-        valuation, reg_features = traverse(self.nodes["0"], features, dict())
+        valuation, reg_features = traverse(self.nodes["0"], features, pd.DataFrame())
         # create a dataframe from the regression features
-        reg_features = pd.DataFrame(reg_features, index=[0])
+        # create dmatrix
+        reg_features = xgb.DMatrix(reg_features, enable_categorical=True)
         # predict the valuation
         pred = self.auxiliary_reg.predict(reg_features)[0]
         # change code below to logging module
 
         self.logger.info("--------------------------")
-        self.logger.info("Main system valuation: ", valuation)
-        self.logger.info("RF-Predicted valuation: ", pred)
-        self.logger.info("Abs. difference: ", abs(valuation - pred))
-        self.logger.info("Rel. difference: ", abs(valuation - pred) / valuation)
-        self.logger.info("Mean: ", np.mean([valuation, pred]))
+        self.logger.info("Main system valuation: %f" % valuation)
+        self.logger.info("RF-Predicted valuation: %f" % pred)
+        self.logger.info("Abs. difference: %f" % abs(valuation - pred))
+        self.logger.info("Mean: %f " % np.mean([valuation, pred]))
         self.logger.info("--------------------------")
         return np.mean([valuation, pred])
 
@@ -232,3 +293,6 @@ class PropertyEvaluationModel:
 if __name__ == "__main__":
     pem = PropertyEvaluationModel("../resources/999MD_apartments_processed.csv", "model.json")
 
+    # dummy input
+    _input = [0, 1, 0, 1, 0, 1, 1, 0, 1, 1]
+    pem.forward(_input)

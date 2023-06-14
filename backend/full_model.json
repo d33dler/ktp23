@@ -117,6 +117,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -255,6 +256,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -423,6 +425,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -561,6 +564,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -625,6 +629,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -767,6 +772,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -905,6 +911,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -1073,6 +1080,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -1211,6 +1219,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -1275,6 +1284,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -1311,13 +1321,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -1462,6 +1474,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -1600,6 +1613,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -1768,6 +1782,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -1906,6 +1921,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -1970,6 +1986,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -2112,6 +2129,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -2250,6 +2268,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -2418,6 +2437,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -2556,6 +2576,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -2620,6 +2641,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -2656,13 +2678,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -2835,6 +2859,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -2973,6 +2998,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -3141,6 +3167,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -3279,6 +3306,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -3343,6 +3371,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -3485,6 +3514,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -3623,6 +3653,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -3791,6 +3822,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -3929,6 +3961,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -3993,6 +4026,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -4029,13 +4063,15 @@
               ],
               "fid": [
                 {
-                  "f": "area_m2",
+                  "dtype": "int",
+                  "f": "num_rooms",
                   "o": [
                     2,
                     1
                   ]
                 },
                 {
+                  "dtype": "category",
                   "f": "bathroom",
                   "o": [
                     2,
@@ -4072,6 +4108,7 @@
           ],
           "fid": [
             {
+              "dtype": "category",
               "f": "zone_type",
               "o": [
                 "cultural",
@@ -4220,6 +4257,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -4358,6 +4396,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -4526,6 +4565,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -4664,6 +4704,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -4728,6 +4769,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -4870,6 +4912,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -5008,6 +5051,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -5176,6 +5220,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -5314,6 +5359,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -5378,6 +5424,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -5414,13 +5461,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -5565,6 +5614,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -5703,6 +5753,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -5871,6 +5922,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -6009,6 +6061,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -6073,6 +6126,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -6215,6 +6269,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -6353,6 +6408,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -6521,6 +6577,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -6659,6 +6716,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -6723,6 +6781,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -6759,13 +6818,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -6938,6 +6999,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -7076,6 +7138,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -7244,6 +7307,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -7382,6 +7446,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -7446,6 +7511,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -7588,6 +7654,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -7726,6 +7793,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -7894,6 +7962,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -8032,6 +8101,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -8096,6 +8166,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -8132,13 +8203,15 @@
               ],
               "fid": [
                 {
-                  "f": "area_m2",
+                  "dtype": "int",
+                  "f": "num_rooms",
                   "o": [
                     2,
                     1
                   ]
                 },
                 {
+                  "dtype": "category",
                   "f": "bathroom",
                   "o": [
                     2,
@@ -8175,6 +8248,7 @@
           ],
           "fid": [
             {
+              "dtype": "category",
               "f": "zone_type",
               "o": [
                 "cultural",
@@ -8323,6 +8397,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -8461,6 +8536,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -8629,6 +8705,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -8767,6 +8844,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -8831,6 +8909,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -8973,6 +9052,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -9111,6 +9191,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -9279,6 +9360,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -9417,6 +9499,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -9481,6 +9564,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -9517,13 +9601,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -9668,6 +9754,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -9806,6 +9893,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -9974,6 +10062,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -10112,6 +10201,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -10176,6 +10266,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -10318,6 +10409,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -10456,6 +10548,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -10624,6 +10717,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -10762,6 +10856,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -10826,6 +10921,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -10862,13 +10958,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -11041,6 +11139,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -11179,6 +11278,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -11347,6 +11447,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -11485,6 +11586,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -11549,6 +11651,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -11691,6 +11794,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -11829,6 +11933,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -11997,6 +12102,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -12135,6 +12241,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -12199,6 +12306,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -12235,13 +12343,15 @@
               ],
               "fid": [
                 {
-                  "f": "area_m2",
+                  "dtype": "int",
+                  "f": "num_rooms",
                   "o": [
                     2,
                     1
                   ]
                 },
                 {
+                  "dtype": "category",
                   "f": "bathroom",
                   "o": [
                     2,
@@ -12278,6 +12388,7 @@
           ],
           "fid": [
             {
+              "dtype": "category",
               "f": "zone_type",
               "o": [
                 "cultural",
@@ -12426,6 +12537,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -12564,6 +12676,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -12732,6 +12845,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -12870,6 +12984,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -12934,6 +13049,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -13076,6 +13192,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -13214,6 +13331,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -13382,6 +13500,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -13520,6 +13639,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -13584,6 +13704,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -13620,13 +13741,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -13771,6 +13894,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -13909,6 +14033,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -14077,6 +14202,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -14215,6 +14341,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -14279,6 +14406,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -14421,6 +14549,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -14559,6 +14688,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -14727,6 +14857,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -14865,6 +14996,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -14929,6 +15061,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -14965,13 +15098,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -15144,6 +15279,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -15282,6 +15418,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -15450,6 +15587,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -15588,6 +15726,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -15652,6 +15791,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -15794,6 +15934,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -15932,6 +16073,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -16100,6 +16242,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -16238,6 +16381,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -16302,6 +16446,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -16338,13 +16483,15 @@
               ],
               "fid": [
                 {
-                  "f": "area_m2",
+                  "dtype": "int",
+                  "f": "num_rooms",
                   "o": [
                     2,
                     1
                   ]
                 },
                 {
+                  "dtype": "category",
                   "f": "bathroom",
                   "o": [
                     2,
@@ -16381,6 +16528,7 @@
           ],
           "fid": [
             {
+              "dtype": "category",
               "f": "zone_type",
               "o": [
                 "cultural",
@@ -16529,6 +16677,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -16667,6 +16816,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -16835,6 +16985,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -16973,6 +17124,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -17037,6 +17189,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -17179,6 +17332,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -17317,6 +17471,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -17485,6 +17640,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -17623,6 +17779,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -17687,6 +17844,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -17723,13 +17881,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -17874,6 +18034,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -18012,6 +18173,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -18180,6 +18342,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -18318,6 +18481,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -18382,6 +18546,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -18524,6 +18689,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -18662,6 +18828,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -18830,6 +18997,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -18968,6 +19136,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -19032,6 +19201,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -19068,13 +19238,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -19247,6 +19419,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -19385,6 +19558,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -19553,6 +19727,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -19691,6 +19866,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -19755,6 +19931,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -19897,6 +20074,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -20035,6 +20213,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -20203,6 +20382,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -20341,6 +20521,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -20405,6 +20586,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -20441,13 +20623,15 @@
               ],
               "fid": [
                 {
-                  "f": "area_m2",
+                  "dtype": "int",
+                  "f": "num_rooms",
                   "o": [
                     2,
                     1
                   ]
                 },
                 {
+                  "dtype": "category",
                   "f": "bathroom",
                   "o": [
                     2,
@@ -20484,6 +20668,7 @@
           ],
           "fid": [
             {
+              "dtype": "category",
               "f": "zone_type",
               "o": [
                 "cultural",
@@ -20632,6 +20817,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -20770,6 +20956,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -20938,6 +21125,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -21076,6 +21264,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -21140,6 +21329,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -21282,6 +21472,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -21420,6 +21611,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -21588,6 +21780,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -21726,6 +21919,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -21790,6 +21984,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -21826,13 +22021,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -21977,6 +22174,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -22115,6 +22313,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -22283,6 +22482,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -22421,6 +22621,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -22485,6 +22686,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -22627,6 +22829,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -22765,6 +22968,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -22933,6 +23137,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -23071,6 +23276,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -23135,6 +23341,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -23171,13 +23378,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -23350,6 +23559,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -23488,6 +23698,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -23656,6 +23867,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -23794,6 +24006,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -23858,6 +24071,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -24000,6 +24214,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -24138,6 +24353,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -24306,6 +24522,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -24444,6 +24661,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -24508,6 +24726,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -24544,13 +24763,15 @@
               ],
               "fid": [
                 {
-                  "f": "area_m2",
+                  "dtype": "int",
+                  "f": "num_rooms",
                   "o": [
                     2,
                     1
                   ]
                 },
                 {
+                  "dtype": "category",
                   "f": "bathroom",
                   "o": [
                     2,
@@ -24587,6 +24808,7 @@
           ],
           "fid": [
             {
+              "dtype": "category",
               "f": "zone_type",
               "o": [
                 "cultural",
@@ -24623,6 +24845,7 @@
       ],
       "fid": [
         {
+          "dtype": "category",
           "f": "region",
           "o": [
             "center",
@@ -24809,6 +25032,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -24947,6 +25171,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -25115,6 +25340,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -25253,6 +25479,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -25317,6 +25544,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -25459,6 +25687,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -25597,6 +25826,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -25765,6 +25995,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -25903,6 +26134,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -25967,6 +26199,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -26003,13 +26236,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -26154,6 +26389,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -26292,6 +26528,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -26460,6 +26697,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -26598,6 +26836,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -26662,6 +26901,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -26804,6 +27044,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -26942,6 +27183,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -27110,6 +27352,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -27248,6 +27491,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -27312,6 +27556,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -27348,13 +27593,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -27527,6 +27774,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -27665,6 +27913,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -27833,6 +28082,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -27971,6 +28221,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -28035,6 +28286,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -28177,6 +28429,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -28315,6 +28568,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -28483,6 +28737,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -28621,6 +28876,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -28685,6 +28941,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -28721,13 +28978,15 @@
               ],
               "fid": [
                 {
-                  "f": "area_m2",
+                  "dtype": "int",
+                  "f": "num_rooms",
                   "o": [
                     2,
                     1
                   ]
                 },
                 {
+                  "dtype": "category",
                   "f": "bathroom",
                   "o": [
                     2,
@@ -28764,6 +29023,7 @@
           ],
           "fid": [
             {
+              "dtype": "category",
               "f": "zone_type",
               "o": [
                 "cultural",
@@ -28912,6 +29172,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -29050,6 +29311,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -29218,6 +29480,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -29356,6 +29619,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -29420,6 +29684,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -29562,6 +29827,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -29700,6 +29966,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -29868,6 +30135,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -30006,6 +30274,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -30070,6 +30339,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -30106,13 +30376,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -30257,6 +30529,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -30395,6 +30668,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -30563,6 +30837,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -30701,6 +30976,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -30765,6 +31041,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -30907,6 +31184,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -31045,6 +31323,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -31213,6 +31492,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -31351,6 +31631,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -31415,6 +31696,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -31451,13 +31733,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -31630,6 +31914,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -31768,6 +32053,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -31936,6 +32222,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -32074,6 +32361,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -32138,6 +32426,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -32280,6 +32569,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -32418,6 +32708,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -32586,6 +32877,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -32724,6 +33016,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -32788,6 +33081,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -32824,13 +33118,15 @@
               ],
               "fid": [
                 {
-                  "f": "area_m2",
+                  "dtype": "int",
+                  "f": "num_rooms",
                   "o": [
                     2,
                     1
                   ]
                 },
                 {
+                  "dtype": "category",
                   "f": "bathroom",
                   "o": [
                     2,
@@ -32867,6 +33163,7 @@
           ],
           "fid": [
             {
+              "dtype": "category",
               "f": "zone_type",
               "o": [
                 "cultural",
@@ -33015,6 +33312,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -33153,6 +33451,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -33321,6 +33620,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -33459,6 +33759,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -33523,6 +33824,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -33665,6 +33967,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -33803,6 +34106,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -33971,6 +34275,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -34109,6 +34414,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -34173,6 +34479,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -34209,13 +34516,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -34360,6 +34669,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -34498,6 +34808,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -34666,6 +34977,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -34804,6 +35116,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -34868,6 +35181,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -35010,6 +35324,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -35148,6 +35463,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -35316,6 +35632,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -35454,6 +35771,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -35518,6 +35836,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -35554,13 +35873,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -35733,6 +36054,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -35871,6 +36193,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -36039,6 +36362,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -36177,6 +36501,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -36241,6 +36566,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -36383,6 +36709,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -36521,6 +36848,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -36689,6 +37017,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -36827,6 +37156,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -36891,6 +37221,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -36927,13 +37258,15 @@
               ],
               "fid": [
                 {
-                  "f": "area_m2",
+                  "dtype": "int",
+                  "f": "num_rooms",
                   "o": [
                     2,
                     1
                   ]
                 },
                 {
+                  "dtype": "category",
                   "f": "bathroom",
                   "o": [
                     2,
@@ -36970,6 +37303,7 @@
           ],
           "fid": [
             {
+              "dtype": "category",
               "f": "zone_type",
               "o": [
                 "cultural",
@@ -37118,6 +37452,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -37256,6 +37591,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -37424,6 +37760,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -37562,6 +37899,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -37626,6 +37964,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -37768,6 +38107,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -37906,6 +38246,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -38074,6 +38415,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -38212,6 +38554,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -38276,6 +38619,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -38312,13 +38656,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -38463,6 +38809,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -38601,6 +38948,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -38769,6 +39117,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -38907,6 +39256,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -38971,6 +39321,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -39113,6 +39464,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -39251,6 +39603,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -39419,6 +39772,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -39557,6 +39911,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -39621,6 +39976,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -39657,13 +40013,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -39836,6 +40194,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -39974,6 +40333,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -40142,6 +40502,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -40280,6 +40641,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -40344,6 +40706,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -40486,6 +40849,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -40624,6 +40988,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -40792,6 +41157,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -40930,6 +41296,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -40994,6 +41361,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -41030,13 +41398,15 @@
               ],
               "fid": [
                 {
-                  "f": "area_m2",
+                  "dtype": "int",
+                  "f": "num_rooms",
                   "o": [
                     2,
                     1
                   ]
                 },
                 {
+                  "dtype": "category",
                   "f": "bathroom",
                   "o": [
                     2,
@@ -41073,6 +41443,7 @@
           ],
           "fid": [
             {
+              "dtype": "category",
               "f": "zone_type",
               "o": [
                 "cultural",
@@ -41221,6 +41592,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -41359,6 +41731,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -41527,6 +41900,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -41665,6 +42039,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -41729,6 +42104,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -41871,6 +42247,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -42009,6 +42386,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -42177,6 +42555,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -42315,6 +42694,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -42379,6 +42759,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -42415,13 +42796,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -42566,6 +42949,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -42704,6 +43088,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -42872,6 +43257,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -43010,6 +43396,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -43074,6 +43461,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -43216,6 +43604,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -43354,6 +43743,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -43522,6 +43912,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -43660,6 +44051,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -43724,6 +44116,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -43760,13 +44153,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -43939,6 +44334,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -44077,6 +44473,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -44245,6 +44642,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -44383,6 +44781,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -44447,6 +44846,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -44589,6 +44989,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -44727,6 +45128,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -44895,6 +45297,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -45033,6 +45436,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -45097,6 +45501,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -45133,13 +45538,15 @@
               ],
               "fid": [
                 {
-                  "f": "area_m2",
+                  "dtype": "int",
+                  "f": "num_rooms",
                   "o": [
                     2,
                     1
                   ]
                 },
                 {
+                  "dtype": "category",
                   "f": "bathroom",
                   "o": [
                     2,
@@ -45176,6 +45583,7 @@
           ],
           "fid": [
             {
+              "dtype": "category",
               "f": "zone_type",
               "o": [
                 "cultural",
@@ -45324,6 +45732,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -45462,6 +45871,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -45630,6 +46040,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -45768,6 +46179,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -45832,6 +46244,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -45974,6 +46387,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -46112,6 +46526,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -46280,6 +46695,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -46418,6 +46834,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -46482,6 +46899,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -46518,13 +46936,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -46669,6 +47089,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -46807,6 +47228,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -46975,6 +47397,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -47113,6 +47536,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -47177,6 +47601,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -47319,6 +47744,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -47457,6 +47883,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -47625,6 +48052,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -47763,6 +48191,7 @@
                               ],
                               "fid": [
                                 {
+                                  "dtype": "category",
                                   "f": "author",
                                   "o": [
                                     "agency",
@@ -47827,6 +48256,7 @@
                       ],
                       "fid": [
                         {
+                          "dtype": "category",
                           "f": "condition",
                           "o": [
                             "high",
@@ -47863,13 +48293,15 @@
                   ],
                   "fid": [
                     {
-                      "f": "area_m2",
+                      "dtype": "int",
+                      "f": "num_rooms",
                       "o": [
                         2,
                         1
                       ]
                     },
                     {
+                      "dtype": "category",
                       "f": "bathroom",
                       "o": [
                         2,
@@ -48042,6 +48474,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -48180,6 +48613,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -48348,6 +48782,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -48486,6 +48921,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -48550,6 +48986,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -48692,6 +49129,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -48830,6 +49268,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -48998,6 +49437,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -49136,6 +49576,7 @@
                           ],
                           "fid": [
                             {
+                              "dtype": "category",
                               "f": "author",
                               "o": [
                                 "agency",
@@ -49200,6 +49641,7 @@
                   ],
                   "fid": [
                     {
+                      "dtype": "category",
                       "f": "condition",
                       "o": [
                         "high",
@@ -49236,13 +49678,15 @@
               ],
               "fid": [
                 {
-                  "f": "area_m2",
+                  "dtype": "int",
+                  "f": "num_rooms",
                   "o": [
                     2,
                     1
                   ]
                 },
                 {
+                  "dtype": "category",
                   "f": "bathroom",
                   "o": [
                     2,
@@ -49279,6 +49723,7 @@
           ],
           "fid": [
             {
+              "dtype": "category",
               "f": "zone_type",
               "o": [
                 "cultural",
@@ -49315,6 +49760,7 @@
       ],
       "fid": [
         {
+          "dtype": "category",
           "f": "region",
           "o": [
             "center",
@@ -49387,6 +49833,7 @@
   ],
   "fid": [
     {
+      "dtype": "category",
       "f": "housing_fund",
       "o": [
         "primary",
