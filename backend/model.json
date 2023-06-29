@@ -15,18 +15,18 @@
     "FID": [
       {
         "f": "region",
-        "o":  ["center", "buiucani", "botanica", "riscani", "ciocana", "posta_veche"],
+        "o":  ["centru", "buiucani", "botanica", "riscani", "ciocana", "posta_veche"],
         "dtype": "category"
       }],
     "Q": "Which region does your property belong to?",
-    "OPTIONS": [["Center", 2], ["Buiucani", 2],["Botanica", 2],["Riscani", 2],["Ciocana", 2], ["Posta_Veche", 2]]
+    "OPTIONS": [["Centru", 2], ["Buiucani", 2],["Botanica", 2],["Riscani", 2],["Ciocana", 2], ["Posta_Veche", 2]]
   },
   {
     "ID": 2,
     "FID":[
       {
         "f": "zone_type",
-        "o":  ["cultural", "periphery"],
+        "o":  ["central", "periphery"],
         "dtype": "category"
       }],
     "Q": "Region's zone type?",
@@ -40,7 +40,7 @@
   },
   {
     "ID": 4,
-    "FID": [{"f": "num_rooms", "o":  [2, 1], "dtype": "int"}, {"f": "bathroom", "o":  [2, 1], "dtype": "category"}],
+    "FID": [{"f": "num_rooms", "o":  [2, 1], "dtype": "int"}, {"f": "bathroom", "o":  [2, 1], "dtype": "int"}],
     "Q": "Surface area & number of bathrooms?",
     "OPTIONS": [["2+ rooms & 2 bathrooms", 5],["1 room & 1 bathroom", 5]]
   },
@@ -49,7 +49,7 @@
     "FID": [
       {
         "f": "condition",
-        "o":  ["high", "low"],
+        "o":  ["modern", "individual"],
         "dtype": "category"
       }],
     "Q": "Reparation quality & technologization?",
@@ -77,13 +77,36 @@
     "Q": "Rental period term?",
     "OPTIONS": [["Short", 9],["Long", 9]]
   },
-  {
+    {
     "ID": 9,
+    "FID": [ {
+        "f": "children",
+        "o":  ["yes", "no"],
+        "dtype": "category"
+      }],
+    "Q": "Children allowed?",
+    "OPTIONS": [["yes", 10],["no", 10]]
+  },
+    {
+    "ID": 10,
+    "FID": [ {
+        "f": "pets",
+        "o":  ["yes", "no"],
+        "dtype": "category"
+      }],
+    "Q": "Pets allowed?",
+    "OPTIONS": [["yes", 11],["no", 11]]
+  },
+  {
+    "ID": 11,
     "FID": [],
     "Q": "",
     "OPTIONS": []
   }
 ],
+  "regressors": ["area_m2","np.power(area_m2, 2)", "num_rooms", "bathroom", "num_floors", "dist_to_center"],
+  "reg_min_samples": 100,
+  "ols_model_path": "OLS_coefficients.pkl",
   "value_distribution": {
     "_node_" : {
       "id": "0",

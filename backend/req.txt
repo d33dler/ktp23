@@ -20,3 +20,4 @@ numpy
 scikit-learn
 xgboost
 hyperopt
+statsmodels
