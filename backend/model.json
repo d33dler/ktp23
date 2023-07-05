@@ -8,7 +8,7 @@
         "dtype": "category"
       }],
     "Q": "Which housing fund does your property belong to?",
-    "OPTIONS": [["Primary", 1],["Secondary", 1]]
+    "OPTIONS": [["Primary", 1],["Secondary", 2]]
   },
   {
     "ID": 1,
@@ -19,10 +19,21 @@
         "dtype": "category"
       }],
     "Q": "Which region does your property belong to?",
-    "OPTIONS": [["Centru", 2], ["Buiucani", 2],["Botanica", 2],["Riscani", 2],["Ciocana", 2], ["Posta_Veche", 2]]
+    "OPTIONS": [["Centru", 3], ["Buiucani", 3],["Botanica", 3],["Riscani", 3],["Ciocana", 3], ["Posta_Veche", 3]]
+  },
+    {
+    "ID": 2,
+    "FID": [
+      {
+        "f": "region",
+        "o":  ["centru", "buiucani", "botanica", "riscani", "ciocana", "posta_veche"],
+        "dtype": "category"
+      }],
+    "Q": "Which region does your property belong to?",
+    "OPTIONS": [["Centru", 33], ["Buiucani", 33],["Botanica", 33],["Riscani", 33],["Ciocana", 33], ["Posta_Veche", 33]]
   },
   {
-    "ID": 2,
+    "ID": 3,
     "FID":[
       {
         "f": "zone_type",
@@ -30,22 +41,33 @@
         "dtype": "category"
       }],
     "Q": "Region's zone type?",
-    "OPTIONS": [["Central", 3],["Periphery", 4]]
+    "OPTIONS": [["Central", 4],["Periphery", 4]]
   },
   {
-    "ID": 3,
-    "FID": [],
-    "Q": "Comfort level and security?",
-    "OPTIONS": [["High", 4],["Low", 4]]
-  },
+  "ID": 33,
+  "FID":[
+    {
+      "f": "zone_type",
+      "o":  ["central", "periphery"],
+      "dtype": "category"
+    }],
+  "Q": "Region's zone type?",
+  "OPTIONS": [["Central", 5],["Periphery", 5]]
+},
   {
     "ID": 4,
-    "FID": [{"f": "num_rooms", "o":  [2, 1], "dtype": "int"}, {"f": "bathroom", "o":  [2, 1], "dtype": "int"}],
-    "Q": "Surface area & number of bathrooms?",
-    "OPTIONS": [["2+ rooms & 2 bathrooms", 5],["1 room & 1 bathroom", 5]]
+    "FID": [],
+    "Q": "Comfort level and security?",
+    "OPTIONS": [["High", 5],["Low", 5]]
   },
   {
     "ID": 5,
+    "FID": [{"f": "num_rooms", "o":  [2, 1], "dtype": "int"}, {"f": "bathroom", "o":  [2, 1], "dtype": "int"}],
+    "Q": "Surface area & number of bathrooms?",
+    "OPTIONS": [["2+ rooms & 2 bathrooms", 6],["1 room & 1 bathroom", 6]]
+  },
+  {
+    "ID": 6,
     "FID": [
       {
         "f": "condition",
@@ -53,15 +75,15 @@
         "dtype": "category"
       }],
     "Q": "Reparation quality & technologization?",
-    "OPTIONS": [["Modern high-quality", 6],["Individual setup (Low)", 6]]
+    "OPTIONS": [["Modern high-quality", 7],["Individual setup (Low)", 7]]
   },
   {
-    "ID": 6,
+    "ID": 7,
     "FID": [],
     "Q": "Furniture quality & comfort?",
-    "OPTIONS": [["High", 7],["Low", 7]]},
+    "OPTIONS": [["High", 8],["Low", 8]]},
   {
-    "ID": 7,
+    "ID": 8,
     "FID": [
       {
         "f": "author",
@@ -69,36 +91,36 @@
         "dtype": "category"
       }],
     "Q": "Renting entity?",
-    "OPTIONS": [["Agency", 8],["Private", 8]]
+    "OPTIONS": [["Agency", 9],["Private", 9]]
   },
   {
-    "ID": 8,
+    "ID": 9,
     "FID": [],
     "Q": "Rental period term?",
-    "OPTIONS": [["Short", 9],["Long", 9]]
+    "OPTIONS": [["Short", 10],["Long", 10]]
   },
     {
-    "ID": 9,
+    "ID": 10,
     "FID": [ {
         "f": "children",
         "o":  ["yes", "no"],
         "dtype": "category"
       }],
     "Q": "Children allowed?",
-    "OPTIONS": [["yes", 10],["no", 10]]
+    "OPTIONS": [["yes", 11],["no", 11]]
   },
     {
-    "ID": 10,
+    "ID": 11,
     "FID": [ {
         "f": "pets",
         "o":  ["yes", "no"],
         "dtype": "category"
       }],
     "Q": "Pets allowed?",
-    "OPTIONS": [["yes", 11],["no", 11]]
+    "OPTIONS": [["yes", 12],["no", 12]]
   },
   {
-    "ID": 11,
+    "ID": 12,
     "FID": [],
     "Q": "",
     "OPTIONS": []

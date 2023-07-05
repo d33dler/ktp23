@@ -376,7 +376,7 @@ class PropertyEvaluationModel:
         ols_pred =  leaf.ols_model.predict(extra)[0] if leaf.ols_model else None
         self.logger.info("--------------------------")
         self.logger.info("Main system linear valuation (expert supplied): %f" % valuation)
-        self.logger.info("Main system regression estimation : %f" % ols_pred)
+        self.logger.info("Main system regression estimation : %f" % ols_pred) if ols_pred else None
         self.logger.info("XGB-Predicted valuation: %f" % pred)
         self.logger.info("Abs. difference: %f" % abs(valuation - pred))
         self.logger.info("Mean: %f " % np.mean([valuation, pred]))
