@@ -351,7 +351,7 @@ class PropertyEvaluationModel:
                             reg_ft[ft['f']] = pd.Series([ft['o'][choice_ix]], dtype=ft['dtype'])
                     return self._traverse(child, choices, reg_ft)
 
-    def _predict_reg_aux(self, features: dict):
+    def _predict(self, features: dict):
         """
         :param features: dictionary of features
         :type features: dict
@@ -385,18 +385,18 @@ class PropertyEvaluationModel:
 
     def forward(self, _input: dict):
         # collect nodes FIDs for regression
-        return self._predict_reg_aux(_input)
+        return self._predict(_input)
 
 
 if __name__ == "__main__":
     pem = PropertyEvaluationModel("../resources/999MD_apartments_processed.csv", "model.json")
     # dummy input
-    _input = {'idx': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    _input = {'idx': [1, 2,1, 1, 1, 1, 1,1, 1, 1, 1],
               'extra': {
-                  'dist_to_center': 2,
+                  'dist_to_center': 5.8,
                   'num_floors': 5,
-                  'num_rooms': 2,
-                  'area_m2': 50,
+                  'num_rooms': 1,
+                  'area_m2': 70,
                   'bathroom': 1,
               }}
     pem.forward(_input)
