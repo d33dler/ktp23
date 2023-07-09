@@ -37,19 +37,22 @@
 
 {#if model.question}
 <h1>
-    Q : {model.question}
+    Question #{tree_depth + 1}
+    <br/><br/>
+    {model.question}
 </h1>
 {/if}
 
 <!-- if there is a value display it -->
 {#if model.value}
     <h1>
-        Your property is worth : {model.value}
+        Your property is worth:
+        € {Math.round(model.value*100)/100} per square meter
     </h1>
 {/if}
 
 <div class="container">
-    {#if model.image}
+{#if model.image}
     <img src={model.image} alt="image" />
 {/if}
 </div>
