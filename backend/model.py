@@ -391,7 +391,8 @@ class PropertyEvaluationModel:
 if __name__ == "__main__":
     pem = PropertyEvaluationModel("../resources/999MD_apartments_processed.csv", "model.json")
     # dummy input
-    _input = {'idx': [1, 2,1, 1, 1, 1, 1,1, 1, 1, 1],
+    _input = {
+                'idx': [1, 2,1, 1, 1, 1, 1,1, 1, 1, 1],
               'extra': {
                   'dist_to_center': 5.8,
                   'num_floors': 5,

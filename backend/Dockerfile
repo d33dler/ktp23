@@ -8,7 +8,11 @@ COPY ./req.txt .
 
 RUN pip install --no-cache-dir --upgrade -r ./req.txt
 
-COPY *.py .
+
+COPY . .
+COPY ./resources ../resources
+
+RUN ls -la
 
 EXPOSE 8000
 

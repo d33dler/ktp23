@@ -1,0 +1,5 @@
+env/
+__pycache__/
+tree.dot
+tree.png
+tree.svg

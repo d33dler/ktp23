@@ -1,37 +1,22 @@
 from fastapi import FastAPI
 from model import PropertyEvaluationModel
 from fastapi.middleware.cors import CORSMiddleware
-from starlette.requests import Request
-from pydantic import BaseModel
 
 app = FastAPI()
 
+from typing import List, Dict
+from pydantic import BaseModel
+
+class ExtraInfo(BaseModel):
+    dist_to_center: float
+    num_floors: int
+    num_rooms: int
+    area_m2: int
+    bathroom: int
 
 class Form(BaseModel):
-    area_sqm: int
-    balcony_access: bool
-    community_facilities: bool
-    distance_to_city: int
-    parking_space: str
-    bathrooms: int
-    elevator: bool
-    flood_risk: str
-    furnished: bool
-    living_capacity: int
-    living_room: str
-    pets_allowed: str
-    children_allowed: str
-    property_location: str
-    property_type: str
-    quality_of_construction: str
-    renovation_date: int
-    storage_room: bool
-    levels: int
-    apartment_level: int
-    real_estate_developer: str
-    ad_author: str
-    housing_fund: str
-
+    idx: List[int]
+    extra: ExtraInfo
 
 app.add_middleware(
     CORSMiddleware,
@@ -41,15 +26,20 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+print('Reading model.json')
+
 pem = PropertyEvaluationModel("../resources/999MD_apartments_processed.csv", "model.json")
 
+print('Model loaded')
 
 @app.post("/")
-async def root(form: Form):
+async def root(form : Form):
     # convert form to dict
+    area = form.extra.area_m2
     form = form.dict()
-    # form = await form.json()
-    print(form)
-    rpv = pem.forward(form)
-    val = rpv.calculate_valuation()
-    return {"message": str(val)}
+    val = pem.forward(form)
+    return {"message": str(val * area)}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
