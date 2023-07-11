@@ -6,11 +6,9 @@ import pickle
 from copy import deepcopy
 from dataclasses import dataclass
 from typing import List, Dict
-
 import numpy as np
 from anytree import NodeMixin, RenderTree
 from pandas._libs.parsers import CategoricalDtype
-
 from form_fields import Att
 from anytree.exporter import DotExporter
 import pandas as pd
@@ -46,19 +44,13 @@ class PEMNode(NodeMixin):  # NodeMixin makes this class become a tree node
 
 
 class PropertyEvaluationModel:
-    _base_val: float = 0  # BASE VALUATION
-    _val: float = 0  # ADDITIVE VALUATION
-    input: dict
-    _default_ppsqm = 16
-    ppsqm = 16  # average price (euro) per square meter 2022 (NL)
-    legal_occupy_sqm = 12  # (minimum) legal limit (m^2) occupancy space per person (NL)
-    attributes = Att()
     sqm = 1
     node_set = {}
     nodes = {}
     tree = None
-    dataset = None
-    auxiliary_reg = None
+    dataset: pd.DataFrame = None
+    auxiliary_reg: xgb.Booster | None = None
+    ols_models: dict = {}
 
     def __init__(self, apartments_ds_path, nodes_data_path):
         self.model_cfg = json.load(open(nodes_data_path, "r"))
@@ -87,6 +79,7 @@ class PropertyEvaluationModel:
             self.auxiliary_reg = xgb.Booster()
             self.auxiliary_reg.load_model("auxiliary_regressor.json")
             return
+        self.logger.info("Fitting auxiliary regressor...")
         features = {'y': float}
         for node in self.model_cfg["nodes"]:
             features.update({ft['f']: ft['dtype'] for ft in node["FID"]})
@@ -103,6 +96,9 @@ class PropertyEvaluationModel:
                 dataset[col] = dataset[col].astype(dtype)
             except pd.errors.IntCastingNaNError:
                 self.logger.warning(f"Could not convert column {col} to {dtype}")
+        for col in dataset.columns:
+            if dataset[col].dtype == "object":
+                dataset[col] = dataset[col].astype("category")
         # set y to float
         dataset["y"] = dataset["y"].astype(float)
         # separate X and y
@@ -171,6 +167,7 @@ class PropertyEvaluationModel:
         return model
 
     def _build_tree(self, data):
+        self.logger.info("Building tree...")
         node_set, nodes = self.node_set, self.nodes
         for node_data in data["nodes"]:
             node_data["ID"] = str(node_data["ID"])
@@ -292,29 +289,33 @@ class PropertyEvaluationModel:
 
         # 1. Generate all path scenarios
         # load OLS models if available
+        ols_models_missing = False
         if os.path.exists(self.model_cfg["ols_model_path"]):
             with open(self.model_cfg["ols_model_path"], 'rb') as f:
                 curve_params = pickle.load(f)
+
         else:
+            ols_models_missing = True
             star_scenarios = generate_paths(0, [])  # will be same length as leaf_nodes_len
             star_scenarios = [Scenario(*argz) for argz in
                               [self._traverse(root, unique_path, pd.DataFrame()) for unique_path in star_scenarios]]
             # 2. Curve fitting for each scenario
             curve_params = {}
+            self.logger.info("========== Fitting linear regression models ==========")
             for ix, scenario in enumerate(star_scenarios):
                 filtered_data = filter_data_for_scenario(scenario, self.dataset)
-                if not filtered_data.empty or len(filtered_data) >= self.model_cfg["reg_min_samples"]:
+                if (not filtered_data.empty) and len(filtered_data) >= self.model_cfg["reg_min_samples"]:
                     curve_params[scenario.leaf.name] = fit_model(filtered_data, formula)
-                else:
-                    print(f"No data available for leaf scenario {ix}, skipping.")
+        self.ols_models = curve_params
         self.logger.info("========== Model tree & OLS models built successfully! ==========")
         # curve_params now holds the linear regression coefficients for each possible scenario
         self.logger.info(f"Curve fitting completed successfully! Available sub-models: {len(curve_params)}")
         self.logger.info(f"Stray leaves: {leaf_nodes_len - len(curve_params)}")
         self.logger.info(f"Wrapping up...")
         # save curve_params as pickle
-        with open(self.model_cfg["ols_model_path"], "wb") as f:
-            pickle.dump(curve_params, f, protocol=pickle.HIGHEST_PROTOCOL)
+        if ols_models_missing:
+            with open(self.model_cfg["ols_model_path"], "wb") as f:
+                pickle.dump(curve_params, f, protocol=pickle.HIGHEST_PROTOCOL)
         # save model params (OLS coefficients into leaf nodes)
         for leaf in leaves_ls:
             leaf.ols_coef = curve_params.get(leaf.name, None)
@@ -369,11 +370,14 @@ class PropertyEvaluationModel:
         # combine the two dataframes
         reg_features = pd.concat([reg_features, extra], axis=1, join="inner")
         reg_features = reg_features.reindex(columns=self.auxiliary_reg.feature_names)
+        for col in reg_features.columns:
+            if reg_features[col].dtype == "object":
+                reg_features[col] = reg_features[col].astype("category")
         reg_features = xgb.DMatrix(reg_features, enable_categorical=True)
         # predict the valuation
         pred = self.auxiliary_reg.predict(reg_features)[0]
         # change code below to logging module
-        ols_pred =  leaf.ols_model.predict(extra)[0] if leaf.ols_model else None
+        ols_pred = leaf.ols_model.predict(extra)[0] if leaf.ols_model else None
         self.logger.info("--------------------------")
         self.logger.info("Main system linear valuation (expert supplied): %f" % valuation)
         self.logger.info("Main system regression estimation : %f" % ols_pred) if ols_pred else None
@@ -387,17 +391,57 @@ class PropertyEvaluationModel:
         # collect nodes FIDs for regression
         return self._predict(_input)
 
+    def run_ols_statistics(self):
+        """
+        Run statistics on OLS models
+        """
+
+        # Assuming models is a list containing all your OLS models
+        models = self.ols_models
+        if models is None or len(models) == 0:
+            self.logger.error("OLS models not found. Exiting...")
+            return
+        # Empty lists to hold the model statistics
+        model_nums = []
+        r_squareds = []
+        adj_r_squareds = []
+        f_pvalues = []
+        log_likelihoods = []
+        condition_numbers = []
+
+        # Iterate over all models
+        for i, model in enumerate(models.values()):
+            model_nums.append(i)
+            r_squareds.append(model.rsquared)
+            adj_r_squareds.append(model.rsquared_adj)
+            f_pvalues.append(model.f_pvalue)
+            log_likelihoods.append(model.llf)
+            condition_numbers.append(np.linalg.cond(model.model.exog))
+
+        # Create a DataFrame with the model statistics
+        df_stats = pd.DataFrame({
+            'model_num': model_nums,
+            'r_squared': r_squareds,
+            'adj_r_squared': adj_r_squareds,
+            'f_pvalue': f_pvalues,
+            'log_likelihood': log_likelihoods,
+            'condition_number': condition_numbers,
+        })
+        # Compute summary statistics for each column and pretty print them
+        summary_statistics = df_stats.describe()
+        print(df_stats.info())
+        print(df_stats.head(50))
+        print(summary_statistics.to_string())
+
 
 if __name__ == "__main__":
     pem = PropertyEvaluationModel("../resources/999MD_apartments_processed.csv", "model.json")
-    # dummy input
-    _input = {
-                'idx': [1, 2,1, 1, 1, 1, 1,1, 1, 1, 1],
+    # input example
+    _input = {'idx': [1, 2,1, 1, 1, 1, 1,1, 1, 1, 1],
               'extra': {
                   'dist_to_center': 5.8,
-                  'num_floors': 5,
-                  'num_rooms': 1,
-                  'area_m2': 70,
-                  'bathroom': 1,
+                  'floor': 5,
+                  'area_m2': 70
               }}
     pem.forward(_input)
+    pem.run_ols_statistics()

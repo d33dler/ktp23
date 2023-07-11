@@ -101,21 +101,13 @@
   },
     {
     "ID": 10,
-    "FID": [ {
-        "f": "children",
-        "o":  ["yes", "no"],
-        "dtype": "category"
-      }],
+    "FID": [],
     "Q": "Children allowed?",
     "OPTIONS": [["yes", 11],["no", 11]]
   },
     {
     "ID": 11,
-    "FID": [ {
-        "f": "pets",
-        "o":  ["yes", "no"],
-        "dtype": "category"
-      }],
+    "FID": [],
     "Q": "Pets allowed?",
     "OPTIONS": [["yes", 12],["no", 12]]
   },
@@ -126,8 +118,8 @@
     "OPTIONS": []
   }
 ],
-  "regressors": ["area_m2","np.power(area_m2, 2)", "num_rooms", "bathroom", "num_floors", "dist_to_center"],
-  "reg_min_samples": 100,
+  "regressors": ["area_m2", "floor", "dist_to_center"],
+  "reg_min_samples": 50,
   "ols_model_path": "OLS_coefficients.pkl",
   "value_distribution": {
     "_node_" : {
