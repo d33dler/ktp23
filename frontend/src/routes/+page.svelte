@@ -43,11 +43,9 @@
         axios.post('http://localhost:8000/', {
             "idx": choices,
             'extra' : {
-                'dist_to_center': parseInt(document.getElementById('dist_to_center').value),
-                'num_floors': parseInt(document.getElementById('num_floors').value),
-                'num_rooms': parseInt(document.getElementById('num_rooms').value),
-                'area_m2': parseInt(document.getElementById('area_m2').value),
-                'bathroom': parseInt(document.getElementById('bathroom').value)
+                'dist_to_center': parseFloat(document.getElementById('dist_to_center').value),
+                'floor': parseInt(document.getElementById('floor').value),
+                'area_m2': parseInt(document.getElementById('area_m2').value)
             }
         })
         .then(function (response) {
@@ -88,30 +86,18 @@
         How far is the property from the city center?
     </h1>
     <div class='container'>
-    <input type="number" id="dist_to_center" name="dist_to_center" min="0" max="100" step="1" value="0">
-    m
+    <input type="number" id="dist_to_center" name="dist_to_center" min="0" max="100" step="0.5" value="0">
+    km
     </div>
     <br/><br/>
 
-    <!--     num_floors -->
+    <!--     floor -->
     <h1>
-        How many floors does the property have?
+        What is the floor of the property?
     </h1>
 
     <div class='container'>
-    <input type="number" id="num_floors" name="num_floors" min="0" max="10" step="1" value="0">
-    </div>
-
-    <br/><br/>
-
-    <!-- num_rooms -->
-
-    <h1>
-        How many rooms does the property have?
-    </h1>
-
-    <div class='container'>
-    <input type="number" id="num_rooms" name="num_rooms" min="0" max="10" step="1" value="0">
+    <input type="number" id="floor" name="floor" min="0" max="100" step="1" value="0">
     </div>
 
     <br/><br/>
@@ -125,17 +111,6 @@
     <div class='container'>
     <input type="number" id="area_m2" name="area_m2" min="0" max="1000" step="1" value="0">
     m<sup>2</sup>
-    </div>
-
-    <br/><br/>
-
-    <!-- bathroom  -->
-    <h1>
-        How many bathrooms does the property have?
-    </h1>
-
-    <div class='container'>
-    <input type="number" id="bathroom" name="bathroom" min="0" max="10" step="1" value="0">
     </div>
 
     <br/><br/>

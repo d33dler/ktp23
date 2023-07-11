@@ -9,10 +9,8 @@ from pydantic import BaseModel
 
 class ExtraInfo(BaseModel):
     dist_to_center: float
-    num_floors: int
-    num_rooms: int
+    floor: int
     area_m2: int
-    bathroom: int
 
 class Form(BaseModel):
     idx: List[int]
